@@ -1,0 +1,33 @@
+.nav {
+  display: flex;
+  gap: 0.25rem;
+  padding: 0.5rem 0;
+  overflow-x: auto;
+}
+
+.link {
+  padding: 0.4rem 0.85rem;
+  border-radius: 6px;
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: var(--fg-muted, #666);
+  text-decoration: none;
+  white-space: nowrap;
+  transition: background 0.15s, color 0.15s;
+}
+
+.link:hover {
+  background: var(--bg-muted, #f0f0f0);
+  color: var(--fg, #111);
+}
+
+.active {
+  background: var(--accent, #e85d04);
+  color: #fff;
+}
+
+.active:hover {
+  background: var(--accent, #e85d04);
+  color: #fff;
+  opacity: 0.9;
+}

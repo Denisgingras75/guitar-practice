@@ -1,0 +1,55 @@
+.timer {
+  text-align: center;
+  padding: 1.5rem;
+  border: 1px solid var(--border, #ddd);
+  border-radius: 8px;
+  background: var(--bg-card, #fff);
+}
+
+.label {
+  margin: 0 0 0.5rem;
+  font-size: 0.9rem;
+  color: var(--fg-muted, #666);
+}
+
+.time {
+  margin: 0;
+  font-size: 3rem;
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+  color: var(--fg, #111);
+  letter-spacing: 0.05em;
+}
+
+.buttons {
+  display: flex;
+  gap: 0.75rem;
+  justify-content: center;
+  margin-top: 1rem;
+}
+
+.btn {
+  padding: 0.5rem 1.25rem;
+  border: 1px solid var(--border, #ccc);
+  border-radius: 6px;
+  background: var(--bg, #fff);
+  color: var(--fg, #111);
+  font-size: 0.9rem;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+.btn:hover {
+  background: var(--bg-muted, #f0f0f0);
+}
+
+.done {
+  background: var(--accent, #e85d04);
+  color: #fff;
+  border-color: var(--accent, #e85d04);
+}
+
+.done:hover {
+  opacity: 0.9;
+  background: var(--accent, #e85d04);
+}

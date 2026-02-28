@@ -1,0 +1,90 @@
+.card {
+  border: 1px solid var(--border, #ddd);
+  border-radius: 8px;
+  padding: 1.25rem;
+  background: var(--bg-card, #fff);
+}
+
+.name {
+  margin: 0 0 0.5rem;
+  font-size: 1.25rem;
+  color: var(--fg, #111);
+}
+
+.description {
+  margin: 0 0 0.75rem;
+  color: var(--fg-muted, #666);
+  font-size: 0.9rem;
+  line-height: 1.4;
+}
+
+.detail {
+  margin: 0 0 0.25rem;
+  font-size: 0.85rem;
+  color: var(--fg-muted, #666);
+}
+
+.controls {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+  flex-wrap: wrap;
+  margin: 0.75rem 0;
+}
+
+.control {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  font-size: 0.8rem;
+  color: var(--fg-muted, #666);
+}
+
+.control select {
+  padding: 0.3rem 0.5rem;
+  border: 1px solid var(--border, #ccc);
+  border-radius: 4px;
+  background: var(--bg, #fff);
+  color: var(--fg, #111);
+  font-size: 0.85rem;
+}
+
+.toggle {
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+  font-size: 0.85rem;
+  color: var(--fg-muted, #666);
+  cursor: pointer;
+}
+
+.tags {
+  display: flex;
+  gap: 0.4rem;
+  flex-wrap: wrap;
+  margin-top: 0.75rem;
+}
+
+.tag {
+  padding: 0.15rem 0.5rem;
+  font-size: 0.7rem;
+  border-radius: 99px;
+  background: var(--bg-muted, #eee);
+  color: var(--fg-muted, #666);
+}
+
+.practiceBtn {
+  margin-top: 1rem;
+  padding: 0.5rem 1.25rem;
+  border: none;
+  border-radius: 6px;
+  background: var(--accent, #e85d04);
+  color: #fff;
+  font-size: 0.9rem;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.practiceBtn:hover {
+  opacity: 0.9;
+}
