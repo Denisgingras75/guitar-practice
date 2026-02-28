@@ -1,0 +1,264 @@
+.page {
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.heading {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--fg);
+  margin-bottom: 1rem;
+}
+
+.list {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+/* === Guitarist Card === */
+.card {
+  padding: 1.25rem;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  transition: border-color 0.2s;
+}
+
+.card:hover {
+  border-color: var(--fg-dim);
+}
+
+.cardToggle {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  background: none;
+  border: none;
+  padding: 0;
+  text-align: left;
+  cursor: pointer;
+  color: var(--fg);
+  position: relative;
+}
+
+.cardHeader {
+  display: flex;
+  align-items: baseline;
+  gap: 0.5rem;
+  margin-bottom: 0.35rem;
+}
+
+.guitaristName {
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--fg);
+}
+
+.bandName {
+  font-size: 0.85rem;
+  color: var(--fg-muted);
+}
+
+.chevron {
+  position: absolute;
+  top: 0;
+  right: 0;
+  font-size: 0.7rem;
+  color: var(--fg-dim);
+}
+
+/* === Genre Tags === */
+.genreTags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-bottom: 0.25rem;
+}
+
+.genreTag {
+  font-size: 0.65rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  padding: 2px 8px;
+  border-radius: 99px;
+  background: var(--accent);
+  color: #0a0a0a;
+}
+
+.description {
+  font-size: 0.9rem;
+  color: var(--fg-muted);
+  margin-top: 0.5rem;
+  line-height: 1.5;
+}
+
+/* === Expanded Details === */
+.details {
+  margin-top: 1rem;
+  border-top: 1px solid var(--border);
+  padding-top: 1rem;
+}
+
+.section {
+  margin-bottom: 1.25rem;
+}
+
+.section:last-child {
+  margin-bottom: 0;
+}
+
+.subHeading {
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: var(--fg);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  margin-bottom: 0.5rem;
+}
+
+/* === Scale Tags === */
+.scaleTags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.scaleTag {
+  font-size: 0.75rem;
+  padding: 3px 12px;
+  border-radius: 99px;
+  border: 1px solid var(--accent);
+  background: var(--accent-glow);
+  color: var(--accent);
+}
+
+/* === Techniques === */
+.techniqueList {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.techniqueItem {
+  padding: 0.75rem;
+  background: var(--bg-hover);
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--border);
+}
+
+.techniqueHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+  margin-bottom: 0.35rem;
+}
+
+.techniqueName {
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: var(--fg);
+}
+
+.techniqueDesc {
+  font-size: 0.8rem;
+  color: var(--fg-muted);
+  line-height: 1.5;
+}
+
+/* === Songs === */
+.songList {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+.songItem {
+  padding: 0.5rem 0;
+  border-bottom: 1px solid var(--border);
+}
+
+.songItem:last-child {
+  border-bottom: none;
+}
+
+.songName {
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: var(--accent);
+}
+
+.songReason {
+  font-size: 0.8rem;
+  color: var(--fg-muted);
+  margin-top: 0.2rem;
+  line-height: 1.4;
+}
+
+/* === Practice Routine === */
+.routineList {
+  margin: 0;
+  padding-left: 1.2rem;
+  border-left: 2px solid var(--accent-glow);
+  list-style-position: inside;
+}
+
+.routineItem {
+  margin-bottom: 0.75rem;
+  padding-left: 0.25rem;
+}
+
+.routineItem:last-child {
+  margin-bottom: 0;
+}
+
+.routineHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+  margin-bottom: 0.25rem;
+}
+
+.routineName {
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: var(--fg);
+}
+
+.routineDesc {
+  font-size: 0.8rem;
+  color: var(--fg-muted);
+  line-height: 1.5;
+}
+
+/* === Practice Button === */
+.practiceBtn {
+  flex-shrink: 0;
+  padding: 4px 14px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  border: none;
+  border-radius: var(--radius);
+  background: var(--accent);
+  color: #0a0a0a;
+  cursor: pointer;
+  transition: background 0.15s;
+  white-space: nowrap;
+}
+
+.practiceBtn:hover {
+  background: var(--accent-hover);
+}
+
+/* === Timer === */
+.timerWrap {
+  margin-bottom: 1.25rem;
+  padding: 1rem;
+  background: var(--bg-card);
+  border: 1px solid var(--accent);
+  border-radius: var(--radius);
+  box-shadow: 0 0 12px var(--accent-glow);
+}

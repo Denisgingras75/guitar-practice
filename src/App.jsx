@@ -5,6 +5,7 @@ import Scales from './pages/Scales.jsx';
 import Modes from './pages/Modes.jsx';
 import Chords from './pages/Chords.jsx';
 import Techniques from './pages/Techniques.jsx';
+import Guitarists from './pages/Guitarists.jsx';
 import './App.css';
 
 function App() {
@@ -22,6 +23,7 @@ function App() {
             <Route path="/modes" element={<Modes />} />
             <Route path="/chords" element={<Chords />} />
             <Route path="/techniques" element={<Techniques />} />
+            <Route path="/guitarists" element={<Guitarists />} />
           </Routes>
         </main>
       </div>

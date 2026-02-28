@@ -7,6 +7,7 @@ const links = [
   { to: '/modes', label: 'Modes' },
   { to: '/chords', label: 'Chords' },
   { to: '/techniques', label: 'Techniques' },
+  { to: '/guitarists', label: 'Guitarists' },
 ];
 
 export default function CategoryNav() {
