@@ -6,7 +6,7 @@
   margin: 0 0 0.5rem;
   font-size: 0.9rem;
   font-weight: 600;
-  color: var(--fg, #111);
+  color: var(--fg);
 }
 
 .responsive {
@@ -15,7 +15,8 @@
   padding-bottom: 56.25%; /* 16:9 */
   height: 0;
   overflow: hidden;
-  border-radius: 6px;
+  border-radius: var(--radius);
+  background: var(--bg-card);
 }
 
 .responsive iframe {
@@ -29,10 +30,12 @@
 
 .audio {
   width: 100%;
+  border-radius: var(--radius-sm);
+  filter: invert(1) hue-rotate(180deg);
 }
 
 .date {
-  margin: 0.25rem 0 0;
+  margin: 0.35rem 0 0;
   font-size: 0.75rem;
-  color: var(--fg-muted, #999);
+  color: var(--fg-dim);
 }
