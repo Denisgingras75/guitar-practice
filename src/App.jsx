@@ -1,13 +1,29 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import CategoryNav from './components/CategoryNav.jsx';
+import Home from './pages/Home.jsx';
+import Scales from './pages/Scales.jsx';
+import Modes from './pages/Modes.jsx';
+import Chords from './pages/Chords.jsx';
+import Techniques from './pages/Techniques.jsx';
+import './App.css';
 
 function App() {
   return (
     <BrowserRouter>
       <div className="app">
-        <h1>Guitar Practice</h1>
-        <Routes>
-          <Route path="/" element={<div>Home</div>} />
-        </Routes>
+        <header className="header">
+          <h1 className="title">Guitar Practice</h1>
+        </header>
+        <CategoryNav />
+        <main className="main">
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/scales" element={<Scales />} />
+            <Route path="/modes" element={<Modes />} />
+            <Route path="/chords" element={<Chords />} />
+            <Route path="/techniques" element={<Techniques />} />
+          </Routes>
+        </main>
       </div>
     </BrowserRouter>
   );
