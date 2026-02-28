@@ -1,0 +1,11 @@
+.container {
+  width: 100%;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+.svg {
+  width: 100%;
+  height: auto;
+  min-width: 400px;
+}
