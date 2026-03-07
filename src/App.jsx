@@ -6,6 +6,9 @@ import Modes from './pages/Modes.jsx';
 import Chords from './pages/Chords.jsx';
 import Techniques from './pages/Techniques.jsx';
 import Guitarists from './pages/Guitarists.jsx';
+import Routines from './pages/Routines.jsx';
+import Tuner from './pages/Tuner.jsx';
+import SkillTrees from './pages/SkillTrees.jsx';
 import './App.css';
 
 function App() {
@@ -24,6 +27,9 @@ function App() {
             <Route path="/chords" element={<Chords />} />
             <Route path="/techniques" element={<Techniques />} />
             <Route path="/guitarists" element={<Guitarists />} />
+            <Route path="/skills" element={<SkillTrees />} />
+            <Route path="/practice" element={<Routines />} />
+            <Route path="/tuner" element={<Tuner />} />
           </Routes>
         </main>
       </div>

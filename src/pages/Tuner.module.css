@@ -1,0 +1,238 @@
+.page {
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.heading {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--fg);
+  margin-bottom: 1rem;
+}
+
+.error {
+  padding: 0.75rem 1rem;
+  background: rgba(239, 68, 68, 0.1);
+  border: 1px solid rgba(239, 68, 68, 0.3);
+  border-radius: var(--radius);
+  color: #ef4444;
+  font-size: 0.85rem;
+  margin-bottom: 1rem;
+}
+
+/* === Tuner Card === */
+.tunerCard {
+  padding: 2rem 1.5rem;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  text-align: center;
+  margin-bottom: 1.5rem;
+}
+
+/* === Note Display === */
+.noteDisplay {
+  margin-bottom: 1.5rem;
+}
+
+.noteName {
+  font-size: 5rem;
+  font-weight: 800;
+  color: var(--fg);
+  line-height: 1;
+  letter-spacing: -0.03em;
+}
+
+.octave {
+  font-size: 2rem;
+  font-weight: 400;
+  color: var(--fg-muted);
+  vertical-align: sub;
+  margin-left: 2px;
+}
+
+.notePlaceholder {
+  font-size: 5rem;
+  font-weight: 800;
+  color: var(--fg-dim);
+  line-height: 1;
+}
+
+/* === Cents Meter === */
+.meterWrap {
+  max-width: 400px;
+  margin: 0 auto 1rem;
+}
+
+.meterTrack {
+  position: relative;
+  height: 12px;
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  overflow: hidden;
+}
+
+.meterCenter {
+  position: absolute;
+  left: 50%;
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  background: var(--fg-dim);
+  transform: translateX(-50%);
+}
+
+.meterNeedle {
+  position: absolute;
+  top: 1px;
+  bottom: 1px;
+  width: 6px;
+  border-radius: 3px;
+  transform: translateX(-50%);
+  transition: left 0.1s ease-out, background-color 0.2s;
+}
+
+.meterLabels {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 4px;
+  font-size: 0.65rem;
+  color: var(--fg-dim);
+}
+
+.meterLabelCenter {
+  font-weight: 700;
+  color: var(--fg-muted);
+}
+
+/* === Readouts === */
+.centsText {
+  font-size: 1.1rem;
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+  margin: 0 0 0.25rem;
+}
+
+.freqText {
+  font-size: 0.85rem;
+  color: var(--fg-dim);
+  font-family: var(--font-mono);
+  margin: 0 0 1.5rem;
+}
+
+/* === Toggle Button === */
+.toggleBtn {
+  padding: 12px 32px;
+  border: 2px solid var(--accent);
+  border-radius: var(--radius);
+  background: transparent;
+  color: var(--accent);
+  font-size: 1rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.toggleBtn:hover {
+  background: var(--accent-glow);
+}
+
+.toggleBtn.active {
+  background: var(--accent);
+  color: #0a0a0a;
+}
+
+.toggleBtn.active:hover {
+  background: var(--accent-hover);
+  border-color: var(--accent-hover);
+}
+
+/* === String Reference === */
+.stringsSection {
+  margin-bottom: 1.5rem;
+}
+
+.subHeading {
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--fg);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  margin-bottom: 0.75rem;
+}
+
+.stringGrid {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 0.5rem;
+}
+
+@media (max-width: 480px) {
+  .stringGrid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.stringCard {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0.75rem 0.5rem;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.stringActive {
+  border-color: var(--accent);
+  box-shadow: 0 0 12px var(--accent-glow);
+}
+
+.stringName {
+  font-size: 1.5rem;
+  font-weight: 800;
+  color: var(--fg);
+  line-height: 1;
+}
+
+.stringOctave {
+  font-size: 0.75rem;
+  color: var(--fg-dim);
+}
+
+.stringFreq {
+  font-size: 0.7rem;
+  color: var(--fg-muted);
+  font-family: var(--font-mono);
+  margin-top: 0.25rem;
+}
+
+.stringLabel {
+  font-size: 0.6rem;
+  color: var(--fg-dim);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  margin-top: 0.25rem;
+}
+
+/* === Tips === */
+.tips {
+  padding: 1rem 1.25rem;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+}
+
+.tips ul {
+  margin: 0;
+  padding-left: 1.2rem;
+  font-size: 0.85rem;
+  color: var(--fg-muted);
+  line-height: 1.6;
+}
+
+.tips li::marker {
+  color: var(--fg-dim);
+}

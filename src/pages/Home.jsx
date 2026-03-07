@@ -3,10 +3,14 @@ import { usePracticeLog } from '../hooks/usePracticeLog.js';
 import styles from './Home.module.css';
 
 const categories = [
-  { to: '/scales', name: 'Scales', desc: 'Major, minor, pentatonic, blues, harmonic, melodic' },
-  { to: '/modes', name: 'Modes', desc: 'Ionian through Locrian' },
-  { to: '/chords', name: 'Chords', desc: 'Open, barre, 7ths, extensions' },
+  { to: '/skills', name: 'Skill Trees', desc: '6 trees from foundation to mastery — track your progress' },
+  { to: '/practice', name: 'Quick Practice', desc: 'Structured sessions, beginner to advanced' },
+  { to: '/scales', name: 'Scales', desc: '25+ scales with fretboard diagrams in any key' },
+  { to: '/modes', name: 'Modes', desc: 'All 7 modes — moods, chord fits, characteristic notes' },
+  { to: '/chords', name: 'Chords', desc: 'Open, barre, 7ths, extensions, voicing diagrams' },
   { to: '/techniques', name: 'Techniques', desc: 'Bending, vibrato, legato, tapping, picking' },
+  { to: '/guitarists', name: 'Artists', desc: 'Study Hendrix, Page, Santana, Sturgill, Rick M' },
+  { to: '/tuner', name: 'Tuner', desc: 'Chromatic tuner — mic-based pitch detection' },
 ];
 
 export default function Home() {

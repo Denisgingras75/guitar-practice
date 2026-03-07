@@ -1,0 +1,319 @@
+.page {
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.heading {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--fg);
+  margin-bottom: 1rem;
+}
+
+/* === Timer === */
+.timerWrap {
+  margin-bottom: 1.25rem;
+  padding: 1rem;
+  background: var(--bg-card);
+  border: 1px solid var(--accent);
+  border-radius: var(--radius);
+  box-shadow: 0 0 12px var(--accent-glow);
+}
+
+/* === Filters === */
+.filters {
+  display: flex;
+  gap: 0.75rem;
+  margin-bottom: 1.25rem;
+  flex-wrap: wrap;
+}
+
+.filterLabel {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  font-size: 0.7rem;
+  font-weight: 600;
+  color: var(--fg-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+/* === Routine List === */
+.list {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+/* === Routine Card === */
+.card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  transition: border-color 0.2s;
+  overflow: hidden;
+}
+
+.card:hover {
+  border-color: var(--fg-dim);
+}
+
+.cardToggle {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  background: none;
+  border: none;
+  padding: 1.25rem;
+  text-align: left;
+  cursor: pointer;
+  color: var(--fg);
+  position: relative;
+}
+
+.cardHeader {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+  margin-bottom: 0.35rem;
+}
+
+.routineName {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--fg);
+}
+
+.badges {
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+}
+
+.badgeLevel,
+.badgeInstrument,
+.badgeTime {
+  font-size: 0.6rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  padding: 2px 8px;
+  border-radius: 99px;
+}
+
+.badgeLevel {
+  border: 1px solid var(--accent);
+  color: var(--accent);
+  background: var(--accent-glow);
+}
+
+.badgeLevel[data-level="beginner"] {
+  border-color: #22c55e;
+  color: #22c55e;
+  background: rgba(34, 197, 94, 0.1);
+}
+
+.badgeLevel[data-level="advanced"] {
+  border-color: #ef4444;
+  color: #ef4444;
+  background: rgba(239, 68, 68, 0.1);
+}
+
+.badgeLevel[data-level="all"] {
+  border-color: var(--fg-muted);
+  color: var(--fg-muted);
+  background: transparent;
+}
+
+.badgeInstrument {
+  border: 1px solid var(--fg-dim);
+  color: var(--fg-muted);
+  background: transparent;
+}
+
+.badgeInstrument[data-instrument="electric"] {
+  border-color: #8b5cf6;
+  color: #8b5cf6;
+  background: rgba(139, 92, 246, 0.1);
+}
+
+.badgeInstrument[data-instrument="acoustic"] {
+  border-color: #f59e0b;
+  color: #f59e0b;
+  background: rgba(245, 158, 11, 0.1);
+}
+
+.badgeTime {
+  border: 1px solid var(--border);
+  color: var(--fg-dim);
+  background: transparent;
+}
+
+.routineDesc {
+  font-size: 0.85rem;
+  color: var(--fg-muted);
+  line-height: 1.5;
+  margin: 0;
+}
+
+.chevron {
+  position: absolute;
+  top: 1.25rem;
+  right: 1.25rem;
+  font-size: 0.7rem;
+  color: var(--fg-dim);
+}
+
+/* === Expanded Sections === */
+.sections {
+  padding: 0 1.25rem 1.25rem;
+  border-top: 1px solid var(--border);
+}
+
+/* === Timeline Bar === */
+.timeline {
+  display: flex;
+  gap: 2px;
+  margin: 1rem 0;
+  height: 28px;
+  border-radius: var(--radius-sm);
+  overflow: hidden;
+}
+
+.timelineSegment {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--bg-hover);
+  border: 1px solid var(--border);
+  min-width: 0;
+  position: relative;
+}
+
+.timelineSegment:nth-child(1) { background: rgba(245, 158, 11, 0.15); }
+.timelineSegment:nth-child(2) { background: rgba(139, 92, 246, 0.15); }
+.timelineSegment:nth-child(3) { background: rgba(34, 197, 94, 0.15); }
+.timelineSegment:nth-child(4) { background: rgba(59, 130, 246, 0.15); }
+.timelineSegment:nth-child(5) { background: rgba(239, 68, 68, 0.15); }
+
+.timelineLabel {
+  font-size: 0.55rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  color: var(--fg-muted);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  padding: 0 4px;
+}
+
+/* === Section === */
+.section {
+  margin-top: 1rem;
+}
+
+.sectionHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 0.5rem;
+}
+
+.sectionName {
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--fg);
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+}
+
+.sectionTime {
+  font-size: 0.75rem;
+  color: var(--fg-dim);
+  font-family: var(--font-mono);
+}
+
+/* === Exercises === */
+.exercises {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.exercise {
+  padding: 0.75rem;
+  background: var(--bg-hover);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+}
+
+.exerciseHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+  margin-bottom: 0.25rem;
+}
+
+.exerciseName {
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--fg);
+}
+
+.exerciseDesc {
+  font-size: 0.8rem;
+  color: var(--fg-muted);
+  line-height: 1.5;
+  margin: 0;
+}
+
+.practiceBtn {
+  flex-shrink: 0;
+  padding: 3px 12px;
+  font-size: 0.7rem;
+  font-weight: 700;
+  border: 1px solid var(--accent);
+  border-radius: var(--radius-sm);
+  background: transparent;
+  color: var(--accent);
+  cursor: pointer;
+  transition: all 0.15s;
+  white-space: nowrap;
+}
+
+.practiceBtn:hover {
+  background: var(--accent);
+  color: #0a0a0a;
+}
+
+/* === Start Full Routine Button === */
+.startRoutineBtn {
+  display: block;
+  width: 100%;
+  margin-top: 1.25rem;
+  padding: 12px 24px;
+  border: none;
+  border-radius: var(--radius);
+  background: var(--accent);
+  color: #0a0a0a;
+  font-size: 0.95rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background 0.15s;
+}
+
+.startRoutineBtn:hover {
+  background: var(--accent-hover);
+}
+
+/* === Empty State === */
+.empty {
+  text-align: center;
+  padding: 2rem;
+  color: var(--fg-dim);
+  font-size: 0.9rem;
+}

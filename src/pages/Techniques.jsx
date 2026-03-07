@@ -32,6 +32,11 @@ export default function Techniques() {
             <div className={styles.cardHeader}>
               <span className={styles.techName}>{tech.name}</span>
               <span className={styles.badge}>{tech.category}</span>
+              {tech.instrument && tech.instrument !== 'both' && (
+                <span className={`${styles.badge} ${styles.instrumentBadge}`} data-instrument={tech.instrument}>
+                  {tech.instrument}
+                </span>
+              )}
             </div>
 
             <p className={styles.description}>{tech.description}</p>

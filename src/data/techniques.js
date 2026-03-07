@@ -16,6 +16,7 @@ export const TECHNIQUES = [
       { name: 'Blues Bends', description: 'Over an A minor blues backing track, practice quarter-tone bends on the b3 and b7 to get that gritty, expressive blues cry.' },
     ],
     videos: [],
+    instrument: 'both',
     tags: ['essential', 'beginner', 'blues', 'expression'],
   },
   {
@@ -35,6 +36,7 @@ export const TECHNIQUES = [
       { name: 'String-by-String', description: 'Apply vibrato to the 7th fret on every string. Each string requires different pressure and motion — learn the feel of each one.' },
     ],
     videos: [],
+    instrument: 'both',
     tags: ['essential', 'intermediate', 'expression'],
   },
   {
@@ -54,6 +56,7 @@ export const TECHNIQUES = [
       { name: 'Trill Builder', description: 'Rapidly alternate hammer-on and pull-off between two frets (e.g., 5 and 7). Start slow, build speed. Time it to a metronome.' },
     ],
     videos: [],
+    instrument: 'both',
     tags: ['essential', 'beginner', 'legato'],
   },
   {
@@ -73,6 +76,7 @@ export const TECHNIQUES = [
       { name: 'Speed Builder', description: 'Alternate hammer-on and pull-off on two frets, starting at 60 BPM in sixteenth notes. Increase by 5 BPM when clean.' },
     ],
     videos: [],
+    instrument: 'both',
     tags: ['essential', 'beginner', 'legato'],
   },
   {
@@ -92,6 +96,7 @@ export const TECHNIQUES = [
       { name: 'Double-Stop Slides', description: 'Slide two adjacent strings simultaneously (e.g., 3rds on the G and B strings). Great for country and blues.' },
     ],
     videos: [],
+    instrument: 'both',
     tags: ['essential', 'beginner', 'legato'],
   },
   {
@@ -111,6 +116,7 @@ export const TECHNIQUES = [
       { name: 'Pentatonic Tapping', description: 'Tap through an Am pentatonic pattern: tap 12th fret, pull off to notes in position 5. Map the whole scale.' },
     ],
     videos: [],
+    instrument: 'electric',
     tags: ['intermediate', 'two-hand', 'shred'],
   },
   {
@@ -130,6 +136,7 @@ export const TECHNIQUES = [
       { name: 'Shape Shifting', description: 'Practice major, minor, and diminished sweep shapes at the same position. Switch between them on command.' },
     ],
     videos: [],
+    instrument: 'electric',
     tags: ['advanced', 'picking', 'shred', 'metal'],
   },
   {
@@ -149,6 +156,7 @@ export const TECHNIQUES = [
       { name: 'Country Doublestops', description: 'Play a melody on the G string with a pick while plucking harmony notes on the B string with your middle finger.' },
     ],
     videos: [],
+    instrument: 'both',
     tags: ['intermediate', 'picking', 'country'],
   },
   {
@@ -168,6 +176,7 @@ export const TECHNIQUES = [
       { name: 'Gallop Rhythm', description: 'Palm mute a gallop pattern (eighth, two sixteenths) on the low E — the Iron Maiden rhythm. Start at 100 BPM.' },
     ],
     videos: [],
+    instrument: 'electric',
     tags: ['essential', 'beginner', 'rhythm', 'metal', 'rock'],
   },
   {
@@ -187,6 +196,47 @@ export const TECHNIQUES = [
       { name: 'Pinch Harmonics', description: 'Fret any note on the G string. Pick with the edge of your thumb barely touching the string. Aim for that squealing harmonic. Move your pick position to find different harmonic nodes.' },
     ],
     videos: [],
+    instrument: 'both',
     tags: ['intermediate', 'texture', 'expression'],
+  },
+  {
+    id: 'fingerpicking',
+    name: 'Fingerpicking',
+    category: 'picking',
+    description: 'Using individual fingers (thumb, index, middle, ring) instead of a pick. The foundation of classical, folk, and fingerstyle acoustic playing. Creates a warmer, more nuanced tone with independent voice control.',
+    tips: [
+      'Thumb handles strings 6-4, index string 3, middle string 2, ring string 1 (PIMA system)',
+      'Grow your picking-hand nails slightly for brighter tone, or use finger pads for warmth',
+      'Keep your wrist relaxed and slightly arched — tension kills speed and endurance',
+      'Practice patterns slowly until the fingers move independently without thought',
+    ],
+    exercises: [
+      { name: 'PIMA Pattern', description: 'On an Am chord: thumb plays string 5, then I-M-A play strings 3-2-1 simultaneously. Repeat in rhythm. This is the foundation.' },
+      { name: 'Travis Picking', description: 'Alternating bass (thumb on beats 1-3) with melody (fingers on beats 2-4). Start with C chord. Keep the bass rock-steady.' },
+      { name: 'Arpeggio Patterns', description: 'Over G-Em-C-D: pluck strings 6-3-2-1-2-3 per chord. Each chord gets one full cycle. Smooth and even.' },
+    ],
+    instrument: 'acoustic',
+    videos: [],
+    tags: ['essential', 'beginner', 'picking', 'acoustic', 'fingerstyle'],
+  },
+  {
+    id: 'alternate-tunings',
+    name: 'Alternate Tunings',
+    category: 'setup',
+    description: 'Retuning the guitar opens entirely new sonic landscapes. Open tunings create instant chords, dropped tunings add low-end power, and modal tunings like DADGAD create droning, atmospheric textures impossible in standard.',
+    tips: [
+      'Keep a dedicated guitar for alternate tunings if possible — constant retuning wears strings',
+      'Drop D is the gateway: just tune the low E down to D. One-finger power chords become available',
+      'Open G and Open D are the slide guitar standards — Keith Richards and Robert Johnson territory',
+      'DADGAD is the most versatile modal tuning — Celtic, Indian, ambient, and folk all live here',
+    ],
+    exercises: [
+      { name: 'Drop D Power', description: 'Tune low E to D. Play power chords on the bottom 3 strings with one finger. Write a riff using the low D as a drone pedal tone.' },
+      { name: 'Open G Exploration', description: 'Tune to DGDGBD. Strum open — that\'s a G chord. Barre any fret for instant major chords. Play a slide melody on the top string.' },
+      { name: 'DADGAD Drone Piece', description: 'Tune to DADGAD. Let all strings ring open. Play a melody on strings 1-2 while the lower strings drone. Write an 8-bar piece.' },
+    ],
+    instrument: 'both',
+    videos: [],
+    tags: ['intermediate', 'setup', 'acoustic', 'creative'],
   },
 ];

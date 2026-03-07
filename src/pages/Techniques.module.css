@@ -53,6 +53,22 @@
   color: #0a0a0a;
 }
 
+.instrumentBadge {
+  background: transparent;
+  border: 1px solid var(--fg-dim);
+  color: var(--fg-muted);
+}
+
+.instrumentBadge[data-instrument="electric"] {
+  border-color: #8b5cf6;
+  color: #8b5cf6;
+}
+
+.instrumentBadge[data-instrument="acoustic"] {
+  border-color: #f59e0b;
+  color: #f59e0b;
+}
+
 .description {
   font-size: 0.9rem;
   color: var(--fg-muted);
