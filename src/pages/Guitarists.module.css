@@ -84,7 +84,7 @@
   padding: 2px 8px;
   border-radius: 99px;
   background: var(--accent);
-  color: #0a0a0a;
+  color: #fff;
 }
 
 .description {
@@ -243,7 +243,7 @@
   border: none;
   border-radius: var(--radius);
   background: var(--accent);
-  color: #0a0a0a;
+  color: #fff;
   cursor: pointer;
   transition: background 0.15s;
   white-space: nowrap;

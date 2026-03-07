@@ -1,18 +1,18 @@
 /* === Theme === */
 :root {
-  --bg: #fafafa;
+  --bg: #f8faf9;
   --bg-card: #ffffff;
-  --bg-hover: #f5f5f5;
-  --fg: #1a1a1a;
-  --fg-muted: #6b6b6b;
-  --fg-dim: #a0a0a0;
-  --accent: #1a1a1a;
-  --accent-hover: #333;
-  --accent-glow: rgba(0, 0, 0, 0.04);
-  --border: #e5e5e5;
+  --bg-hover: #eef5f2;
+  --fg: #0f1f1a;
+  --fg-muted: #4a6259;
+  --fg-dim: #8aa399;
+  --accent: #0d9373;
+  --accent-hover: #0b7d63;
+  --accent-glow: rgba(13, 147, 115, 0.08);
+  --border: #d0ddd8;
   --radius: 8px;
   --radius-sm: 4px;
-  --font: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+  --font: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
   --font-mono: 'SF Mono', 'Fira Code', 'Consolas', monospace;
   --tuner-green: #16a34a;
   --tuner-yellow: #ca8a04;

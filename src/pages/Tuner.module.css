@@ -140,7 +140,7 @@
 
 .toggleBtn.active {
   background: var(--accent);
-  color: #0a0a0a;
+  color: #fff;
 }
 
 .toggleBtn.active:hover {
