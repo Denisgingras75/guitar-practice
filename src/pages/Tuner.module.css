@@ -5,7 +5,7 @@
 
 .heading {
   font-size: 1.6rem;
-  font-weight: 800;
+  font-weight: 900;
   color: var(--fg);
   margin-bottom: 1rem;
 }
@@ -37,7 +37,7 @@
 
 .noteName {
   font-size: 5rem;
-  font-weight: 800;
+  font-weight: 900;
   color: var(--fg);
   line-height: 1;
   letter-spacing: -0.03em;
@@ -53,7 +53,7 @@
 
 .notePlaceholder {
   font-size: 5rem;
-  font-weight: 800;
+  font-weight: 900;
   color: var(--fg-dim);
   line-height: 1;
 }
@@ -102,14 +102,14 @@
 }
 
 .meterLabelCenter {
-  font-weight: 700;
+  font-weight: 800;
   color: var(--fg-muted);
 }
 
 /* === Readouts === */
 .centsText {
   font-size: 1.1rem;
-  font-weight: 700;
+  font-weight: 800;
   font-variant-numeric: tabular-nums;
   margin: 0 0 0.25rem;
 }
@@ -129,7 +129,7 @@
   background: transparent;
   color: var(--accent);
   font-size: 1rem;
-  font-weight: 700;
+  font-weight: 800;
   cursor: pointer;
   transition: all 0.2s;
 }
@@ -155,7 +155,7 @@
 
 .subHeading {
   font-size: 0.85rem;
-  font-weight: 700;
+  font-weight: 800;
   color: var(--fg);
   text-transform: uppercase;
   letter-spacing: 0.04em;
@@ -192,7 +192,7 @@
 
 .stringName {
   font-size: 1.5rem;
-  font-weight: 800;
+  font-weight: 900;
   color: var(--fg);
   line-height: 1;
 }

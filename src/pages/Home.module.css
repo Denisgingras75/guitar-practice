@@ -21,7 +21,7 @@
 .statValue {
   display: block;
   font-size: 1.8rem;
-  font-weight: 600;
+  font-weight: 800;
   color: var(--fg);
   font-variant-numeric: tabular-nums;
 }
@@ -33,25 +33,39 @@
   margin-top: 0.2rem;
   text-transform: uppercase;
   letter-spacing: 0.05em;
+  font-weight: 600;
 }
 
 .section {
   margin-bottom: 2rem;
 }
 
+.section + .section {
+  padding-top: 0.5rem;
+  border-top: 1px solid var(--border);
+}
+
 .sectionTitle {
-  font-size: 0.7rem;
-  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.75rem;
+  font-weight: 800;
   text-transform: uppercase;
   letter-spacing: 0.08em;
-  color: var(--fg-dim);
+  color: var(--accent);
   margin-bottom: 0.6rem;
   padding-left: 1px;
 }
 
+.sectionIcon {
+  font-size: 0.85rem;
+  line-height: 1;
+}
+
 .heading {
   font-size: 0.75rem;
-  font-weight: 700;
+  font-weight: 800;
   text-transform: uppercase;
   letter-spacing: 0.08em;
   color: var(--fg-dim);
@@ -82,7 +96,7 @@
 }
 
 .categoryName {
-  font-weight: 600;
+  font-weight: 700;
   font-size: 0.9rem;
   color: var(--fg);
 }
@@ -117,7 +131,7 @@
 }
 
 .recentTopic {
-  font-weight: 500;
+  font-weight: 600;
   font-size: 0.88rem;
   color: var(--fg);
 }

@@ -13,7 +13,7 @@
 
 .heading {
   font-size: 1.6rem;
-  font-weight: 800;
+  font-weight: 900;
   color: var(--fg);
 }
 
@@ -25,7 +25,7 @@
 
 .overallPercent {
   font-size: 1.5rem;
-  font-weight: 800;
+  font-weight: 900;
   color: var(--accent);
   font-variant-numeric: tabular-nums;
 }
@@ -114,7 +114,7 @@
 
 .treeName {
   font-size: 1.1rem;
-  font-weight: 700;
+  font-weight: 800;
   color: var(--fg);
 }
 
@@ -132,7 +132,7 @@
 
 .treePercent {
   font-size: 1rem;
-  font-weight: 700;
+  font-weight: 800;
   color: var(--accent);
   font-variant-numeric: tabular-nums;
 }
@@ -177,7 +177,7 @@
 
 .tierName {
   font-size: 0.8rem;
-  font-weight: 700;
+  font-weight: 800;
   text-transform: uppercase;
   letter-spacing: 0.04em;
   color: var(--fg);
@@ -254,7 +254,7 @@
 
 .nodeName {
   font-size: 0.85rem;
-  font-weight: 600;
+  font-weight: 700;
   color: var(--fg);
   flex: 1;
 }

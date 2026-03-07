@@ -16,14 +16,14 @@
 
 .name {
   font-size: 1.15rem;
-  font-weight: 700;
+  font-weight: 800;
   color: var(--fg);
   margin: 0 0 0.25rem;
 }
 
 .status {
   font-size: 0.7rem;
-  font-weight: 700;
+  font-weight: 800;
   text-transform: uppercase;
   letter-spacing: 0.04em;
   padding: 3px 9px;
@@ -80,7 +80,7 @@
 
 .whyLabel {
   font-size: 0.7rem;
-  font-weight: 700;
+  font-weight: 800;
   text-transform: uppercase;
   letter-spacing: 0.04em;
   color: var(--accent);
@@ -102,7 +102,7 @@
 
 .sectionLabel {
   font-size: 0.75rem;
-  font-weight: 700;
+  font-weight: 800;
   text-transform: uppercase;
   letter-spacing: 0.04em;
   color: var(--fg);
@@ -119,7 +119,7 @@
 
 .prereqTag {
   font-size: 0.8rem;
-  font-weight: 600;
+  font-weight: 700;
   padding: 3px 10px;
   border-radius: 99px;
   border: 1.5px solid var(--border);
@@ -147,7 +147,7 @@
 
 .exerciseName {
   font-size: 0.85rem;
-  font-weight: 700;
+  font-weight: 800;
   color: var(--fg);
 }
 
@@ -200,7 +200,7 @@
   background: var(--accent);
   color: #fff;
   font-size: 0.85rem;
-  font-weight: 700;
+  font-weight: 800;
   cursor: pointer;
   transition: background 0.15s;
 }
@@ -216,7 +216,7 @@
   background: transparent;
   color: #22c55e;
   font-size: 0.85rem;
-  font-weight: 700;
+  font-weight: 800;
   cursor: pointer;
   transition: all 0.15s;
 }
@@ -244,7 +244,7 @@
 .videoList { display: flex; flex-direction: column; gap: 6px; margin-bottom: 0.5rem; }
 .videoLink { display: flex; flex-direction: column; gap: 2px; padding: 0.5rem 0.75rem; background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--radius-sm); text-decoration: none; transition: border-color 0.15s; }
 .videoLink:hover { border-color: var(--accent); }
-.videoChannel { font-size: 0.65rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.03em; color: var(--accent); }
+.videoChannel { font-size: 0.65rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.03em; color: var(--accent); }
 .videoTitle { font-size: 0.8rem; color: var(--fg); }
 .findMoreLink { font-size: 0.8rem; color: var(--fg-muted); display: inline-block; }
 .findMoreLink:hover { color: var(--accent); }

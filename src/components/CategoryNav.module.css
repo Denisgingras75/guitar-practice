@@ -19,7 +19,7 @@
   padding: 8px 12px;
   border-radius: var(--radius);
   font-size: 0.8rem;
-  font-weight: 600;
+  font-weight: 700;
   color: var(--fg-muted);
   text-decoration: none;
   white-space: nowrap;
@@ -33,8 +33,8 @@
 }
 
 .active {
-  color: var(--fg);
-  font-weight: 700;
+  color: var(--accent);
+  font-weight: 800;
 }
 
 .group {
@@ -42,17 +42,28 @@
   flex-shrink: 0;
 }
 
+.group + .group {
+  margin-left: 2px;
+  padding-left: 4px;
+  border-left: 1px solid var(--border);
+}
+
+.icon {
+  font-size: 0.75rem;
+  line-height: 1;
+}
+
 .groupBtn {
   display: flex;
   align-items: center;
-  gap: 3px;
+  gap: 4px;
   padding: 8px 12px;
   border: none;
   border-radius: var(--radius);
   background: transparent;
   color: var(--fg-muted);
   font-size: 0.8rem;
-  font-weight: 600;
+  font-weight: 700;
   cursor: pointer;
   white-space: nowrap;
   transition: background 0.15s, color 0.15s;
@@ -64,8 +75,8 @@
 }
 
 .groupActive {
-  color: var(--fg);
-  font-weight: 700;
+  color: var(--accent);
+  font-weight: 800;
 }
 
 .arrow {
@@ -95,7 +106,7 @@
   padding: 8px 12px;
   border-radius: var(--radius-sm);
   font-size: 0.85rem;
-  font-weight: 600;
+  font-weight: 700;
   color: var(--fg-muted);
   text-decoration: none;
   transition: background 0.1s, color 0.1s;
@@ -107,8 +118,8 @@
 }
 
 .dropActive {
-  color: var(--fg);
-  font-weight: 700;
+  color: var(--accent);
+  font-weight: 800;
   background: var(--bg-hover);
 }
 

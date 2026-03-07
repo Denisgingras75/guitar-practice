@@ -5,7 +5,7 @@
 
 .heading {
   font-size: 1.6rem;
-  font-weight: 800;
+  font-weight: 900;
   color: var(--fg);
   margin-bottom: 1rem;
 }
@@ -33,7 +33,7 @@
   flex-direction: column;
   gap: 4px;
   font-size: 0.7rem;
-  font-weight: 600;
+  font-weight: 700;
   color: var(--fg-muted);
   text-transform: uppercase;
   letter-spacing: 0.04em;
@@ -82,7 +82,7 @@
 
 .routineName {
   font-size: 1.1rem;
-  font-weight: 700;
+  font-weight: 800;
   color: var(--fg);
 }
 
@@ -96,7 +96,7 @@
 .badgeInstrument,
 .badgeTime {
   font-size: 0.7rem;
-  font-weight: 700;
+  font-weight: 800;
   text-transform: uppercase;
   letter-spacing: 0.04em;
   padding: 3px 9px;
@@ -200,7 +200,7 @@
 
 .timelineLabel {
   font-size: 0.55rem;
-  font-weight: 700;
+  font-weight: 800;
   text-transform: uppercase;
   letter-spacing: 0.03em;
   color: var(--fg-muted);
@@ -224,7 +224,7 @@
 
 .sectionName {
   font-size: 0.85rem;
-  font-weight: 700;
+  font-weight: 800;
   color: var(--fg);
   text-transform: uppercase;
   letter-spacing: 0.03em;
@@ -278,7 +278,7 @@
 
 .exerciseName {
   font-size: 0.85rem;
-  font-weight: 700;
+  font-weight: 800;
   color: var(--fg);
   transition: color 0.15s;
 }
@@ -292,7 +292,7 @@
 .bpmBadge,
 .durationBadge {
   font-size: 0.65rem;
-  font-weight: 700;
+  font-weight: 800;
   padding: 2px 7px;
   border-radius: 99px;
   text-transform: uppercase;
@@ -307,7 +307,7 @@
 
 .bpmLink {
   font-size: 0.65rem;
-  font-weight: 700;
+  font-weight: 800;
   padding: 2px 7px;
   border-radius: 99px;
   text-transform: uppercase;
@@ -354,7 +354,7 @@
 
 .detailHeading {
   font-size: 0.7rem;
-  font-weight: 700;
+  font-weight: 800;
   text-transform: uppercase;
   letter-spacing: 0.04em;
   color: var(--accent);
@@ -377,7 +377,7 @@
 
 .stepItem::marker {
   color: var(--accent);
-  font-weight: 700;
+  font-weight: 800;
 }
 
 .tipsList {
@@ -408,7 +408,7 @@
   flex-shrink: 0;
   padding: 3px 12px;
   font-size: 0.7rem;
-  font-weight: 700;
+  font-weight: 800;
   border: 1px solid var(--accent);
   border-radius: var(--radius-sm);
   background: transparent;
@@ -434,7 +434,7 @@
   background: var(--accent);
   color: #fff;
   font-size: 0.95rem;
-  font-weight: 700;
+  font-weight: 800;
   cursor: pointer;
   transition: background 0.15s;
 }
