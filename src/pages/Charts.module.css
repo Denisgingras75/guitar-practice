@@ -23,7 +23,7 @@
   border: none;
   border-radius: var(--radius);
   background: var(--accent);
-  color: #0a0a0a;
+  color: #fff;
   font-size: 0.85rem;
   font-weight: 700;
   cursor: pointer;
@@ -324,7 +324,7 @@
 .saveBtn {
   background: var(--accent);
   border: none;
-  color: #0a0a0a;
+  color: #fff;
 }
 
 .saveBtn:hover {

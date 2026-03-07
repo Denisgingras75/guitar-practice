@@ -198,7 +198,7 @@
   border: none;
   border-radius: var(--radius);
   background: var(--accent);
-  color: #0a0a0a;
+  color: #fff;
   font-size: 0.85rem;
   font-weight: 700;
   cursor: pointer;
@@ -227,7 +227,7 @@
 
 .completeBtnDone {
   background: #22c55e;
-  color: #0a0a0a;
+  color: #fff;
 }
 
 .completeBtnDone:hover {

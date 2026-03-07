@@ -53,7 +53,7 @@
 
 .done {
   background: var(--accent);
-  color: #0a0a0a;
+  color: #fff;
   border-color: var(--accent);
   font-weight: 700;
 }
@@ -61,5 +61,5 @@
 .done:hover {
   background: var(--accent-hover);
   border-color: var(--accent-hover);
-  color: #0a0a0a;
+  color: #fff;
 }
