@@ -14,7 +14,7 @@
 .name {
   margin: 0 0 0.5rem;
   font-size: 1.25rem;
-  font-weight: 700;
+  font-weight: 800;
   color: var(--fg);
 }
 
@@ -48,7 +48,7 @@
   flex-direction: column;
   gap: 4px;
   font-size: 0.75rem;
-  font-weight: 500;
+  font-weight: 600;
   color: var(--fg-muted);
   text-transform: uppercase;
   letter-spacing: 0.04em;
@@ -86,7 +86,7 @@
 .tag {
   padding: 3px 10px;
   font-size: 0.75rem;
-  font-weight: 600;
+  font-weight: 700;
   border-radius: 99px;
   border: 1.5px solid var(--border);
   background: transparent;
@@ -101,7 +101,7 @@
   background: var(--accent);
   color: #fff;
   font-size: 0.9rem;
-  font-weight: 700;
+  font-weight: 800;
   cursor: pointer;
   transition: background 0.15s;
 }
