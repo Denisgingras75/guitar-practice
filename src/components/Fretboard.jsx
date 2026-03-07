@@ -1,14 +1,14 @@
-import { getIntervalName } from '../theory/fretboard.js';
+import { getIntervalName, STANDARD_TUNING } from '../theory/fretboard.js';
 import styles from './Fretboard.module.css';
 
-const PAD = { top: 30, bottom: 20, left: 40, right: 20 };
-const FRET_WIDTH = 50;
 const STRING_SPACING = 24;
 const NOTE_RADIUS = 10;
 const STRING_COUNT = 6;
 
 const MARKER_FRETS = new Set([3, 5, 7, 9, 15, 17, 19, 21]);
 const DOUBLE_MARKER_FRETS = new Set([12]);
+
+const STRING_LABELS = [...STANDARD_TUNING].reverse(); // high E at top
 
 export default function Fretboard({
   positions = [],
@@ -18,15 +18,20 @@ export default function Fretboard({
   showIntervals = false,
 }) {
   const fretCount = maxFret - minFret;
+  // Scale fret width down for full-neck views so the diagram stays readable
+  const FRET_WIDTH = fretCount > 10 ? 38 : 50;
+  const PAD = { top: 30, bottom: 20, left: 40, right: 20 };
   const width = PAD.left + fretCount * FRET_WIDTH + PAD.right;
   const height = PAD.top + (STRING_COUNT - 1) * STRING_SPACING + PAD.bottom;
+  const noteRadius = fretCount > 10 ? 8 : NOTE_RADIUS;
+  const noteFontSize = fretCount > 10 ? 6.5 : 8;
 
   // X position for a given fret number (at the fret wire)
   const fretX = (fret) => PAD.left + (fret - minFret) * FRET_WIDTH;
 
   // X position for a note at a given fret (center of fret space)
   const noteX = (fret) => {
-    if (fret === 0) return PAD.left - NOTE_RADIUS - 4;
+    if (fret === 0) return PAD.left - noteRadius - 4;
     return fretX(fret) - FRET_WIDTH / 2;
   };
 
@@ -46,6 +51,22 @@ export default function Fretboard({
         role="img"
         aria-label={`Guitar fretboard showing ${root} scale from fret ${minFret} to ${maxFret}`}
       >
+        {/* String labels (tuning) */}
+        {STRING_LABELS.map((label, i) => (
+          <text
+            key={`sl-${i}`}
+            x={PAD.left - 24}
+            y={PAD.top + i * STRING_SPACING}
+            textAnchor="middle"
+            dominantBaseline="central"
+            fontSize={9}
+            fontWeight={600}
+            fill="var(--fg-muted, #888)"
+          >
+            {label}
+          </text>
+        ))}
+
         {/* Fret numbers */}
         {Array.from({ length: fretCount + 1 }, (_, i) => {
           const fret = minFret + i;
@@ -56,7 +77,7 @@ export default function Fretboard({
               x={fretX(fret) - FRET_WIDTH / 2}
               y={PAD.top - 16}
               textAnchor="middle"
-              fontSize={10}
+              fontSize={fretCount > 10 ? 8 : 10}
               fill="var(--fg-muted, #999)"
             >
               {fret}
@@ -170,7 +191,7 @@ export default function Fretboard({
                   <circle
                     cx={noteX(fret)}
                     cy={stringY(pos.string)}
-                    r={NOTE_RADIUS}
+                    r={noteRadius}
                     fill={
                       isRoot
                         ? 'var(--accent, #e85d04)'
@@ -183,7 +204,7 @@ export default function Fretboard({
                     y={stringY(pos.string)}
                     textAnchor="middle"
                     dominantBaseline="central"
-                    fontSize={8}
+                    fontSize={noteFontSize}
                     fontWeight={isRoot ? 700 : 400}
                     fill="var(--bg, #fff)"
                   >
