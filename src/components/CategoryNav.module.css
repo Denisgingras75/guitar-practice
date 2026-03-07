@@ -18,8 +18,8 @@
 .link {
   padding: 8px 12px;
   border-radius: var(--radius);
-  font-size: 0.75rem;
-  font-weight: 500;
+  font-size: 0.8rem;
+  font-weight: 600;
   color: var(--fg-muted);
   text-decoration: none;
   white-space: nowrap;
@@ -34,7 +34,7 @@
 
 .active {
   color: var(--fg);
-  font-weight: 600;
+  font-weight: 700;
 }
 
 .group {
@@ -51,8 +51,8 @@
   border-radius: var(--radius);
   background: transparent;
   color: var(--fg-muted);
-  font-size: 0.75rem;
-  font-weight: 500;
+  font-size: 0.8rem;
+  font-weight: 600;
   cursor: pointer;
   white-space: nowrap;
   transition: background 0.15s, color 0.15s;
@@ -65,7 +65,7 @@
 
 .groupActive {
   color: var(--fg);
-  font-weight: 600;
+  font-weight: 700;
 }
 
 .arrow {
@@ -94,8 +94,8 @@
 .dropLink {
   padding: 8px 12px;
   border-radius: var(--radius-sm);
-  font-size: 0.8rem;
-  font-weight: 500;
+  font-size: 0.85rem;
+  font-weight: 600;
   color: var(--fg-muted);
   text-decoration: none;
   transition: background 0.1s, color 0.1s;
@@ -108,7 +108,7 @@
 
 .dropActive {
   color: var(--fg);
-  font-weight: 600;
+  font-weight: 700;
   background: var(--bg-hover);
 }
 
@@ -127,12 +127,12 @@
   }
 
   .link {
-    font-size: 0.85rem;
+    font-size: 0.9rem;
     padding: 10px 16px;
   }
 
   .groupBtn {
-    font-size: 0.85rem;
+    font-size: 0.9rem;
     padding: 10px 16px;
   }
 

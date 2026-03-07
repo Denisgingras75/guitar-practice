@@ -22,11 +22,11 @@
 }
 
 .status {
-  font-size: 0.65rem;
+  font-size: 0.7rem;
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.04em;
-  padding: 2px 8px;
+  padding: 3px 9px;
   border-radius: 99px;
 }
 
@@ -118,10 +118,11 @@
 }
 
 .prereqTag {
-  font-size: 0.75rem;
+  font-size: 0.8rem;
+  font-weight: 600;
   padding: 3px 10px;
   border-radius: 99px;
-  border: 1px solid var(--border);
+  border: 1.5px solid var(--border);
   color: var(--fg-muted);
 }
 
@@ -160,11 +161,11 @@
 /* === Tab === */
 .tab {
   font-family: var(--font-mono);
-  font-size: 0.75rem;
+  font-size: 0.8rem;
   line-height: 1.4;
   color: var(--fg);
   background: var(--bg-card);
-  border: 1px solid var(--border);
+  border: 1.5px solid var(--fg-dim);
   border-radius: var(--radius-sm);
   padding: 1rem;
   overflow-x: auto;

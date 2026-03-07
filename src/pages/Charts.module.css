@@ -12,8 +12,8 @@
 }
 
 .heading {
-  font-size: 1.5rem;
-  font-weight: 700;
+  font-size: 1.6rem;
+  font-weight: 800;
   color: var(--fg);
   letter-spacing: -0.02em;
 }
@@ -68,12 +68,12 @@
 
 .genreFilterBtn {
   padding: 4px 12px;
-  border: 1px solid var(--border);
+  border: 1.5px solid var(--border);
   border-radius: 99px;
   background: transparent;
   color: var(--fg-muted);
-  font-size: 0.7rem;
-  font-weight: 600;
+  font-size: 0.75rem;
+  font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.03em;
   cursor: pointer;
@@ -155,11 +155,11 @@
 .genreBadge,
 .userBadge,
 .videoBadge {
-  font-size: 0.6rem;
+  font-size: 0.7rem;
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.04em;
-  padding: 2px 8px;
+  padding: 3px 9px;
   border-radius: 99px;
 }
 
