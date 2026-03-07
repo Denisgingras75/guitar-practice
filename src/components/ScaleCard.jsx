@@ -4,13 +4,17 @@ import { getScalePositions } from '../theory/fretboard.js';
 import Fretboard from './Fretboard.jsx';
 import styles from './ScaleCard.module.css';
 
+const ALL_POSITIONS_VALUE = -1;
+
 export default function ScaleCard({ scale, onPractice }) {
   const [root, setRoot] = useState('A');
-  const [positionIndex, setPositionIndex] = useState(0);
+  const [positionIndex, setPositionIndex] = useState(ALL_POSITIONS_VALUE);
   const [showIntervals, setShowIntervals] = useState(false);
 
-  const position = scale.positions[positionIndex];
-  const positions = getScalePositions(root, scale.intervals, position.minFret, position.maxFret);
+  const isAllPositions = positionIndex === ALL_POSITIONS_VALUE;
+  const minFret = isAllPositions ? 0 : scale.positions[positionIndex].minFret;
+  const maxFret = isAllPositions ? 17 : scale.positions[positionIndex].maxFret;
+  const positions = getScalePositions(root, scale.intervals, minFret, maxFret);
 
   return (
     <div className={styles.card}>
@@ -49,6 +53,7 @@ export default function ScaleCard({ scale, onPractice }) {
             value={positionIndex}
             onChange={(e) => setPositionIndex(Number(e.target.value))}
           >
+            <option value={ALL_POSITIONS_VALUE}>All Positions (Full Neck)</option>
             {scale.positions.map((p, i) => (
               <option key={i} value={i}>{p.name}</option>
             ))}
@@ -68,8 +73,8 @@ export default function ScaleCard({ scale, onPractice }) {
       <Fretboard
         positions={positions}
         root={root}
-        minFret={position.minFret}
-        maxFret={position.maxFret}
+        minFret={minFret}
+        maxFret={maxFret}
         showIntervals={showIntervals}
       />
 
