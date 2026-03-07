@@ -29,6 +29,7 @@ const groups = [
   {
     label: 'Tools',
     links: [
+      { to: '/cheatsheet', label: 'Cheat Sheet' },
       { to: '/tuner', label: 'Tuner' },
       { to: '/metronome', label: 'Metronome' },
     ],
