@@ -5,12 +5,10 @@
 }
 
 .heading {
-  font-family: var(--font-display);
   font-size: 1.5rem;
-  font-weight: 800;
+  font-weight: 700;
   color: var(--fg);
   margin-bottom: 1.5rem;
-  letter-spacing: -0.02em;
 }
 
 /* === BPM Display === */
@@ -22,8 +20,7 @@
 }
 
 .bpmNumber {
-  font-family: var(--font-display);
-  font-size: 4.5rem;
+  font-size: 4rem;
   font-weight: 800;
   color: var(--accent);
   font-variant-numeric: tabular-nums;
@@ -35,15 +32,14 @@
   font-weight: 600;
   color: var(--fg-dim);
   text-transform: uppercase;
-  letter-spacing: 0.1em;
-  margin-top: 0.25rem;
+  letter-spacing: 0.08em;
 }
 
 /* === Beat Dots === */
 .beats {
   display: flex;
   justify-content: center;
-  gap: 14px;
+  gap: 12px;
   margin-bottom: 1.5rem;
 }
 
@@ -53,7 +49,7 @@
   border-radius: 50%;
   border: 2px solid var(--border);
   background: var(--bg-card);
-  transition: all 0.06s;
+  transition: all 0.08s;
 }
 
 .beatAccent {
@@ -65,7 +61,7 @@
 .beatActive {
   background: var(--accent);
   border-color: var(--accent);
-  box-shadow: var(--shadow-glow);
+  box-shadow: 0 0 12px var(--accent-glow);
 }
 
 /* === BPM Slider === */
@@ -77,8 +73,8 @@
 }
 
 .bpmBtn {
-  width: 38px;
-  height: 38px;
+  width: 36px;
+  height: 36px;
   border-radius: 50%;
   border: 1px solid var(--border);
   background: var(--bg-card);
@@ -90,7 +86,7 @@
   align-items: center;
   justify-content: center;
   flex-shrink: 0;
-  transition: border-color 0.15s, color 0.15s;
+  transition: border-color 0.15s;
 }
 
 .bpmBtn:hover {
@@ -109,18 +105,17 @@
 
 .slider::-webkit-slider-thumb {
   appearance: none;
-  width: 22px;
-  height: 22px;
+  width: 20px;
+  height: 20px;
   border-radius: 50%;
   background: var(--accent);
   cursor: pointer;
   border: none;
-  box-shadow: 0 0 8px var(--accent-glow);
 }
 
 .slider::-moz-range-thumb {
-  width: 22px;
-  height: 22px;
+  width: 20px;
+  height: 20px;
   border-radius: 50%;
   background: var(--accent);
   cursor: pointer;
@@ -144,12 +139,11 @@
   font-size: 1.1rem;
   font-weight: 700;
   cursor: pointer;
-  transition: background 0.15s, transform 0.1s;
+  transition: background 0.15s;
 }
 
 .playBtn:hover {
   background: var(--accent-hover);
-  transform: translateY(-1px);
 }
 
 .playing {
@@ -184,8 +178,8 @@
   text-align: left;
   background: var(--bg-card);
   border: 1px solid var(--border);
-  border-radius: var(--radius-lg);
-  padding: 1.5rem;
+  border-radius: var(--radius);
+  padding: 1.25rem;
 }
 
 .settingGroup {
@@ -209,19 +203,19 @@
 }
 
 .settingBtn {
-  padding: 7px 16px;
+  padding: 6px 14px;
   border: 1px solid var(--border);
   border-radius: 99px;
   background: transparent;
   color: var(--fg-muted);
-  font-size: 0.78rem;
+  font-size: 0.75rem;
   font-weight: 600;
   cursor: pointer;
   transition: all 0.15s;
 }
 
 .settingBtn:hover {
-  border-color: var(--border-hover);
+  border-color: var(--fg-dim);
   color: var(--fg);
 }
 
@@ -235,7 +229,7 @@
   display: flex;
   align-items: center;
   gap: 0.5rem;
-  font-size: 0.82rem;
+  font-size: 0.8rem;
   color: var(--fg-muted);
   cursor: pointer;
 }

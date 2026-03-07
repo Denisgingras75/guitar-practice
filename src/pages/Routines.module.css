@@ -4,12 +4,10 @@
 }
 
 .heading {
-  font-family: var(--font-display);
   font-size: 1.5rem;
-  font-weight: 800;
+  font-weight: 700;
   color: var(--fg);
   margin-bottom: 1rem;
-  letter-spacing: -0.02em;
 }
 
 /* === Timer === */
@@ -19,7 +17,7 @@
   background: var(--bg-card);
   border: 1px solid var(--accent);
   border-radius: var(--radius);
-  box-shadow: var(--shadow-glow);
+  box-shadow: 0 0 12px var(--accent-glow);
 }
 
 /* === Filters === */
@@ -52,14 +50,13 @@
 .card {
   background: var(--bg-card);
   border: 1px solid var(--border);
-  border-radius: var(--radius-lg);
-  transition: border-color 0.2s, box-shadow 0.2s;
+  border-radius: var(--radius);
+  transition: border-color 0.2s;
   overflow: hidden;
 }
 
 .card:hover {
-  border-color: var(--border-hover);
-  box-shadow: var(--shadow-sm);
+  border-color: var(--fg-dim);
 }
 
 .cardToggle {
@@ -68,7 +65,7 @@
   width: 100%;
   background: none;
   border: none;
-  padding: 1.25rem 1.5rem;
+  padding: 1.25rem;
   text-align: left;
   cursor: pointer;
   color: var(--fg);
@@ -84,9 +81,8 @@
 }
 
 .routineName {
-  font-family: var(--font-display);
   font-size: 1.1rem;
-  font-weight: 800;
+  font-weight: 700;
   color: var(--fg);
 }
 
@@ -116,13 +112,13 @@
 .badgeLevel[data-level="beginner"] {
   border-color: #22c55e;
   color: #22c55e;
-  background: rgba(34, 197, 94, 0.08);
+  background: rgba(34, 197, 94, 0.1);
 }
 
 .badgeLevel[data-level="advanced"] {
   border-color: #ef4444;
   color: #ef4444;
-  background: rgba(239, 68, 68, 0.08);
+  background: rgba(239, 68, 68, 0.1);
 }
 
 .badgeLevel[data-level="all"] {
@@ -140,13 +136,13 @@
 .badgeInstrument[data-instrument="electric"] {
   border-color: #8b5cf6;
   color: #8b5cf6;
-  background: rgba(139, 92, 246, 0.08);
+  background: rgba(139, 92, 246, 0.1);
 }
 
 .badgeInstrument[data-instrument="acoustic"] {
-  border-color: var(--accent);
-  color: var(--accent);
-  background: var(--accent-glow);
+  border-color: #f59e0b;
+  color: #f59e0b;
+  background: rgba(245, 158, 11, 0.1);
 }
 
 .badgeTime {
@@ -172,7 +168,7 @@
 
 /* === Expanded Sections === */
 .sections {
-  padding: 0 1.5rem 1.5rem;
+  padding: 0 1.25rem 1.25rem;
   border-top: 1px solid var(--border);
 }
 
@@ -196,11 +192,11 @@
   position: relative;
 }
 
-.timelineSegment:nth-child(1) { background: rgba(245, 158, 11, 0.12); }
-.timelineSegment:nth-child(2) { background: rgba(139, 92, 246, 0.12); }
-.timelineSegment:nth-child(3) { background: rgba(34, 197, 94, 0.12); }
-.timelineSegment:nth-child(4) { background: rgba(59, 130, 246, 0.12); }
-.timelineSegment:nth-child(5) { background: rgba(239, 68, 68, 0.12); }
+.timelineSegment:nth-child(1) { background: rgba(245, 158, 11, 0.15); }
+.timelineSegment:nth-child(2) { background: rgba(139, 92, 246, 0.15); }
+.timelineSegment:nth-child(3) { background: rgba(34, 197, 94, 0.15); }
+.timelineSegment:nth-child(4) { background: rgba(59, 130, 246, 0.15); }
+.timelineSegment:nth-child(5) { background: rgba(239, 68, 68, 0.15); }
 
 .timelineLabel {
   font-size: 0.55rem;
@@ -227,7 +223,7 @@
 }
 
 .sectionName {
-  font-size: 0.82rem;
+  font-size: 0.85rem;
   font-weight: 700;
   color: var(--fg);
   text-transform: uppercase;
@@ -440,18 +436,17 @@
   font-size: 0.95rem;
   font-weight: 700;
   cursor: pointer;
-  transition: background 0.15s, transform 0.1s;
+  transition: background 0.15s;
 }
 
 .startRoutineBtn:hover {
   background: var(--accent-hover);
-  transform: translateY(-1px);
 }
 
 /* === Empty State === */
 .empty {
   text-align: center;
-  padding: 3rem 2rem;
+  padding: 2rem;
   color: var(--fg-dim);
   font-size: 0.9rem;
 }

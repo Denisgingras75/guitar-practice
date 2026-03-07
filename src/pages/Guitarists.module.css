@@ -4,12 +4,10 @@
 }
 
 .heading {
-  font-family: var(--font-display);
   font-size: 1.5rem;
-  font-weight: 800;
+  font-weight: 700;
   color: var(--fg);
-  margin-bottom: 1.25rem;
-  letter-spacing: -0.02em;
+  margin-bottom: 1rem;
 }
 
 .list {
@@ -20,16 +18,15 @@
 
 /* === Guitarist Card === */
 .card {
-  padding: 1.5rem;
+  padding: 1.25rem;
   background: var(--bg-card);
   border: 1px solid var(--border);
-  border-radius: var(--radius-lg);
-  transition: border-color 0.2s, box-shadow 0.2s;
+  border-radius: var(--radius);
+  transition: border-color 0.2s;
 }
 
 .card:hover {
-  border-color: var(--border-hover);
-  box-shadow: var(--shadow-sm);
+  border-color: var(--fg-dim);
 }
 
 .cardToggle {
@@ -53,9 +50,8 @@
 }
 
 .guitaristName {
-  font-family: var(--font-display);
   font-size: 1.15rem;
-  font-weight: 800;
+  font-weight: 700;
   color: var(--fg);
 }
 
@@ -114,7 +110,7 @@
 }
 
 .subHeading {
-  font-size: 0.75rem;
+  font-size: 0.8rem;
   font-weight: 700;
   color: var(--fg);
   text-transform: uppercase;
@@ -136,7 +132,6 @@
   border: 1px solid var(--accent);
   background: var(--accent-glow);
   color: var(--accent);
-  font-weight: 500;
 }
 
 /* === Techniques === */
@@ -250,13 +245,12 @@
   background: var(--accent);
   color: #0a0a0a;
   cursor: pointer;
-  transition: background 0.15s, transform 0.1s;
+  transition: background 0.15s;
   white-space: nowrap;
 }
 
 .practiceBtn:hover {
   background: var(--accent-hover);
-  transform: translateY(-1px);
 }
 
 /* === Timer === */
@@ -266,5 +260,5 @@
   background: var(--bg-card);
   border: 1px solid var(--accent);
   border-radius: var(--radius);
-  box-shadow: var(--shadow-glow);
+  box-shadow: 0 0 12px var(--accent-glow);
 }

@@ -4,12 +4,10 @@
 }
 
 .heading {
-  font-family: var(--font-display);
   font-size: 1.5rem;
-  font-weight: 800;
+  font-weight: 700;
   color: var(--fg);
-  margin-bottom: 1.25rem;
-  letter-spacing: -0.02em;
+  margin-bottom: 1rem;
 }
 
 .list {
@@ -20,22 +18,15 @@
 
 /* === Chord Type Card === */
 .chordTypeCard {
-  padding: 1.5rem;
+  padding: 1.25rem;
   background: var(--bg-card);
   border: 1px solid var(--border);
-  border-radius: var(--radius-lg);
-  transition: border-color 0.2s, box-shadow 0.2s;
-}
-
-.chordTypeCard:hover {
-  border-color: var(--border-hover);
-  box-shadow: var(--shadow-sm);
+  border-radius: var(--radius);
 }
 
 .chordTypeName {
-  font-family: var(--font-display);
   font-size: 1.1rem;
-  font-weight: 800;
+  font-weight: 700;
   color: var(--fg);
   margin-bottom: 0.25rem;
 }
@@ -138,5 +129,4 @@
   height: 10px;
   border-radius: 50%;
   background: var(--accent);
-  box-shadow: 0 0 6px var(--accent-glow);
 }
