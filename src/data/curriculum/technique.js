@@ -26,6 +26,9 @@ export const TECHNIQUE_NODES = [
     ],
     tab: null,
     externalUrl: null,
+    videos: [
+      { title: 'Guitar Technique — Clean Fretting', channel: 'Justin Guitar', url: 'https://www.youtube.com/watch?v=7A3MxwQBGf0' },
+    ],
   },
   {
     id: 'tech-alternate-picking',
@@ -51,6 +54,10 @@ export const TECHNIQUE_NODES = [
     ],
     tab: null,
     externalUrl: null,
+    videos: [
+      { title: 'Alternate Picking — The Right Way', channel: 'Ben Eller', url: 'https://www.youtube.com/watch?v=ra_TbQGH6wg' },
+      { title: 'Alternate Picking Basics', channel: 'Justin Guitar', url: 'https://www.youtube.com/watch?v=bJLrGlw4-TM' },
+    ],
   },
   {
     id: 'tech-basic-strumming',
@@ -76,6 +83,7 @@ export const TECHNIQUE_NODES = [
     ],
     tab: null,
     externalUrl: null,
+    videos: [],
   },
   {
     id: 'tech-open-chord-shapes',
@@ -101,6 +109,7 @@ export const TECHNIQUE_NODES = [
     ],
     tab: null,
     externalUrl: null,
+    videos: [],
   },
   {
     id: 'tech-chord-transitions',
@@ -126,6 +135,7 @@ export const TECHNIQUE_NODES = [
     ],
     tab: null,
     externalUrl: null,
+    videos: [],
   },
   {
     id: 'tech-basic-rhythm',
@@ -155,6 +165,7 @@ export const TECHNIQUE_NODES = [
     ],
     tab: null,
     externalUrl: null,
+    videos: [],
   },
 
   // ============================================================
@@ -188,6 +199,10 @@ export const TECHNIQUE_NODES = [
     ],
     tab: null,
     externalUrl: null,
+    videos: [
+      { title: 'Barre Chords — Complete Beginner Guide', channel: 'Justin Guitar', url: 'https://www.youtube.com/watch?v=Q7fM7R2vFmA' },
+      { title: 'How to Play Barre Chords', channel: 'Marty Music', url: 'https://www.youtube.com/watch?v=vTWHFhY7l4U' },
+    ],
   },
   {
     id: 'tech-bending',
@@ -213,6 +228,10 @@ export const TECHNIQUE_NODES = [
     ],
     tab: null,
     externalUrl: null,
+    videos: [
+      { title: 'String Bending for Beginners', channel: 'Justin Guitar', url: 'https://www.youtube.com/watch?v=5Y3MIHikW5Y' },
+      { title: 'How to Bend Guitar Strings in Tune', channel: 'Marty Music', url: 'https://www.youtube.com/watch?v=K-nCIIiCFCA' },
+    ],
   },
   {
     id: 'tech-hammer-on-pull-off',
@@ -242,6 +261,7 @@ export const TECHNIQUE_NODES = [
     ],
     tab: null,
     externalUrl: null,
+    videos: [],
   },
   {
     id: 'tech-palm-muting',
@@ -267,6 +287,7 @@ export const TECHNIQUE_NODES = [
     ],
     tab: null,
     externalUrl: null,
+    videos: [],
   },
   {
     id: 'tech-power-chords',
@@ -296,6 +317,7 @@ export const TECHNIQUE_NODES = [
     ],
     tab: null,
     externalUrl: null,
+    videos: [],
   },
   {
     id: 'tech-string-muting',
@@ -321,6 +343,43 @@ export const TECHNIQUE_NODES = [
     ],
     tab: null,
     externalUrl: null,
+    videos: [],
+  },
+
+  {
+    id: 'tech-double-stops',
+    tree: 'technique',
+    tier: 2,
+    name: 'Double Stops',
+    description: 'Play two notes simultaneously on adjacent strings to create harmonized melodies and thick fills.',
+    whyItMatters: 'Double stops are how you make a single guitar sound like two players. They are everywhere: Chuck Berry riffs, country chicken pickin, blues fills, and rock solos all rely on them. They bridge rhythm and lead playing.',
+    prerequisites: ['tech-clean-fretting', 'tech-alternate-picking'],
+    exercises: [
+      {
+        name: 'Thirds on the Top Strings',
+        description: 'Play frets 5 and 7 on the B and high E strings simultaneously. Move the shape up the neck: 5-7, 7-9, 9-10, 10-12. These are diatonic thirds in the key of A. Pick both strings with one downstroke, ensuring both ring clearly. Your pick should contact both strings in one fluid motion. Do this ascending and descending at 70 BPM.',
+      },
+      {
+        name: 'Sixths Across String Pairs',
+        description: 'Play fret 5 on the G string and fret 7 on the high E string — these are a sixth apart. Move the shape: G string fret 5 + high E fret 7, G fret 7 + high E fret 9, G fret 9 + high E fret 10. Sixths produce that classic country/soul sound. Practice across all pairs (D+B, G+high E) at 80 BPM.',
+      },
+      {
+        name: 'Chuck Berry Riff',
+        description: 'Play the classic rock and roll double stop riff: on the G and B strings at fret 7 (both index finger), then bend the G string up a half step while the B holds. This is the sound of the 1950s. Then do: fret 9 on G + fret 9 on B (ring finger on both), back to 7+7. Loop this at 100 BPM. Control the muted strings — only G and B should sound.',
+      },
+      {
+        name: 'Double Stop Slides',
+        description: 'Barre frets 7 and 7 on the G and B strings, then slide up to fret 9 maintaining pressure on both strings. Both notes should sustain through the slide. Then try a reverse slide: fret 9 down to fret 7. Apply this to a blues in A: double stop slide on the IV chord (D position) for a soulful fill. At 75 BPM.',
+      },
+    ],
+    tab: `e|--7--9--10--|
+B|--7--9--10--|
+G|------------|
+D|------------|
+A|------------|
+E|------------|`,
+    externalUrl: null,
+    videos: [],
   },
 
   // ============================================================
@@ -350,6 +409,10 @@ export const TECHNIQUE_NODES = [
     ],
     tab: null,
     externalUrl: null,
+    videos: [
+      { title: 'Guitar Vibrato — How to Sound Like a Pro', channel: 'Paul Davids', url: 'https://www.youtube.com/watch?v=B0XSj4w1OXM' },
+      { title: 'Vibrato Technique for Guitar', channel: 'Ben Eller', url: 'https://www.youtube.com/watch?v=UGE1EcbFAVE' },
+    ],
   },
   {
     id: 'tech-hybrid-picking',
@@ -375,6 +438,7 @@ export const TECHNIQUE_NODES = [
     ],
     tab: null,
     externalUrl: null,
+    videos: [],
   },
   {
     id: 'tech-string-skipping',
@@ -400,6 +464,7 @@ export const TECHNIQUE_NODES = [
     ],
     tab: null,
     externalUrl: null,
+    videos: [],
   },
   {
     id: 'tech-sweep-3string',
@@ -425,6 +490,7 @@ export const TECHNIQUE_NODES = [
     ],
     tab: null,
     externalUrl: null,
+    videos: [],
   },
   {
     id: 'tech-legato-runs',
@@ -450,6 +516,67 @@ export const TECHNIQUE_NODES = [
     ],
     tab: null,
     externalUrl: null,
+    videos: [],
+  },
+  {
+    id: 'tech-rake',
+    tree: 'technique',
+    tier: 3,
+    name: 'Rake Technique',
+    description: 'Drag the pick across muted strings before striking the target note to create a percussive, expressive attack.',
+    whyItMatters: 'The rake gives individual notes a dramatic, vocal quality — like a singer taking a breath before hitting a big note. It is a hallmark of expressive blues and rock playing. B.B. King used it constantly to give his notes weight and personality.',
+    prerequisites: ['tech-string-muting', 'tech-alternate-picking'],
+    exercises: [
+      {
+        name: 'Basic Rake Setup',
+        description: 'Mute the D, A, and low E strings lightly with your fretting hand (lay the finger flat, no pressure). With your pick, drag a downstroke across these three muted strings and continue into a fretted note on the G string at fret 7. The muted strings produce a "chhhk" sound followed by a clean note. Practice this 20 times slowly — the rhythm is "chhhk-NOTE" with the muted drag and target note connected.',
+      },
+      {
+        name: 'One-String and Two-String Rakes',
+        description: 'Practice raking across just one muted string before the target, then two, then three. Each version has a different weight and feel. One-string rake is subtle; three-string rake is dramatic. On the B string at fret 12, practice: rake from G (one string), rake from D+G (two strings), rake from A+D+G (three strings). Notice the increasing sense of build-up.',
+      },
+      {
+        name: 'Rake into Bend',
+        description: 'Rake three muted strings and land on the B string at fret 10. Immediately bend it a whole step and add vibrato. This is classic blues phrasing. At 70 BPM, practice the sequence: silence (2 beats) - rake+note (beat 3) - bend+vibrato (holds through beat 4). The rest before the rake makes it more powerful. Loop over a slow blues in A.',
+      },
+      {
+        name: 'Rake with Pull-Off',
+        description: 'Rake across two muted strings and land on the G string at fret 9 (ring finger), with index finger already on fret 7. After landing, immediately pull off from 9 to 7. The phrase sounds like "chk-dah-duh" — rake, high note, pull-off lower note. This three-element phrase is a complete blues vocabulary unit. Practice at 80 BPM.',
+      },
+    ],
+    tab: null,
+    externalUrl: null,
+    videos: [],
+  },
+  {
+    id: 'tech-pinch-harmonics',
+    tree: 'technique',
+    tier: 3,
+    name: 'Pinch Harmonics',
+    description: 'Produce a high-pitched squeal by catching the string with the edge of your thumb immediately after the pick strikes.',
+    whyItMatters: 'Pinch harmonics are one of the most dramatic sounds available on electric guitar. Players like Zakk Wylde and Billy Gibbons use them to make the guitar scream. Once you have them, you have a whole new expressive tool for fills and accents.',
+    prerequisites: ['tech-alternate-picking', 'tech-palm-muting'],
+    exercises: [
+      {
+        name: 'Finding the Squeal Zone',
+        description: 'Pick the B string at fret 7 normally. Now pick it again but this time let the edge of your right thumb touch the string immediately after the pick — a fraction of a second later. You are muting a specific overtone and making another ring loudly. Move your picking position up and down the string length (toward the neck, toward the bridge) and listen for different harmonic "sweet spots." Find at least 3 distinct pitch changes from one fretted note.',
+      },
+      {
+        name: 'Consistent Pinch on One Note',
+        description: 'Fret the B string at fret 12. Practice getting a clean pinch harmonic 10 times in a row. The motion is: pick attack + immediate thumb edge contact. Too early = dead note. Too late = just a normal note. The window is tiny at first and expands with practice. Use distortion or overdrive — pinch harmonics are 10x easier with gain. Start here before trying on clean tone.',
+      },
+      {
+        name: 'Different Strings, Different Zones',
+        description: 'Practice pinch harmonics on the low E string at fret 5, G string at fret 7, and B string at fret 9. Each string has different sweet spots at different distances from the bridge. Map out where you get the harmonic on each string. The low E pinch harmonic is the deepest and most dramatic. Aim for a clean squeal on all three within 30 seconds.',
+      },
+      {
+        name: 'Pinch + Vibrato',
+        description: 'Get a pinch harmonic on the B string at fret 10, then add whammy bar vibrato or finger vibrato on the harmonic. The harmonic sustains and wavers for a truly dramatic effect. If you have a whammy bar, depress it slightly after the pinch — the pitch variation on a harmonic is extreme. Practice holding the harmonic with vibrato for 4 beats at 60 BPM.',
+      },
+    ],
+    tab: null,
+    externalUrl: null,
+    videos: [],
   },
   {
     id: 'tech-slide-technique',
@@ -475,6 +602,7 @@ export const TECHNIQUE_NODES = [
     ],
     tab: null,
     externalUrl: null,
+    videos: [],
   },
 
   // ============================================================
@@ -504,6 +632,7 @@ export const TECHNIQUE_NODES = [
     ],
     tab: null,
     externalUrl: null,
+    videos: [],
   },
   {
     id: 'tech-legato-advanced',
@@ -529,6 +658,7 @@ export const TECHNIQUE_NODES = [
     ],
     tab: null,
     externalUrl: null,
+    videos: [],
   },
   {
     id: 'tech-tapping',
@@ -554,6 +684,9 @@ export const TECHNIQUE_NODES = [
     ],
     tab: null,
     externalUrl: null,
+    videos: [
+      { title: 'Guitar Tapping — Beginner to Advanced', channel: 'Marty Music', url: 'https://www.youtube.com/watch?v=dB-kE5fJJMg' },
+    ],
   },
   {
     id: 'tech-tremolo-picking',
@@ -579,6 +712,7 @@ export const TECHNIQUE_NODES = [
     ],
     tab: null,
     externalUrl: null,
+    videos: [],
   },
   {
     id: 'tech-sweep-5string',
@@ -604,6 +738,7 @@ export const TECHNIQUE_NODES = [
     ],
     tab: null,
     externalUrl: null,
+    videos: [],
   },
   {
     id: 'tech-advanced-bending',
@@ -633,6 +768,64 @@ export const TECHNIQUE_NODES = [
     ],
     tab: null,
     externalUrl: null,
+    videos: [],
+  },
+
+  {
+    id: 'tech-palm-muting-advanced',
+    tree: 'technique',
+    tier: 4,
+    name: 'Palm Muting Precision & Dynamics',
+    description: 'Control palm mute depth dynamically — transitioning fluidly between full mute, partial mute, and open in real time.',
+    whyItMatters: 'Basic palm muting is binary: on or off. Advanced palm muting is a spectrum. The ability to modulate mute depth mid-phrase is what gives riffs texture and breathing room, and what separates mechanical playing from expressive playing.',
+    prerequisites: ['tech-palm-muting', 'tech-power-chords'],
+    exercises: [
+      {
+        name: 'Mute Gradient Control',
+        description: 'Pick the open low E string and very slowly slide your palm forward (toward the neck). Listen as the sound transforms: full mute (percussive chunk) → partial mute (thuddy, slightly pitched) → light contact (bright but dampened) → no mute (open ring). Practice moving through this gradient in 4 stages at 80 BPM, one note per beat. The partial mute zone is where the most interesting tones live.',
+      },
+      {
+        name: 'Dynamic Mute in a Riff',
+        description: 'Play a power chord riff in E: E5 (open) - G5 (fret 3) - A5 (fret 5) - G5 (fret 3). First pass: fully palm muted throughout. Second pass: first two chords muted, last two open. Third pass: gradually release mute across all 4 chords. Fourth pass: improvise your mute depth in real time. This develops the dynamic vocabulary used in metal, punk, and rock.',
+      },
+      {
+        name: 'Syncopated Mute Pattern',
+        description: 'On the low E string, palm mute beats 1, 2, and the "and" of 3. Let beat 3 and beat 4 ring open. At 100 BPM, eighth notes: PM-PM-PM-OPEN-PM-OPEN-PM-PM. The open notes land on unexpected beats, creating rhythmic syncopation that feels dramatic. Apply this to a verse/chorus contrast — more muting in the verse, more open in the chorus.',
+      },
+      {
+        name: 'Cross-String Mute Control',
+        description: 'Play a riff that spans three strings (E, A, D) with palm muting. The challenge: your palm must maintain consistent mute contact as you pick across three different strings. Typically the low E is easiest to mute; the D is the hardest because your palm must reach further. Practice a D5 power chord (A-D strings) with tight palm muting for 2 minutes straight at 90 BPM.',
+      },
+    ],
+    tab: null,
+    externalUrl: null,
+    videos: [],
+  },
+  {
+    id: 'tech-tapped-harmonics',
+    tree: 'technique',
+    tier: 4,
+    name: 'Tapped Harmonics',
+    description: 'Produce harmonics by lightly tapping the string with the picking hand exactly 12 (or 7 or 5) frets above the fretted note.',
+    whyItMatters: 'Tapped harmonics produce bell-like tones that sound nothing like normal guitar. They are essential for creating atmospheric, harp-like passages and for extending your melodic range into ranges above normal fretboard reach. Lenny Kravitz, Eric Johnson, and Joe Satriani use them for signature moments.',
+    prerequisites: ['tech-tapping', 'tech-advanced-bending'],
+    exercises: [
+      {
+        name: 'Octave Harmonic Basics',
+        description: 'Fret the G string at fret 5 with your left hand. With your right index finger, tap lightly directly above fret 17 (exactly 12 frets higher) and immediately lift. A clear, bell-like harmonic should ring. Key: tap lightly — you are not hammering, just touching and releasing. Practice on every string: fret 5, tap 17; fret 7, tap 19; fret 9, tap 21. Get a clean bell tone 10 times in a row.',
+      },
+      {
+        name: 'Harp Harmonic Cascade',
+        description: 'Fret a C major chord shape (x-3-2-0-1-0) with your left hand. With your right hand index finger, tap 12 frets above each string in sequence: A string (tap fret 15), D (tap 14), G (tap 12), B (tap 13), high E (tap 12). This plays the notes of the C major chord as harmonics in sequence, creating a harp effect. Practice until all 5 harmonics ring clearly at 50 BPM.',
+      },
+      {
+        name: 'Moving Tapped Harmonic Melody',
+        description: 'Fret fret 5 on the B string (left hand stays). Tap fret 17 for the harmonic, then tap fret 19 for a different harmonic (fret up a step while maintaining the fret 5 anchor, or move tapping position — experiment to find which produces the cleanest tone). This lets you play a melody using only harmonics. Build a 4-note melodic phrase using tapped harmonics on the B and high E strings.',
+      },
+    ],
+    tab: null,
+    externalUrl: null,
+    videos: [],
   },
 
   // ============================================================
@@ -662,6 +855,7 @@ export const TECHNIQUE_NODES = [
     ],
     tab: null,
     externalUrl: null,
+    videos: [],
   },
   {
     id: 'tech-sweep-mastery',
@@ -691,6 +885,7 @@ export const TECHNIQUE_NODES = [
     ],
     tab: null,
     externalUrl: null,
+    videos: [],
   },
   {
     id: 'tech-speed-cleanliness',
@@ -720,6 +915,7 @@ export const TECHNIQUE_NODES = [
     ],
     tab: null,
     externalUrl: null,
+    videos: [],
   },
   {
     id: 'tech-dynamic-control',
@@ -749,6 +945,37 @@ export const TECHNIQUE_NODES = [
     ],
     tab: null,
     externalUrl: null,
+    videos: [],
+  },
+  {
+    id: 'tech-hybrid-mastery',
+    tree: 'technique',
+    tier: 5,
+    name: 'Hybrid Picking Mastery',
+    description: 'Combine pick, middle, ring, and pinky fingers in complex patterns to execute passages that no single-technique approach can match.',
+    whyItMatters: 'True hybrid picking mastery means the right hand is a full tool — pick for attack and clarity on lower strings, fingers for simultaneous note separation and softer attack on upper strings. It is the technique that unifies flatpicking and fingerstyle into one fluid language.',
+    prerequisites: ['tech-hybrid-picking', 'tech-string-skipping', 'tech-sweep-5string'],
+    exercises: [
+      {
+        name: 'Four-Finger Roll (p-m-a-m Pattern)',
+        description: 'On an open G chord: pick the low E string (pick), pluck D string (middle finger), pluck B string (ring finger), pluck high E (middle finger). Loop at 100 BPM, sixteenth notes. This is a banjo-derived roll pattern. All four elements must be even in volume — the middle finger plays twice, so develop equal strength with it. Build to 140 BPM.',
+      },
+      {
+        name: 'Hybrid Arpeggio with String Skips',
+        description: 'Fret Am chord. Pick the low E string (downstroke), skip to the G string with ring finger, then high E with pinky, then back to B string with middle finger. This is a non-adjacent arpeggio: strings 6-3-1-2. At 80 BPM. The string skips require precise right-hand placement. Then reverse the order: 2-1-3-6. Connect the two patterns for a continuous 8-note loop.',
+      },
+      {
+        name: 'Fast Lick Hybrid',
+        description: 'Play fret 7 on the A string with a pick downstroke, then simultaneously pluck fret 7 on the G string (middle) and fret 8 on the high E (ring) — a three-note chord arrived at in one motion. Then play frets 9-9-9 across A-G-E strings the same way. At 100 BPM this becomes a machine-gun chord articulation that pure flatpicking cannot match. Used heavily by Johnny Deacon and Eric Johnson.',
+      },
+      {
+        name: 'Sustained Bass + Moving Melody',
+        description: 'Pick and hold the A string at fret 5 (E note) as a sustained bass pedal — keep your pick anchored there. While it sustains, use your middle and ring fingers to play a melody on the B and high E strings: frets 9-10-12-10-9. The bass should ring throughout the melody without being re-picked. This creates a pianist-style pedal tone effect. Master this for one minute straight without the bass dying.',
+      },
+    ],
+    tab: null,
+    externalUrl: null,
+    videos: [],
   },
   {
     id: 'tech-any-technique-on-demand',
@@ -785,5 +1012,6 @@ export const TECHNIQUE_NODES = [
     ],
     tab: null,
     externalUrl: null,
+    videos: [],
   },
 ];

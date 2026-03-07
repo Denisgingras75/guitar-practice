@@ -30,6 +30,10 @@ export const CREATIVITY_NODES = [
     ],
     tab: null,
     externalUrl: null,
+    videos: [
+      { title: 'How to Improvise with the Pentatonic Scale', channel: 'Justin Guitar', url: 'https://www.youtube.com/watch?v=4s7B6OyLCvw' },
+      { title: 'Pentatonic Scale — Sound Like a Pro Immediately', channel: 'Paul Davids', url: 'https://www.youtube.com/watch?v=5ywxkPYKDyU' },
+    ],
   },
   {
     id: 'create-write-chord-progression',
@@ -59,6 +63,9 @@ export const CREATIVITY_NODES = [
     ],
     tab: null,
     externalUrl: null,
+    videos: [
+      { title: 'How to Write a Chord Progression', channel: 'Signals Music Studio', url: 'https://www.youtube.com/watch?v=RYvtNFZlDAs' },
+    ],
   },
   {
     id: 'create-record-yourself',
@@ -88,6 +95,7 @@ export const CREATIVITY_NODES = [
     ],
     tab: null,
     externalUrl: null,
+    videos: [],
   },
   {
     id: 'create-dynamics',
@@ -117,6 +125,7 @@ export const CREATIVITY_NODES = [
     ],
     tab: null,
     externalUrl: null,
+    videos: [],
   },
 
   // ============================================================
@@ -150,6 +159,7 @@ export const CREATIVITY_NODES = [
     ],
     tab: null,
     externalUrl: null,
+    videos: [],
   },
   {
     id: 'create-writing-melody',
@@ -179,6 +189,7 @@ export const CREATIVITY_NODES = [
     ],
     tab: null,
     externalUrl: null,
+    videos: [],
   },
   {
     id: 'create-song-structure',
@@ -208,6 +219,9 @@ export const CREATIVITY_NODES = [
     ],
     tab: null,
     externalUrl: null,
+    videos: [
+      { title: 'Song Structure Explained — Verse, Chorus, Bridge', channel: 'Signals Music Studio', url: 'https://www.youtube.com/watch?v=1xhz4BdCEzk' },
+    ],
   },
   {
     id: 'create-rhythm-creativity',
@@ -242,6 +256,43 @@ export const CREATIVITY_NODES = [
     ],
     tab: null,
     externalUrl: null,
+    videos: [],
+  },
+
+  {
+    id: 'create-riff-writing',
+    tree: 'creativity',
+    tier: 2,
+    name: 'Writing a Riff',
+    description: 'Compose a short, repeating instrumental hook — 2 to 4 bars — that stands on its own.',
+    whyItMatters:
+      'Riffs are the atomic unit of rock, blues, and funk. A great riff is more valuable than a full song with a forgettable hook. Writing riffs trains your ear for rhythm, space, and melodic repetition in their most concentrated form.',
+    prerequisites: ['create-record-yourself', 'create-dynamics'],
+    exercises: [
+      {
+        name: 'Two-Bar Loop Riff',
+        description:
+          'Set a looper pedal or use your phone to record. Play a 2-bar rhythmic idea on guitar. Loop it. Now listen and decide: does it groove? Does it make you want to move? If yes, write it down. If no, tweak one element — the rhythm, the starting note, the space — until it does.',
+      },
+      {
+        name: 'Riff from a Rhythm',
+        description:
+          'Tap a rhythm on your knee first — no guitar. When you have something you like, bring it to the guitar and find notes that fit the rhythm. Starting from rhythm instead of notes produces tighter, more physical riffs.',
+      },
+      {
+        name: 'Three-Note Riff Challenge',
+        description:
+          'Write a riff using exactly three different pitches. No more. "Smoke on the Water," "Day Tripper," and "Iron Man" all use three notes or fewer as their core. Simplicity in pitch forces creativity in rhythm and feel.',
+      },
+      {
+        name: 'Riff Variation Drill',
+        description:
+          'Take a riff you wrote and create two variations: one with a different ending note (change the resolution), and one with a different rhythm (same pitches, different timing). You now have a verse riff and a chorus riff from the same idea.',
+      },
+    ],
+    tab: null,
+    externalUrl: null,
+    videos: [],
   },
 
   // ============================================================
@@ -275,6 +326,9 @@ export const CREATIVITY_NODES = [
     ],
     tab: null,
     externalUrl: null,
+    videos: [
+      { title: 'Motivic Development — How Great Solos Are Built', channel: 'Paul Davids', url: 'https://www.youtube.com/watch?v=8bGTJFJGbWE' },
+    ],
   },
   {
     id: 'create-different-feels',
@@ -304,6 +358,7 @@ export const CREATIVITY_NODES = [
     ],
     tab: null,
     externalUrl: null,
+    videos: [],
   },
   {
     id: 'create-solo-arrangement',
@@ -333,6 +388,42 @@ export const CREATIVITY_NODES = [
     ],
     tab: null,
     externalUrl: null,
+    videos: [],
+  },
+  {
+    id: 'create-tension-release',
+    tree: 'creativity',
+    tier: 3,
+    name: 'Building Tension and Release',
+    description: 'Deliberately create and resolve musical tension through note choice, rhythm, and dynamics.',
+    whyItMatters:
+      'Tension and release is what makes music feel inevitable — like the resolution was exactly what the listener needed. Without tension, music is pleasant but forgettable. Without release, it is exhausting. Learning to control both is what makes solos feel like stories.',
+    prerequisites: ['create-motivic-development', 'create-space-silence'],
+    exercises: [
+      {
+        name: 'Dissonance to Consonance',
+        description:
+          'Over a G major chord, bend the 3rd (B) up a half step to C (a dissonant b4th). Hold the bend. Let the tension build. Then release it back to B and let the chord ring. The release feels ten times more satisfying after the tension. Practice this setup/payoff structure as a foundational phrase.',
+      },
+      {
+        name: 'Rhythmic Tension with Silence',
+        description:
+          'Over a steady 4/4 backing track, play short bursts of fast notes and then drop into complete silence for 2 full bars. The silence after speed creates enormous anticipation. Practice controlling exactly when you drop out and when you re-enter to maximize impact.',
+      },
+      {
+        name: 'Melodic Climb and Peak',
+        description:
+          'Write a 12-bar solo that peaks at bar 9 (the highest note) and descends into the final 3 bars. The climb creates tension; the peak and descent provide release. Record it and listen to whether the emotional arc feels natural or forced.',
+      },
+      {
+        name: 'Tension Map',
+        description:
+          'Listen to "Comfortably Numb" by Pink Floyd (the second solo) and draw a tension graph — a line that goes up when tension increases and down when it releases. Mark the exact moments: a held bend, an ascending run, a sustained note, a resolution. Then play your own solo aiming for the same arc.',
+      },
+    ],
+    tab: null,
+    externalUrl: null,
+    videos: [],
   },
   {
     id: 'create-space-silence',
@@ -367,6 +458,7 @@ export const CREATIVITY_NODES = [
     ],
     tab: null,
     externalUrl: null,
+    videos: [],
   },
 
   // ============================================================
@@ -400,6 +492,7 @@ export const CREATIVITY_NODES = [
     ],
     tab: null,
     externalUrl: null,
+    videos: [],
   },
   {
     id: 'create-composing-modes',
@@ -429,6 +522,44 @@ export const CREATIVITY_NODES = [
     ],
     tab: null,
     externalUrl: null,
+    videos: [
+      { title: 'How to Compose with Modes — Practical Guitar Songwriting', channel: 'Signals Music Studio', url: 'https://www.youtube.com/watch?v=RlNqFHIRFck' },
+    ],
+  },
+  {
+    id: 'create-loop-pedal-composition',
+    tree: 'creativity',
+    tier: 4,
+    name: 'Loop Pedal Composition',
+    description: 'Use a loop pedal (or looper app) to build full multi-layer compositions in real time — one layer at a time.',
+    whyItMatters:
+      'A looper turns you into a one-person band and forces you to think compositionally in real time. You have to commit to each layer before you hear the full picture. It is the most honest test of whether your musical ideas actually work together.',
+    prerequisites: ['create-rhythm-creativity', 'create-motivic-development'],
+    exercises: [
+      {
+        name: 'Three-Layer Foundation',
+        description:
+          'Build a loop in three layers: first a bass riff (low strings, steady rhythm), then a chord layer (rhythm guitar, middle strings), then a melody or lead layer on top. Each layer must lock in perfectly before adding the next. Record the final result and listen for balance.',
+      },
+      {
+        name: 'Rhythmic Offset Layers',
+        description:
+          'Create a loop where two layers are rhythmically offset — not both hitting on the downbeat. Try a bass line on beats 1 and 3, and a percussive strum on beats 2 and 4. The interlock between layers is what makes a loop feel like a groove instead of noise.',
+      },
+      {
+        name: 'Build and Strip',
+        description:
+          'Build a 4-layer loop. Then unmute layers one by one to create a breakdown, and bring them back in for a rebuild. This structure — full band, strip to one, build back — is the backbone of electronic music and works just as well on guitar.',
+      },
+      {
+        name: 'Live Composition Set',
+        description:
+          'Set a 5-minute timer and compose a complete piece using only a looper — no preparation, no do-overs. Start with nothing, build to a full arrangement, strip it back, end. Record it. Do this weekly and compare recordings over time. Your instincts will sharpen rapidly.',
+      },
+    ],
+    tab: null,
+    externalUrl: null,
+    videos: [],
   },
   {
     id: 'create-writing-multi-instrument',
@@ -458,6 +589,7 @@ export const CREATIVITY_NODES = [
     ],
     tab: null,
     externalUrl: null,
+    videos: [],
   },
   {
     id: 'create-lick-vocabulary',
@@ -492,6 +624,7 @@ export const CREATIVITY_NODES = [
     ],
     tab: null,
     externalUrl: null,
+    videos: [],
   },
 
   // ============================================================
@@ -530,6 +663,7 @@ export const CREATIVITY_NODES = [
     ],
     tab: null,
     externalUrl: null,
+    videos: [],
   },
   {
     id: 'create-complex-composition',
@@ -564,6 +698,7 @@ export const CREATIVITY_NODES = [
     ],
     tab: null,
     externalUrl: null,
+    videos: [],
   },
   {
     id: 'create-spontaneous-arrangement',
@@ -593,6 +728,7 @@ export const CREATIVITY_NODES = [
     ],
     tab: null,
     externalUrl: null,
+    videos: [],
   },
   {
     id: 'create-teaching-musical-ideas',
@@ -627,5 +763,6 @@ export const CREATIVITY_NODES = [
     ],
     tab: null,
     externalUrl: null,
+    videos: [],
   },
 ];

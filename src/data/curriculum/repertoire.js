@@ -41,6 +41,9 @@ export const REPERTOIRE_NODES = [
   Just keep the strum steady and let the song breathe.
 `,
     externalUrl: null,
+    videos: [
+      { title: 'Horse With No Name — Guitar Lesson', channel: 'Marty Music', url: 'https://www.youtube.com/watch?v=P5oSgJOHLRk' },
+    ],
   },
 
   {
@@ -84,6 +87,9 @@ export const REPERTOIRE_NODES = [
   The whole song repeats these 8 bars. Simple and powerful.
 `,
     externalUrl: null,
+    videos: [
+      { title: "Knockin' On Heaven's Door - Guitar Lesson", channel: 'Justin Guitar', url: 'https://www.youtube.com/watch?v=EVfNVAeKhgw' },
+    ],
   },
 
   {
@@ -136,6 +142,10 @@ export const REPERTOIRE_NODES = [
   E|--x--
 `,
     externalUrl: null,
+    videos: [
+      { title: 'Wish You Were Here — Complete Guitar Lesson', channel: 'Marty Music', url: 'https://www.youtube.com/watch?v=acQkDE9b7cs' },
+      { title: 'Wish You Were Here — Justin Guitar Lesson', channel: 'Justin Guitar', url: 'https://www.youtube.com/watch?v=yk3M3_LQGME' },
+    ],
   },
 
   {
@@ -182,6 +192,69 @@ export const REPERTOIRE_NODES = [
     "...because maybe, you're gonna be the one that saves me..."
 `,
     externalUrl: null,
+    videos: [
+      { title: 'Wonderwall — Guitar Lesson', channel: 'Justin Guitar', url: 'https://www.youtube.com/watch?v=zyAi_-vVaNo' },
+      { title: 'Wonderwall by Oasis — Easy Guitar Lesson', channel: 'Marty Music', url: 'https://www.youtube.com/watch?v=UkGDe52TNVI' },
+    ],
+  },
+
+  {
+    id: 'rep-004b',
+    tree: 'repertoire',
+    tier: 1,
+    name: 'Wildwood Flower',
+    description: 'A traditional Carter Family fingerpicking piece — your first country fingerstyle song with alternating bass and melody.',
+    whyItMatters: 'Wildwood Flower is the entry point for country and folk fingerstyle. The alternating thumb bass is the foundation of the "Travis picking" style used everywhere from country to acoustic pop. Learn this and the technique transfers to dozens of other songs.',
+    prerequisites: [],
+    exercises: [
+      { name: 'Thumb Alternation Only', description: 'Play only the bass notes with your thumb — alternating between strings 5 (A string) and 4 (D string) in a steady eighth-note pattern. Get this automatic before adding any melody notes.' },
+      { name: 'Melody Note Insertion', description: 'While the thumb alternates bass, pluck the melody notes on strings 1 and 2 with your index and middle fingers. Start with just the first 4-bar phrase. The melody falls on beats and offbeats — let the thumb be your metronome.' },
+      { name: 'Full Song Playthrough', description: 'Play Wildwood Flower from beginning to end at a comfortable tempo (around 90 BPM). Focus on maintaining the alternating bass throughout — the bass should never stop even during melody jumps.' },
+    ],
+    tab: `
+  (Wildwood Flower - Traditional / Carter Family)
+  Key of C, no capo
+
+  Verse — Melody with Alternating Bass:
+
+  C                                F
+  e|--0-------0---1---0------------|--1-------0---1---3---1---0----|
+  B|--1-----1---1---1---1----------|--1-----1---1---1---1---1---1--|
+  G|--0-------0-------0------------|--2-------2-------2-------2----|
+  D|--2---2-------2-------2--------|--3---3-------3-------3--------|
+  A|--3-------3-------3------------|--0-------0-------0------------|
+  E|-------------------------------|-------------------------------|
+     T  i  m  T  i  T  m  i         T  i  m  T  i  T  m  i
+
+  C                                G7
+  e|--0-------0---1---0------------|--0-------0---0---0---1---0----|
+  B|--1-----1---1---1---1----------|--1-----1---1---1---1---1---0--|
+  G|--0-------0-------0------------|--0-------0-------0-------0----|
+  D|--2---2-------2-------2--------|--0---0-------0-------0--------|
+  A|--3-------3-------3------------|--2-------2-------2------------|
+  E|-------------------------------|--3-------3-------3------------|
+     T  i  m  T  i  T  m  i         T  i  m  T  i  T  m  i
+
+  C (resolve)
+  e|--0---1---0----------------------------|
+  B|--1---1---1---1---1---1---1---1--------|
+  G|--0---0---0-------0-------0------------|
+  D|--2---2---2---2-------2-------2--------|
+  A|--3---3---3-------3-------3------------|
+  E|---------------------------------------|
+
+  T = thumb (alternates between bass strings)
+  i = index finger (usually B string)
+  m = middle finger (usually high E string)
+
+  The alternating bass pattern: Thumb hits string A on beat 1,
+  string D on the "and" of 1, string A on beat 2, string D on the "and" of 2...
+  This NEVER stops throughout the song.
+`,
+    externalUrl: null,
+    videos: [
+      { title: 'Wildwood Flower - Carter Family Guitar Lesson', channel: 'Marty Music', url: 'https://www.youtube.com/watch?v=Kge0B2XHWW4' },
+    ],
   },
 
   {
@@ -249,6 +322,9 @@ export const REPERTOIRE_NODES = [
   T = thumb, i = index, m = middle
 `,
     externalUrl: null,
+    videos: [
+      { title: 'Good Riddance (Time of Your Life) - Guitar Lesson', channel: 'Marty Music', url: 'https://www.youtube.com/watch?v=_2ga-KIuaQQ' },
+    ],
   },
 
   // ============================================================
@@ -308,6 +384,9 @@ export const REPERTOIRE_NODES = [
   E|----------------------------------------------------|
 `,
     externalUrl: null,
+    videos: [
+      { title: 'Santeria - Sublime Guitar Lesson', channel: 'Marty Music', url: 'https://www.youtube.com/watch?v=Q87wFvGC5cM' },
+    ],
   },
 
   {
@@ -360,6 +439,9 @@ export const REPERTOIRE_NODES = [
   Keep dynamics soft — this part whispers.
 `,
     externalUrl: null,
+    videos: [
+      { title: 'Under the Bridge - RHCP Guitar Lesson', channel: 'Marty Music', url: 'https://www.youtube.com/watch?v=LQb0K7Fqiho' },
+    ],
   },
 
   {
@@ -417,6 +499,76 @@ export const REPERTOIRE_NODES = [
      (let each chord ring for 2 beats)
 `,
     externalUrl: null,
+    videos: [
+      { title: 'Come As You Are - Nirvana Guitar Lesson', channel: 'Marty Music', url: 'https://www.youtube.com/watch?v=9G3Aq3TDpfo' },
+    ],
+  },
+
+  {
+    id: 'rep-008b',
+    tree: 'repertoire',
+    tier: 2,
+    name: 'Sweet Home Chicago',
+    description: 'A 12-bar blues in the key of E — your first full blues song with shuffle feel, dominant 7th chords, and a classic blues turnaround.',
+    whyItMatters: 'Every guitarist needs at least one 12-bar blues in their bones. Sweet Home Chicago is the archetype — simple enough to nail quickly, expressive enough to play forever. The shuffle feel and dominant 7th chords here are the DNA of blues, rock, and soul.',
+    prerequisites: ['rep-002'],
+    exercises: [
+      { name: '12-Bar Chord Progression Loop', description: 'Play the 12-bar progression (E7-A7-B7) with a metronome at 85 BPM in a shuffle feel. Count "1 trip-let 2 trip-let 3 trip-let 4 trip-let" to feel the shuffle. Do not stop — loop it 10 times minimum.' },
+      { name: 'Shuffle Strum Pattern', description: 'The shuffle is a dotted-eighth/sixteenth feel. Practice strumming D..du D..du (hesitate on the "and") until it grooves. Compare against a recording — if it sounds mechanical, slow down and feel the swing more.' },
+      { name: 'Blues Turnaround', description: 'Learn the classic E turnaround (bars 11-12): E string frets 0-4-3-2-1-0 descending, resolving to the B7. This turnaround signals the end of each 12-bar cycle. Nail it and the song sounds finished.' },
+    ],
+    tab: `
+  (Sweet Home Chicago - Traditional Blues / Robert Johnson)
+  Key of E, Shuffle feel
+
+  12-Bar Blues Chord Progression (Standard form):
+  | E7    | E7    | E7    | E7    |
+  | A7    | A7    | E7    | E7    |
+  | B7    | A7    | E7    | B7    |
+  Then repeat from bar 1.
+
+  Chord Shapes:
+  E7          A7          B7
+  e|--0--       e|--0--      e|--2--
+  B|--3--       B|--2--      B|--0--
+  G|--1--       G|--0--      G|--2--
+  D|--2--       D|--2--      D|--1--
+  A|--2--       A|--0--      A|--2--
+  E|--0--       E|--x--      E|--x--
+
+  Shuffle Strum Feel (per bar):
+  D  .  d  .  D  .  d  .
+  1  +  2  +  3  +  4  +
+  (capital D = accented hit, lowercase d = softer hit)
+  Swing the rhythm — the "and" beats land late.
+
+  Classic E Turnaround (bars 11-12, low E string):
+
+  e|----------------------------------------------|
+  B|----------------------------------------------|
+  G|----------------------------------------------|
+  D|----------------------------------------------|
+  A|----------------------------------------------|
+  E|--0--4--3--2--1--0----0------------------------|
+                         ^-- then strum E7 or B7
+
+  Blues Bonus — Basic Boogie Riff (instead of full chord):
+
+  e|----------------------------------------------|
+  B|----------------------------------------------|
+  G|----------------------------------------------|
+  D|--2-2-4-4-5-5-4-4--2-2-4-4-5-5-4-4-----------|
+  A|--2-2-4-4-5-5-4-4--2-2-4-4-5-5-4-4-----------|
+  E|--0-0-0-0-0-0-0-0--0-0-0-0-0-0-0-0-----------|
+     E7 boogie pattern (shuffle rhythm)
+
+  Move to A string / D string for the A7 boogie.
+  Move to B string / E string for the B7 boogie.
+`,
+    externalUrl: null,
+    videos: [
+      { title: 'Sweet Home Chicago - Blues Guitar Lesson', channel: 'Marty Music', url: 'https://www.youtube.com/watch?v=vkBp5VHWRxE' },
+    ],
   },
 
   {
@@ -470,6 +622,9 @@ export const REPERTOIRE_NODES = [
   E|-------------------------------------------------------------------------|
 `,
     externalUrl: null,
+    videos: [
+      { title: 'Smoke on the Water - Deep Purple Guitar Lesson', channel: 'Marty Music', url: 'https://www.youtube.com/watch?v=EqWAGnZ8bWo' },
+    ],
   },
 
   {
@@ -530,6 +685,9 @@ export const REPERTOIRE_NODES = [
   E|----------------------------------------------|
 `,
     externalUrl: null,
+    videos: [
+      { title: 'Seven Nation Army - The White Stripes Guitar Lesson', channel: 'Marty Music', url: 'https://www.youtube.com/watch?v=5e8v00hQQx0' },
+    ],
   },
 
   // ============================================================
@@ -592,6 +750,10 @@ export const REPERTOIRE_NODES = [
   | G           | Am7         | G/B         | G            |
 `,
     externalUrl: null,
+    videos: [
+      { title: 'Blackbird - Beatles (Easy Guitar Lesson)', channel: 'Marty Music', url: 'https://www.youtube.com/watch?v=6ByLYmMUFTQ' },
+      { title: 'Blackbird - The Beatles Guitar Lesson', channel: 'Justin Guitar', url: 'https://www.youtube.com/watch?v=pdFRzRzALpg' },
+    ],
   },
 
   {
@@ -646,6 +808,65 @@ export const REPERTOIRE_NODES = [
   make it your own.
 `,
     externalUrl: null,
+    videos: [
+      { title: 'Little Wing - Jimi Hendrix (Guitar Lesson)', channel: 'Paul Davids', url: 'https://www.youtube.com/watch?v=wBjGbFaFqyU' },
+    ],
+  },
+
+  {
+    id: 'rep-012b',
+    tree: 'repertoire',
+    tier: 3,
+    name: 'The Thrill Is Gone',
+    description: 'B.B. King\'s signature minor blues — teaches expressive single-note phrasing, vibrato, and the power of restraint over the minor blues progression.',
+    whyItMatters: 'If Sweet Home Chicago teaches you what to play in blues, The Thrill Is Gone teaches you how to play it. B.B. King uses vibrato, bends, and space so masterfully that each phrase sounds like a conversation. This is the single best song to study for expressive minor-key guitar.',
+    prerequisites: ['rep-008b', 'rep-011'],
+    exercises: [
+      { name: 'B Minor Pentatonic Position 1', description: 'The solo lives in B minor pentatonic (frets 7-10). Drill position 1 until it is completely comfortable — every note rings cleanly, no buzzing. The cleaner your foundation, the more expressive your bends and vibratos will sound.' },
+      { name: 'B.B. King Vibrato Study', description: 'B.B. never uses wrist vibrato — he shakes his entire hand up and down. Pick a note on the B string (fret 10). Bend it slightly up (not a full bend), then oscillate up and down in a controlled wave. Listen to the recording and match his speed and width of vibrato.' },
+      { name: 'Phrase-and-Rest Structure', description: 'Play 4 bars of the chord progression. During those 4 bars, play exactly ONE 2-bar phrase, then rest. This is B.B.\'s structure — he says more with less. Record it and force yourself not to fill every gap. The restraint is the lesson.' },
+    ],
+    tab: `
+  (The Thrill Is Gone - B.B. King)
+  Key of B minor, Minor Blues feel
+
+  Minor Blues Progression:
+  | Bm7   | Bm7   | Bm7   | Bm7   |
+  | Em7   | Em7   | Bm7   | Bm7   |
+  | F#m7  | Em7   | Bm7   | F#m7  |
+
+  Chord Shapes:
+  Bm7 (224232)    Em7 (022030)    F#m7 (244252)
+
+  B Minor Pentatonic Position 1 (the home base for soloing):
+  e|--7--10-------------|
+  B|--7--10-------------|
+  G|--7---9-------------|
+  D|--7---9-------------|
+  A|--7---9-------------|
+  E|--7--10-------------|
+
+  Opening Signature Lick (simplified):
+
+  e|---------------------------------------10b12~~~~--10------|
+  B|--10b12~~~~--10--7-----7h10p7--7---10-----------------10--|
+  G|-------------------9----------------------------------9---|
+  D|----------------------------------------------------------|
+  A|----------------------------------------------------------|
+  E|----------------------------------------------------------|
+
+  (b = bend, ~ = vibrato, h = hammer-on, p = pull-off)
+  B.B. King's vibrato: shake the hand up and down (not wrist rotation).
+  Hold each bend at pitch for at least 2 beats before releasing.
+
+  Core Phrasing Rule:
+  Play 2 bars. Rest 2 bars. Let it breathe.
+  The space is not empty — it is part of the music.
+`,
+    externalUrl: null,
+    videos: [
+      { title: 'The Thrill Is Gone - B.B. King Guitar Lesson', channel: 'Marty Music', url: 'https://www.youtube.com/watch?v=9Uf2X-yRsPc' },
+    ],
   },
 
   {
@@ -714,6 +935,10 @@ export const REPERTOIRE_NODES = [
   The feel matters more than note-perfect execution.
 `,
     externalUrl: null,
+    videos: [
+      { title: 'Stairway to Heaven Solo - Guitar Lesson', channel: 'Marty Music', url: 'https://www.youtube.com/watch?v=LkbFLSjQR30' },
+      { title: 'Jimmy Page - Stairway Solo Breakdown', channel: 'Paul Davids', url: 'https://www.youtube.com/watch?v=Z0OxFLCjWzo' },
+    ],
   },
 
   {
@@ -731,6 +956,7 @@ export const REPERTOIRE_NODES = [
     ],
     tab: null,
     externalUrl: "Search 'Hotel California guitar solo tab' — learn both harmony parts separately, then layer them.",
+    videos: [],
   },
 
   {
@@ -748,6 +974,25 @@ export const REPERTOIRE_NODES = [
     ],
     tab: null,
     externalUrl: "Search 'Sultans of Swing guitar tab' — focus on the verse fingerstyle rhythm and the final extended solo.",
+    videos: [],
+  },
+
+  {
+    id: 'rep-015b',
+    tree: 'repertoire',
+    tier: 3,
+    name: 'All of Me (Jazz Standard)',
+    description: 'A beginner-friendly jazz standard that introduces jazz chord voicings, walking bass concepts, and playing over a 32-bar AABA form.',
+    whyItMatters: 'All of Me is one of the most accessible jazz standards — the changes are logical, the melody is singable, and it teaches the AABA song form that underpins hundreds of jazz tunes. It is the door into jazz guitar without requiring years of prior theory.',
+    prerequisites: ['rep-012', 'rep-014'],
+    exercises: [
+      { name: 'Learn the Changes (Chord Symbols)', description: 'Play through the progression using simple dominant and major 7th voicings: C6-E7-A7-Dm-E7-Am-D7-G7-C (first 16 bars). One chord per bar, four strums per chord. Do not worry about jazz voicings yet — just lock in the chord movement.' },
+      { name: 'Jazz Shell Voicings', description: 'Jazz guitar uses "shell voicings" — root, 3rd, and 7th only (skip the 5th). For G7, play: root G on string A (fret 10), 3rd B on string G (fret 9 or 4), b7th F on string D (fret 3 or 10). Learn shell voicings for C6, E7, A7, Dm7, G7. Now the song sounds like jazz.' },
+      { name: 'Play the Melody Over the Changes', description: 'Sing or play the melody of All of Me while your left hand holds chord voicings. The melody is mostly stepwise and singable. Identify which melody notes are chord tones and which are approach notes — this is jazz theory in action.' },
+    ],
+    tab: null,
+    externalUrl: "Search 'All of Me jazz guitar chord melody beginner' — look for a version that uses shell voicings or Freddie Green style comping. Learn the 32-bar AABA form before attempting chord melody.",
+    videos: [],
   },
 
   // ============================================================
@@ -816,6 +1061,9 @@ export const REPERTOIRE_NODES = [
   Master these 16 bars first — they contain all the core patterns.
 `,
     externalUrl: null,
+    videos: [
+      { title: 'Classical Gas - Mason Williams Guitar Lesson', channel: 'Marty Music', url: 'https://www.youtube.com/watch?v=dM4FdUjVij4' },
+    ],
   },
 
   {
@@ -875,6 +1123,9 @@ export const REPERTOIRE_NODES = [
   while the fretted notes create the melody above them.
 `,
     externalUrl: null,
+    videos: [
+      { title: 'Cliffs of Dover - Eric Johnson (Guitar Analysis)', channel: 'Paul Davids', url: 'https://www.youtube.com/watch?v=VfKBzHW_XKs' },
+    ],
   },
 
   {
@@ -892,6 +1143,7 @@ export const REPERTOIRE_NODES = [
     ],
     tab: null,
     externalUrl: "Search 'Autumn Leaves chord melody guitar arrangement' — look for a Joe Pass or Ted Greene style arrangement. Start with a simple version before attempting full chord melody.",
+    videos: [],
   },
 
   {
@@ -909,6 +1161,9 @@ export const REPERTOIRE_NODES = [
     ],
     tab: null,
     externalUrl: "Search 'Eruption Van Halen guitar tab' — focus on the tapping section (middle of the piece). The opening tremolo bar section requires a Floyd Rose or similar tremolo system.",
+    videos: [
+      { title: 'Eruption - Van Halen Tapping Lesson', channel: 'Marty Music', url: 'https://www.youtube.com/watch?v=Ja6JCcMWbFI' },
+    ],
   },
 
   {
@@ -926,6 +1181,7 @@ export const REPERTOIRE_NODES = [
     ],
     tab: null,
     externalUrl: "Search 'Neon John Mayer guitar lesson' — video tutorials are essential for this one because the right-hand technique must be seen to be understood. Look for the 'Where The Light Is' live version breakdown.",
+    videos: [],
   },
 
   // ============================================================
@@ -946,6 +1202,7 @@ export const REPERTOIRE_NODES = [
     ],
     tab: null,
     externalUrl: null,
+    videos: [],
   },
 
   {
@@ -963,6 +1220,7 @@ export const REPERTOIRE_NODES = [
     ],
     tab: null,
     externalUrl: null,
+    videos: [],
   },
 
   {
@@ -980,6 +1238,7 @@ export const REPERTOIRE_NODES = [
     ],
     tab: null,
     externalUrl: null,
+    videos: [],
   },
 
   {
@@ -997,6 +1256,7 @@ export const REPERTOIRE_NODES = [
     ],
     tab: null,
     externalUrl: null,
+    videos: [],
   },
 
   {
@@ -1014,5 +1274,6 @@ export const REPERTOIRE_NODES = [
     ],
     tab: null,
     externalUrl: null,
+    videos: [],
   },
 ];

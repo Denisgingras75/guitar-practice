@@ -26,6 +26,9 @@ export const EAR_NODES = [
     ],
     tab: null,
     externalUrl: null,
+    videos: [
+      { title: 'How to Tune a Guitar by Ear', channel: 'Justin Guitar', url: 'https://www.youtube.com/watch?v=OjO9Uf0Z9Tg' },
+    ],
   },
   {
     id: 'ear-major-minor-recognition',
@@ -51,6 +54,9 @@ export const EAR_NODES = [
     ],
     tab: null,
     externalUrl: null,
+    videos: [
+      { title: 'Major vs Minor — Hear the Difference', channel: 'Rick Beato', url: 'https://www.youtube.com/watch?v=yd4NqWBfhd8' },
+    ],
   },
   {
     id: 'ear-root-note-id',
@@ -76,6 +82,7 @@ export const EAR_NODES = [
     ],
     tab: null,
     externalUrl: null,
+    videos: [],
   },
   {
     id: 'ear-matching-pitch',
@@ -101,6 +108,7 @@ export const EAR_NODES = [
     ],
     tab: null,
     externalUrl: null,
+    videos: [],
   },
 
   // ============================================================
@@ -130,6 +138,9 @@ export const EAR_NODES = [
     ],
     tab: null,
     externalUrl: null,
+    videos: [
+      { title: 'Ear Training — Interval Recognition for Guitar', channel: 'Rick Beato', url: 'https://www.youtube.com/watch?v=HkuR6FN2L3g' },
+    ],
   },
   {
     id: 'ear-chord-quality-id',
@@ -155,6 +166,7 @@ export const EAR_NODES = [
     ],
     tab: null,
     externalUrl: null,
+    videos: [],
   },
   {
     id: 'ear-simple-melody-transcription',
@@ -180,6 +192,7 @@ export const EAR_NODES = [
     ],
     tab: null,
     externalUrl: null,
+    videos: [],
   },
   {
     id: 'ear-bass-note',
@@ -205,6 +218,38 @@ export const EAR_NODES = [
     ],
     tab: null,
     externalUrl: null,
+    videos: [],
+  },
+
+  {
+    id: 'ear-rhythm-transcription',
+    tree: 'ear',
+    tier: 2,
+    name: 'Rhythm Transcription',
+    description: 'Hear a rhythmic pattern and write it down or play it back accurately.',
+    whyItMatters: 'Pitch gets all the attention, but rhythm is half of music. Being able to transcribe a groove or strumming pattern by ear means you can learn songs without tabs and communicate rhythmic ideas precisely to other musicians.',
+    prerequisites: ['ear-matching-pitch'],
+    exercises: [
+      {
+        name: 'Clap Before You Play',
+        description: 'Listen to a song and clap along with the guitar strumming or drum pattern — not the beat, the actual rhythm. Tap it out until you have it memorized. Then transfer it to muted guitar strings. This isolates rhythm from pitch.',
+      },
+      {
+        name: 'Straight vs Shuffle',
+        description: 'Play four bars of eighth notes straight (even, mechanical), then four bars shuffled (the second eighth of each pair pushed back to a triplet feel). Record both. Now listen to songs and identify which feel the guitarist is using. This is the single biggest groove distinction in popular music.',
+      },
+      {
+        name: 'Rhythm Notation Dictation',
+        description: 'Put on a simple guitar riff (e.g., "Johnny B. Goode" intro). Draw a timeline of 4 bars and mark where each note lands — on the beat, on the "and," on the "e" or "ah." You do not need formal notation — your own symbols are fine. Then play back what you drew.',
+      },
+      {
+        name: 'Strumming Pattern Transcription',
+        description: 'Pick 3 songs with different strumming patterns (try "Wonderwall," "Brown Eyed Girl," and a reggae song). For each one, mark the pattern as D (down) and U (up) and note which strokes are accented. Verify by playing along with the recording.',
+      },
+    ],
+    tab: null,
+    externalUrl: null,
+    videos: [],
   },
 
   // ============================================================
@@ -234,6 +279,7 @@ export const EAR_NODES = [
     ],
     tab: null,
     externalUrl: null,
+    videos: [],
   },
   {
     id: 'ear-extended-chord-quality',
@@ -259,6 +305,7 @@ export const EAR_NODES = [
     ],
     tab: null,
     externalUrl: null,
+    videos: [],
   },
   {
     id: 'ear-transcribe-solo',
@@ -284,6 +331,59 @@ export const EAR_NODES = [
     ],
     tab: null,
     externalUrl: null,
+    videos: [],
+  },
+  {
+    id: 'ear-melodic-dictation',
+    tree: 'ear',
+    tier: 3,
+    name: 'Melodic Dictation',
+    description: 'Hear a melody and write down the note names and rhythms accurately.',
+    whyItMatters: 'Melodic dictation is how musicians capture music precisely — from a teacher\'s example, a bandmate\'s idea, or a melody in your own head. It closes the loop between listening and writing, which is essential for composing and session work.',
+    prerequisites: ['ear-simple-melody-transcription', 'ear-ascending-intervals'],
+    exercises: [
+      {
+        name: 'Four-Bar Single-Line Dictation',
+        description: 'Have someone (or an app) play a 4-bar melody in C major, one listen only. Write down the note names in order. Then verify on your guitar. Start with stepwise motion only (adjacent notes), then add skips as you improve. Target: 80% accuracy before moving to harder material.',
+      },
+      {
+        name: 'Sing Before Writing',
+        description: 'After hearing a melody once, sing it back before writing anything. If you can sing it accurately, your notation will be accurate. If you stumble singing it, listen again. The voice is your accuracy checkpoint.',
+      },
+      {
+        name: 'Rhythm + Pitch Together',
+        description: 'Most dictation falls apart because rhythm and pitch are tracked separately. Listen to the melody once just for rhythm — mark beat placement for each note with dashes. Listen again for pitches and fill them in. Two-pass dictation is much more reliable than trying to catch everything at once.',
+      },
+    ],
+    tab: null,
+    externalUrl: null,
+    videos: [],
+  },
+  {
+    id: 'ear-harmonic-rhythm',
+    tree: 'ear',
+    tier: 3,
+    name: 'Harmonic Rhythm Recognition',
+    description: 'Identify when and how often chords change in a piece of music.',
+    whyItMatters: 'Knowing that a chord changes is different from knowing which chord it changes to. Harmonic rhythm — the tempo of chord changes — is what gives music its momentum. Feel it wrong and your comping will never lock in.',
+    prerequisites: ['ear-chord-quality-id', 'ear-root-note-id'],
+    exercises: [
+      {
+        name: 'One-Change-Per-Bar vs Two',
+        description: 'Listen to "Let It Be" by The Beatles (one chord per bar, mostly) versus "Fly Me to the Moon" in a jazz arrangement (sometimes two or more chords per bar). Tap your foot on every chord change. The density of changes is harmonic rhythm — notice how it creates different feels.',
+      },
+      {
+        name: 'Mark the Changes',
+        description: 'Put on a song you do not know well. On a piece of paper, draw a bar line every 4 beats. Every time a chord changes, make a mark. At the end, count the marks per bar. Does the song have one change per bar, two, four? Verify against a chord chart.',
+      },
+      {
+        name: 'Slow-Down and Lock In',
+        description: 'Use a slow-down app to take a song to 70% speed. Now the chord changes should be much easier to catch as they happen. Pick up guitar and try to change with the music in real time. Gradually increase speed back to 100% over multiple sessions.',
+      },
+    ],
+    tab: null,
+    externalUrl: null,
+    videos: [],
   },
   {
     id: 'ear-chord-progression-recognition',
@@ -309,6 +409,9 @@ export const EAR_NODES = [
     ],
     tab: null,
     externalUrl: null,
+    videos: [
+      { title: 'How to Hear Chord Progressions by Ear', channel: 'Rick Beato', url: 'https://www.youtube.com/watch?v=voBCbMxcDG8' },
+    ],
   },
 
   // ============================================================
@@ -338,6 +441,7 @@ export const EAR_NODES = [
     ],
     tab: null,
     externalUrl: null,
+    videos: [],
   },
   {
     id: 'ear-modes-by-ear',
@@ -363,6 +467,9 @@ export const EAR_NODES = [
     ],
     tab: null,
     externalUrl: null,
+    videos: [
+      { title: 'Every Mode Explained with Real Music Examples', channel: 'Signals Music Studio', url: 'https://www.youtube.com/watch?v=EerBnVd2Mkk' },
+    ],
   },
   {
     id: 'ear-relative-pitch-fluency',
@@ -388,6 +495,37 @@ export const EAR_NODES = [
     ],
     tab: null,
     externalUrl: null,
+    videos: [],
+  },
+  {
+    id: 'ear-relative-key-detection',
+    tree: 'ear',
+    tier: 4,
+    name: 'Relative Key Detection',
+    description: 'Hear whether music is in a major or relative minor key, and identify which one is functioning as the tonal center.',
+    whyItMatters: 'Am and C major use the same notes, but they feel completely different. Many intermediate players cannot reliably tell which is the tonal center — and this confusion wrecks their ability to solo or compose over changes that shift between relative keys.',
+    prerequisites: ['ear-chord-progression-recognition', 'ear-extended-chord-quality'],
+    exercises: [
+      {
+        name: 'Home Chord Test',
+        description: 'Play a major key progression (C-Am-F-G), then play a minor key progression (Am-F-C-G). The chord names overlap, but the home chord is different. Listen to how C major resolves back to C, while the same chords in A minor pull toward Am. The resolution point tells you the key.',
+      },
+      {
+        name: 'Song Key Guessing',
+        description: 'Listen to 5 songs you know well. Before looking anything up, decide: is this in a major or minor key? Write your answer and your reasoning — what chord feels like home? Check against the published key. Aim for 80% accuracy before calling this mastered.',
+      },
+      {
+        name: 'The Parallel Comparison',
+        description: 'Play C major for 30 seconds (drone a C note underneath, emphasize C, E, G in your playing). Then play A minor for 30 seconds (drone an A note, emphasize A, C, E). Same notes, opposite feelings. Train your ear to hear "where does this want to land?" as the key detection question.',
+      },
+      {
+        name: 'Ambiguous Progression Identification',
+        description: 'Play Am-F-C-G and deliberately make it sound major (start and end on C). Then play the same chords and make it sound minor (start and end on Am). Record both. Listen to a stranger and decide which version they would perceive. Your tonal emphasis — which chord you stress — defines the key.',
+      },
+    ],
+    tab: null,
+    externalUrl: null,
+    videos: [],
   },
   {
     id: 'ear-transcribing-arrangements',
@@ -413,6 +551,7 @@ export const EAR_NODES = [
     ],
     tab: null,
     externalUrl: null,
+    videos: [],
   },
 
   // ============================================================
@@ -446,6 +585,7 @@ export const EAR_NODES = [
     ],
     tab: null,
     externalUrl: null,
+    videos: [],
   },
   {
     id: 'ear-voice-leading',
@@ -471,6 +611,7 @@ export const EAR_NODES = [
     ],
     tab: null,
     externalUrl: null,
+    videos: [],
   },
   {
     id: 'ear-complex-harmony',
@@ -496,6 +637,7 @@ export const EAR_NODES = [
     ],
     tab: null,
     externalUrl: null,
+    videos: [],
   },
   {
     id: 'ear-perfect-relative-pitch',
@@ -525,5 +667,6 @@ export const EAR_NODES = [
     ],
     tab: null,
     externalUrl: null,
+    videos: [],
   },
 ];

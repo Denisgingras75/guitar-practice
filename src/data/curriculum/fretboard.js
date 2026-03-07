@@ -28,6 +28,9 @@ export const FRETBOARD_NODES = [
     ],
     tab: null,
     externalUrl: null,
+    videos: [
+      { title: 'Guitar String Names — NEVER Forget Them Again', channel: 'Justin Guitar', url: 'https://www.youtube.com/watch?v=oN9EoKWQFqE' },
+    ],
   },
   {
     id: 'fret-notes-low-e-a',
@@ -57,6 +60,9 @@ export const FRETBOARD_NODES = [
     ],
     tab: null,
     externalUrl: null,
+    videos: [
+      { title: 'Learn the Notes on the Low E and A Strings', channel: 'Justin Guitar', url: 'https://www.youtube.com/watch?v=9NBpWCaEOuI' },
+    ],
   },
   {
     id: 'fret-octave-shapes',
@@ -91,6 +97,9 @@ export const FRETBOARD_NODES = [
     ],
     tab: null,
     externalUrl: null,
+    videos: [
+      { title: 'Octave Shapes on Guitar — The Complete Guide', channel: 'Paul Davids', url: 'https://www.youtube.com/watch?v=MEFfxj3KXJU' },
+    ],
   },
   {
     id: 'fret-barre-roots',
@@ -120,9 +129,77 @@ export const FRETBOARD_NODES = [
     ],
     tab: null,
     externalUrl: null,
+    videos: [
+      { title: 'Barre Chords — How to Find Any Chord on the Neck', channel: 'Justin Guitar', url: 'https://www.youtube.com/watch?v=Q7fM7R2vFmA' },
+    ],
   },
 
   // ─── TIER 2 — Developing ─────────────────────────────────────────
+  {
+    id: 'fret-chromatic-enharmonics',
+    tree: 'fretboard',
+    tier: 2,
+    name: 'Chromatic Notes and Enharmonics',
+    description: 'Learn every note on the fretboard including sharps and flats, and understand enharmonic equivalents (F# = Gb, Bb = A#, etc.).',
+    whyItMatters:
+      'Natural notes are the skeleton, but music lives in the sharps and flats too. Understanding enharmonics means you can follow a chart that says F# AND one that says Gb — and know they are the same fret.',
+    prerequisites: ['fret-notes-low-e-a'],
+    exercises: [
+      {
+        name: 'Half-Step Fill-In',
+        description:
+          'Pick any string. Name every note ascending one fret at a time from fret 0 to fret 12. When you land between natural notes (e.g., fret 6 on low E), say both names: "F# slash Gb." Speed target: all 13 positions in under 15 seconds per string.',
+      },
+      {
+        name: 'Sharp vs Flat Context',
+        description:
+          'Play the chromatic scale on the A string from open to fret 12. Ascending, name every note using sharps (A, A#, B, C, C#...). Descending, use flats (A, Ab, G, Gb...). The same fret has two names — drill both until they feel equal.',
+      },
+      {
+        name: 'Enharmonic Flashcard Drill',
+        description:
+          'Write the 5 enharmonic pairs on a card: F#/Gb, C#/Db, G#/Ab, D#/Eb, A#/Bb. Someone calls one name, you instantly say the other AND touch that fret on any two strings. Target: zero hesitation on all five pairs.',
+      },
+    ],
+    tab: null,
+    externalUrl: null,
+    videos: [],
+  },
+  {
+    id: 'fret-string-interval-map',
+    tree: 'fretboard',
+    tier: 2,
+    name: 'String-to-String Interval Mapping',
+    description: 'Know exactly how many semitones (frets) separate adjacent strings and use that to find any note on any string from a known note on another.',
+    whyItMatters:
+      'The guitar is a transposable instrument — most string pairs are a perfect 4th apart (5 frets), except the G-B pair (4 frets). This single fact lets you translate any note instantly across strings without memorizing every fret independently.',
+    prerequisites: ['fret-chromatic-enharmonics'],
+    exercises: [
+      {
+        name: 'The 5-Fret Rule',
+        description:
+          'Pick any note on the low E string. Find it on the A string 5 frets higher (e.g., fret 3 = G on E, fret 8 = G on A). Drill all 12 notes across the E-A pair. Then do A-D, D-G. These all use the same +5 rule.',
+      },
+      {
+        name: 'The G-to-B Exception',
+        description:
+          'The G-to-B string pair is tuned a major 3rd apart, not a 4th — so the offset is +4 frets, not +5. Drill the G-B transfer for all 12 notes until the exception is automatic. Misremembering this is one of the most common fretboard errors.',
+      },
+      {
+        name: 'Cross-String Note Transfer',
+        description:
+          'Someone calls a note and a target string (e.g., "Find D on the B string"). Use your interval map: D is fret 5 on the A string — A-to-D is +5, D-to-G is +5, G-to-B is +4, so B string fret 3 = D. Do 20 random transfers in under 3 minutes.',
+      },
+      {
+        name: 'Diagonal Scale Mapping',
+        description:
+          'Play a C major scale diagonally — one note per string moving up by one string each time, using interval maps to find the next note. No patterns, just math. Start on low E string and end on the high E string.',
+      },
+    ],
+    tab: null,
+    externalUrl: null,
+    videos: [],
+  },
   {
     id: 'fret-all-natural-notes',
     tree: 'fretboard',
@@ -156,6 +233,9 @@ export const FRETBOARD_NODES = [
     ],
     tab: null,
     externalUrl: null,
+    videos: [
+      { title: 'How to Learn All the Notes on the Guitar', channel: 'Marty Music', url: 'https://www.youtube.com/watch?v=sSMJAqYKL6c' },
+    ],
   },
   {
     id: 'fret-caged',
@@ -185,6 +265,10 @@ export const FRETBOARD_NODES = [
     ],
     tab: null,
     externalUrl: null,
+    videos: [
+      { title: 'CAGED System Explained — Finally Makes Sense', channel: 'Paul Davids', url: 'https://www.youtube.com/watch?v=3WT9i4LK3Sc' },
+      { title: 'CAGED System Guitar Lesson', channel: 'Marty Music', url: 'https://www.youtube.com/watch?v=hBkKOiO4yqs' },
+    ],
   },
   {
     id: 'fret-minor-pent-5pos',
@@ -219,6 +303,10 @@ export const FRETBOARD_NODES = [
     ],
     tab: null,
     externalUrl: null,
+    videos: [
+      { title: 'Pentatonic Scale — All 5 Positions', channel: 'Justin Guitar', url: 'https://www.youtube.com/watch?v=iUkYDJxD6-k' },
+      { title: '5 Pentatonic Scale Positions — Complete Guide', channel: 'Marty Music', url: 'https://www.youtube.com/watch?v=zEQLHqJTdZY' },
+    ],
   },
   {
     id: 'fret-major-pent-5pos',
@@ -248,9 +336,47 @@ export const FRETBOARD_NODES = [
     ],
     tab: null,
     externalUrl: null,
+    videos: [],
   },
 
   // ─── TIER 3 — Intermediate ───────────────────────────────────────
+  {
+    id: 'fret-pentatonic-chord-tones',
+    tree: 'fretboard',
+    tier: 3,
+    name: 'Pentatonic to Chord Tone Overlay',
+    description: 'Overlay chord tones (root, 3rd, 5th) on top of pentatonic positions so you can hear AND see the harmony inside each scale box.',
+    whyItMatters:
+      'Pentatonic players who do not see chord tones inside the scale sound like they are soloing past the changes, not through them. This bridges the gap between scale-based soloing and harmonic soloing.',
+    prerequisites: ['fret-minor-pent-5pos', 'fret-caged'],
+    exercises: [
+      {
+        name: 'Root Highlighting',
+        description:
+          'In A minor pentatonic position 1 (frets 5-8), circle every A note on a fretboard diagram. While playing, land on these A notes at the start of every new bar. The scale becomes an anchor, not a random collection of notes.',
+      },
+      {
+        name: 'Triad Tones in the Box',
+        description:
+          'In A minor pentatonic position 1, identify where the A minor triad lives (A, C, E). Mark them with a different color. Solo using only chord tones for 2 bars, then open up to the full pentatonic for 2 bars. Hear how targeted the chord-tone bars sound.',
+      },
+      {
+        name: 'Chord Change Navigation',
+        description:
+          'Over a Am-C-G-D progression, stay in one pentatonic position. As each chord changes, immediately emphasize the nearest chord tone of the new chord. Do not shift position — just reframe which notes you target. Record and listen for the harmonic tracking.',
+      },
+      {
+        name: 'Five Positions, Chord Tones Each',
+        description:
+          'Work through all five positions of A minor pentatonic. In each position, identify and mark the root, b3rd, and 5th of Am. Play the exercise from position 1 to position 5, targeting chord tones at each position change.',
+      },
+    ],
+    tab: null,
+    externalUrl: null,
+    videos: [
+      { title: 'Chord Tones vs Scales — How to Solo Over Chord Changes', channel: 'Paul Davids', url: 'https://www.youtube.com/watch?v=N8_mRSXVHvs' },
+    ],
+  },
   {
     id: 'fret-3nps',
     tree: 'fretboard',
@@ -284,6 +410,7 @@ export const FRETBOARD_NODES = [
     ],
     tab: null,
     externalUrl: null,
+    videos: [],
   },
   {
     id: 'fret-connecting-positions',
@@ -313,6 +440,7 @@ export const FRETBOARD_NODES = [
     ],
     tab: null,
     externalUrl: null,
+    videos: [],
   },
   {
     id: 'fret-intervals-across',
@@ -347,6 +475,7 @@ export const FRETBOARD_NODES = [
     ],
     tab: null,
     externalUrl: null,
+    videos: [],
   },
   {
     id: 'fret-triad-shapes',
@@ -381,6 +510,9 @@ export const FRETBOARD_NODES = [
     ],
     tab: null,
     externalUrl: null,
+    videos: [
+      { title: 'Guitar Triads — The Most Useful Thing You Can Learn', channel: 'Paul Davids', url: 'https://www.youtube.com/watch?v=XDlT1JtnGxg' },
+    ],
   },
 
   // ─── TIER 4 — Advanced ───────────────────────────────────────────
@@ -412,6 +544,7 @@ export const FRETBOARD_NODES = [
     ],
     tab: null,
     externalUrl: null,
+    videos: [],
   },
   {
     id: 'fret-instant-chord-tones',
@@ -446,6 +579,7 @@ export const FRETBOARD_NODES = [
     ],
     tab: null,
     externalUrl: null,
+    videos: [],
   },
   {
     id: 'fret-arpeggios-inversions',
@@ -480,6 +614,7 @@ export const FRETBOARD_NODES = [
     ],
     tab: null,
     externalUrl: null,
+    videos: [],
   },
   {
     id: 'fret-relative-major-minor',
@@ -509,6 +644,40 @@ export const FRETBOARD_NODES = [
     ],
     tab: null,
     externalUrl: null,
+    videos: [],
+  },
+
+  {
+    id: 'fret-modal-positions',
+    tree: 'fretboard',
+    tier: 4,
+    name: 'Modal Position Identification',
+    description: 'Find and name the seven diatonic scale positions (modes) across the fretboard and recognize which CAGED shape each mode lives in.',
+    whyItMatters:
+      'Modes are not separate scales — they are the same notes starting from different roots. Once you see where each mode lives within the CAGED system, you can access any modal color from any position on the neck without shifting.',
+    prerequisites: ['fret-caged', 'fret-3nps'],
+    exercises: [
+      {
+        name: 'G Major / A Dorian Overlap',
+        description:
+          'Play G major scale starting from G at fret 3 on low E. Now play the exact same notes but start and emphasize A (fret 5, low E). The shape is identical — only the root has changed. That is A Dorian. Drill all seven modes this way from the G major scale.',
+      },
+      {
+        name: 'Mode Root Mapping',
+        description:
+          'On a fretboard diagram, mark every G on the neck (frets 3, 10, 15 on low E; frets 5, 12 on A, etc.). These are all Ionian positions. Then mark every A — those are all Dorian positions. Fill in all seven scale degrees across the neck.',
+      },
+      {
+        name: 'Modal Position Jump',
+        description:
+          'Set a drone in G. Play G Ionian for 8 bars. Without moving far, shift to B Phrygian (same notes, different root). Then D Mixolydian. Stay in the same fret area each time — only the tonal center moves. Target: all seven positions in the same fret region.',
+      },
+    ],
+    tab: null,
+    externalUrl: null,
+    videos: [
+      { title: 'Modes — Explained in a Way That Actually Makes Sense', channel: 'Signals Music Studio', url: 'https://www.youtube.com/watch?v=EerBnVd2Mkk' },
+    ],
   },
 
   // ─── TIER 5 — Mastery ────────────────────────────────────────────
@@ -545,6 +714,7 @@ export const FRETBOARD_NODES = [
     ],
     tab: null,
     externalUrl: null,
+    videos: [],
   },
   {
     id: 'fret-sight-reading',
@@ -574,6 +744,7 @@ export const FRETBOARD_NODES = [
     ],
     tab: null,
     externalUrl: null,
+    videos: [],
   },
   {
     id: 'fret-instant-transposition',
@@ -603,6 +774,7 @@ export const FRETBOARD_NODES = [
     ],
     tab: null,
     externalUrl: null,
+    videos: [],
   },
   {
     id: 'fret-arpeggio-superimposition',
@@ -637,5 +809,6 @@ export const FRETBOARD_NODES = [
     ],
     tab: null,
     externalUrl: null,
+    videos: [],
   },
 ];

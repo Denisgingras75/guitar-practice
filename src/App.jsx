@@ -9,6 +9,8 @@ import Guitarists from './pages/Guitarists.jsx';
 import Routines from './pages/Routines.jsx';
 import Tuner from './pages/Tuner.jsx';
 import SkillTrees from './pages/SkillTrees.jsx';
+import Charts from './pages/Charts.jsx';
+import Metronome from './pages/Metronome.jsx';
 import './App.css';
 
 function App() {
@@ -30,6 +32,8 @@ function App() {
             <Route path="/skills" element={<SkillTrees />} />
             <Route path="/practice" element={<Routines />} />
             <Route path="/tuner" element={<Tuner />} />
+            <Route path="/charts" element={<Charts />} />
+            <Route path="/metronome" element={<Metronome />} />
           </Routes>
         </main>
       </div>

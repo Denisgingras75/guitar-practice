@@ -238,3 +238,12 @@
 .timerWrap {
   margin-bottom: 1rem;
 }
+
+/* === Videos === */
+.videoList { display: flex; flex-direction: column; gap: 6px; margin-bottom: 0.5rem; }
+.videoLink { display: flex; flex-direction: column; gap: 2px; padding: 0.5rem 0.75rem; background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--radius-sm); text-decoration: none; transition: border-color 0.15s; }
+.videoLink:hover { border-color: var(--accent); }
+.videoChannel { font-size: 0.65rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.03em; color: var(--accent); }
+.videoTitle { font-size: 0.8rem; color: var(--fg); }
+.findMoreLink { font-size: 0.8rem; color: var(--fg-muted); display: inline-block; }
+.findMoreLink:hover { color: var(--accent); }

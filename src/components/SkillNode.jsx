@@ -94,6 +94,31 @@ export default function SkillNode({ node, onClose }) {
         </div>
       )}
 
+      {/* Videos */}
+      {((node.videos && node.videos.length > 0) || true) && (
+        <div className={styles.section}>
+          <span className={styles.sectionLabel}>Videos</span>
+          {node.videos && node.videos.length > 0 && (
+            <div className={styles.videoList}>
+              {node.videos.map((v, i) => (
+                <a key={i} href={v.url} target="_blank" rel="noopener noreferrer" className={styles.videoLink}>
+                  <span className={styles.videoChannel}>{v.channel}</span>
+                  <span className={styles.videoTitle}>{v.title}</span>
+                </a>
+              ))}
+            </div>
+          )}
+          <a
+            href={`https://www.youtube.com/results?search_query=guitar+${encodeURIComponent(node.name)}+tutorial`}
+            target="_blank"
+            rel="noopener noreferrer"
+            className={styles.findMoreLink}
+          >
+            Find More on YouTube →
+          </a>
+        </div>
+      )}
+
       {/* External Link */}
       {node.externalUrl && (
         <a

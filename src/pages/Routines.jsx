@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { Link } from 'react-router-dom';
 import { ROUTINES } from '../data/routines.js';
 import PracticeTimer from '../components/PracticeTimer.jsx';
 import { usePracticeLog } from '../hooks/usePracticeLog.js';
@@ -10,6 +11,7 @@ const INSTRUMENTS = ['all', 'electric', 'acoustic', 'both'];
 export default function Routines() {
   const [filter, setFilter] = useState({ level: 'all', instrument: 'all' });
   const [expanded, setExpanded] = useState(null);
+  const [expandedExercise, setExpandedExercise] = useState(null);
   const [practicing, setPracticing] = useState(null);
   const { addEntry } = usePracticeLog();
 
@@ -22,6 +24,10 @@ export default function Routines() {
   const handleComplete = (entry) => {
     addEntry(entry);
     setPracticing(null);
+  };
+
+  const toggleExercise = (key) => {
+    setExpandedExercise(expandedExercise === key ? null : key);
   };
 
   return (
@@ -109,23 +115,61 @@ export default function Routines() {
                         <span className={styles.sectionTime}>{section.minutes} min</span>
                       </div>
                       <div className={styles.exercises}>
-                        {section.exercises.map((ex) => (
-                          <div key={ex.name} className={styles.exercise}>
-                            <div className={styles.exerciseHeader}>
-                              <span className={styles.exerciseName}>{ex.name}</span>
-                              <button
-                                className={styles.practiceBtn}
-                                onClick={() => setPracticing({
-                                  name: `${ex.name} (${routine.name})`,
-                                  category: 'routines',
-                                })}
-                              >
-                                Practice
-                              </button>
+                        {section.exercises.map((ex) => {
+                          const exKey = `${routine.id}-${section.name}-${ex.name}`;
+                          const isExExpanded = expandedExercise === exKey;
+                          return (
+                            <div key={ex.name} className={styles.exercise}>
+                              <div className={styles.exerciseHeader}>
+                                <button
+                                  className={styles.exerciseToggle}
+                                  onClick={() => toggleExercise(exKey)}
+                                >
+                                  <span className={styles.exerciseName}>{ex.name}</span>
+                                  <div className={styles.exerciseMeta}>
+                                    {ex.bpm && <Link to={`/metronome?bpm=${parseInt(ex.bpm, 10)}`} className={styles.bpmLink} title="Open Metronome">{ex.bpm} BPM</Link>}
+                                    {ex.duration && <span className={styles.durationBadge}>{ex.duration}</span>}
+                                  </div>
+                                </button>
+                                <button
+                                  className={styles.practiceBtn}
+                                  onClick={() => setPracticing({
+                                    name: `${ex.name} (${routine.name})`,
+                                    category: 'routines',
+                                  })}
+                                >
+                                  Practice
+                                </button>
+                              </div>
+                              <p className={styles.exerciseDesc}>{ex.description}</p>
+
+                              {isExExpanded && (
+                                <div className={styles.exerciseDetail}>
+                                  {ex.steps && ex.steps.length > 0 && (
+                                    <div className={styles.detailSection}>
+                                      <h4 className={styles.detailHeading}>Steps</h4>
+                                      <ol className={styles.stepsList}>
+                                        {ex.steps.map((step, i) => (
+                                          <li key={i} className={styles.stepItem}>{step}</li>
+                                        ))}
+                                      </ol>
+                                    </div>
+                                  )}
+                                  {ex.tips && ex.tips.length > 0 && (
+                                    <div className={styles.detailSection}>
+                                      <h4 className={styles.detailHeading}>Tips</h4>
+                                      <ul className={styles.tipsList}>
+                                        {ex.tips.map((tip, i) => (
+                                          <li key={i} className={styles.tipItem}>{tip}</li>
+                                        ))}
+                                      </ul>
+                                    </div>
+                                  )}
+                                </div>
+                              )}
                             </div>
-                            <p className={styles.exerciseDesc}>{ex.description}</p>
-                          </div>
-                        ))}
+                          );
+                        })}
                       </div>
                     </div>
                   ))}

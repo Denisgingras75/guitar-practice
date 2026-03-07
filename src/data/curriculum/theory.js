@@ -26,6 +26,9 @@ export const THEORY_NODES = [
     ],
     tab: null,
     externalUrl: null,
+    videos: [
+      { title: 'Musical Alphabet and Note Names', channel: 'Justin Guitar', url: 'https://www.youtube.com/watch?v=cZzlZkSdGao' },
+    ],
   },
   {
     id: 'theory-major-scale-formula',
@@ -51,6 +54,9 @@ export const THEORY_NODES = [
     ],
     tab: null,
     externalUrl: null,
+    videos: [
+      { title: 'Major Scale — Everything You Need to Know', channel: 'Justin Guitar', url: 'https://www.youtube.com/watch?v=XuWRnZcI5Yg' },
+    ],
   },
   {
     id: 'theory-basic-intervals',
@@ -76,6 +82,9 @@ export const THEORY_NODES = [
     ],
     tab: null,
     externalUrl: null,
+    videos: [
+      { title: 'Music Intervals — The Complete Guide', channel: 'Rick Beato', url: 'https://www.youtube.com/watch?v=R5tRLUMFgpM' },
+    ],
   },
   {
     id: 'theory-i-iv-v',
@@ -101,6 +110,9 @@ export const THEORY_NODES = [
     ],
     tab: null,
     externalUrl: null,
+    videos: [
+      { title: 'I IV V Chords — How to Find Them in Any Key', channel: 'Marty Music', url: 'https://www.youtube.com/watch?v=aAMDzBGWAGs' },
+    ],
   },
   {
     id: 'theory-time-signatures',
@@ -126,6 +138,7 @@ export const THEORY_NODES = [
     ],
     tab: null,
     externalUrl: null,
+    videos: [],
   },
 
   // ============================================================
@@ -155,6 +168,7 @@ export const THEORY_NODES = [
     ],
     tab: null,
     externalUrl: null,
+    videos: [],
   },
   {
     id: 'theory-relative-minor',
@@ -180,6 +194,7 @@ export const THEORY_NODES = [
     ],
     tab: null,
     externalUrl: null,
+    videos: [],
   },
   {
     id: 'theory-circle-of-fifths',
@@ -205,6 +220,7 @@ export const THEORY_NODES = [
     ],
     tab: null,
     externalUrl: null,
+    videos: [],
   },
   {
     id: 'theory-chord-function',
@@ -230,6 +246,33 @@ export const THEORY_NODES = [
     ],
     tab: null,
     externalUrl: null,
+    videos: [],
+  },
+  {
+    id: 'theory-harmonic-rhythm',
+    tree: 'theory',
+    tier: 2,
+    name: 'Harmonic Rhythm',
+    description: 'Understand how the rate of chord change (harmonic rhythm) shapes energy, tension, and feel in a song.',
+    whyItMatters: 'Harmonic rhythm is the secret pacing mechanism in every great song. Fast chord changes create urgency and complexity; slow changes create space and groove. Controlling harmonic rhythm is as important as choosing the right chords.',
+    prerequisites: ['theory-diatonic-chords', 'theory-time-signatures'],
+    exercises: [
+      {
+        name: 'Same Chords, Different Rhythm',
+        description: 'Play C-Am-F-G changing every 4 beats (slow harmonic rhythm). Then play the same chords changing every 2 beats. Then every 1 beat. Notice how the energy and complexity change even though the harmony is identical. Record all three versions and compare. The fastest version sounds more urgent; the slowest sounds the most spacious.',
+      },
+      {
+        name: 'Vary Within a Progression',
+        description: 'Write a 4-bar progression where the harmonic rhythm varies: bar 1 is 4 beats on I, bar 2 is 2 beats on IV then 2 beats on V, bar 3 is 1 beat each on ii-iii-IV-V, bar 4 is 4 beats on I. Play through it and feel how the accelerating chord changes create a sense of arrival at the final I chord. This technique is used in pre-choruses constantly.',
+      },
+      {
+        name: 'Analyze 3 Songs',
+        description: 'Pick 3 songs with different feels (slow ballad, mid-tempo pop, fast punk). Identify the harmonic rhythm of each. Count how many beats each chord holds on average. Then listen to how the harmonic rhythm changes between the verse and chorus. Most choruses speed up harmonically OR simplify dramatically. Write your findings.',
+      },
+    ],
+    tab: null,
+    externalUrl: null,
+    videos: [],
   },
   {
     id: 'theory-nashville-number',
@@ -255,6 +298,7 @@ export const THEORY_NODES = [
     ],
     tab: null,
     externalUrl: null,
+    videos: [],
   },
 
   // ============================================================
@@ -288,6 +332,70 @@ export const THEORY_NODES = [
     ],
     tab: null,
     externalUrl: null,
+    videos: [
+      { title: 'Guitar Modes — Made Simple', channel: 'Paul Davids', url: 'https://www.youtube.com/watch?v=iBsSHWfnflU' },
+      { title: 'Modes — Explained in a Way That Actually Makes Sense', channel: 'Signals Music Studio', url: 'https://www.youtube.com/watch?v=EerBnVd2Mkk' },
+    ],
+  },
+  {
+    id: 'theory-diatonic-substitution',
+    tree: 'theory',
+    tier: 3,
+    name: 'Diatonic Chord Substitution',
+    description: 'Replace chords with diatonic substitutes that share most of the same notes, adding color without changing harmonic function.',
+    whyItMatters: 'Substitution is how you keep harmony fresh without modulating or borrowing. Knowing that iii can replace I, or vi can replace IV, gives you immediate options for adding sophistication to any progression you play.',
+    prerequisites: ['theory-chord-function', 'theory-diatonic-chords'],
+    exercises: [
+      {
+        name: 'Tonic Family Swaps',
+        description: 'In C major, the tonic family (I, iii, vi) all have similar function. Take a standard I-IV-V-I (C-F-G-C) and substitute tonic chords: replace I with iii (Em) or vi (Am). Try: Em-F-G-Am, then Am-F-G-Em. Play each version and notice the darkness that the vi sub (Am) adds compared to the brightness of the iii sub (Em).',
+      },
+      {
+        name: 'Subdominant Family Swaps',
+        description: 'The subdominant family (ii, IV) are interchangeable in many contexts. Take C-F-G-C and swap iv for ii: C-Dm-G-C. Now try reversing: wherever you have a Dm progression, see if F works instead. Apply this in G major (Am instead of C, or C instead of Am). Both should feel stable but slightly different in character.',
+      },
+      {
+        name: 'Sub a Full Progression',
+        description: 'Start with the I-V-vi-IV in G: G-D-Em-C. Apply substitutions to at least 2 chords: for example, replace G(I) with Bm(iii) and C(IV) with Am(ii). Result: Bm-D-Em-Am. Play both versions and describe the emotional difference in one sentence each. Then create your own substituted version and play it over a simple drum pattern.',
+      },
+      {
+        name: 'Identify Subs in Real Songs',
+        description: 'Listen to "Hotel California" (Eagles). The verse progression (Bm-F#-A-E-G-D-Em-F#) contains both direct diatonic chords and several that feel like substitutes. Map the progression to the key of Bm and identify where each chord falls in the diatonic system. Note any chords that feel like subs for a more expected chord.',
+      },
+    ],
+    tab: null,
+    externalUrl: null,
+    videos: [],
+  },
+  {
+    id: 'theory-harmonic-analysis',
+    tree: 'theory',
+    tier: 3,
+    name: 'Harmonic Analysis',
+    description: 'Analyze complete chord progressions in context, labeling Roman numerals, function, borrowed chords, and secondary dominants.',
+    whyItMatters: 'Analysis turns passive listening into active understanding. When you can look at any chord chart and explain WHY every chord is there, you stop memorizing progressions and start understanding them. This skill compounds — every song you analyze makes the next one faster.',
+    prerequisites: ['theory-chord-function', 'theory-secondary-dominants'],
+    exercises: [
+      {
+        name: 'Four-Step Analysis Protocol',
+        description: 'Develop a repeatable process: (1) Identify the key from the first and last chord and overall sound. (2) Write Roman numerals for each chord. (3) Flag anything non-diatonic and ask: is it a secondary dominant? A borrowed chord? Chromatic passing chord? (4) Label the function (T/SD/D) for each. Apply this to C-Am-F-G, then G-Em-C-D, then Am-F-C-G. Write your analysis for each.',
+      },
+      {
+        name: 'Analyze a Standard',
+        description: 'Take the chord progression to "Blackbird" (Beatles) or "Over the Rainbow." Identify the key. Write Roman numerals for every chord. Flag every chord that is not diatonic and identify its role. Post-analysis: play through the progression again and hear how your analysis matches the emotional arc of the song.',
+      },
+      {
+        name: 'The Non-Diatonic Chord Hunt',
+        description: 'Find 5 songs that use at least one non-diatonic chord. For each, identify: what is the chord, what key is the song in, and how does the chord relate (secondary dominant, borrowed from parallel minor, chromatic passing chord, tritone sub). Listen for how the non-diatonic chord creates surprise and then resolves. Catalog your findings.',
+      },
+      {
+        name: 'Write, Then Analyze Yourself',
+        description: 'Compose an 8-bar progression using only chords that come to you intuitively — do not think theoretically while writing. Then analyze it after. Identify the key, label Roman numerals, and explain every chord choice. This closes the loop between instinct and theory. You will often find that your ear was already doing theory without knowing it.',
+      },
+    ],
+    tab: null,
+    externalUrl: null,
+    videos: [],
   },
   {
     id: 'theory-secondary-dominants',
@@ -313,6 +421,9 @@ export const THEORY_NODES = [
     ],
     tab: null,
     externalUrl: null,
+    videos: [
+      { title: 'Secondary Dominants — How They Work', channel: 'Rick Beato', url: 'https://www.youtube.com/watch?v=N9cX_HywTyc' },
+    ],
   },
   {
     id: 'theory-chord-extensions',
@@ -338,6 +449,9 @@ export const THEORY_NODES = [
     ],
     tab: null,
     externalUrl: null,
+    videos: [
+      { title: 'Extended Chords — 9ths 11ths 13ths Explained', channel: 'Adam Neely', url: 'https://www.youtube.com/watch?v=aLuSVMJGS0o' },
+    ],
   },
   {
     id: 'theory-tritone-sub',
@@ -363,6 +477,9 @@ export const THEORY_NODES = [
     ],
     tab: null,
     externalUrl: null,
+    videos: [
+      { title: 'Tritone Substitution — Jazz Theory Explained', channel: 'Adam Neely', url: 'https://www.youtube.com/watch?v=zLXgm0rEXFQ' },
+    ],
   },
   {
     id: 'theory-minor-scale-types',
@@ -388,6 +505,7 @@ export const THEORY_NODES = [
     ],
     tab: null,
     externalUrl: null,
+    videos: [],
   },
 
   // ============================================================
@@ -421,6 +539,7 @@ export const THEORY_NODES = [
     ],
     tab: null,
     externalUrl: null,
+    videos: [],
   },
   {
     id: 'theory-altered-dominants',
@@ -446,6 +565,7 @@ export const THEORY_NODES = [
     ],
     tab: null,
     externalUrl: null,
+    videos: [],
   },
   {
     id: 'theory-chord-scale-theory',
@@ -471,6 +591,7 @@ export const THEORY_NODES = [
     ],
     tab: null,
     externalUrl: null,
+    videos: [],
   },
   {
     id: 'theory-voice-leading',
@@ -500,6 +621,67 @@ export const THEORY_NODES = [
     ],
     tab: null,
     externalUrl: null,
+    videos: [],
+  },
+  {
+    id: 'theory-minor-key-harmony',
+    tree: 'theory',
+    tier: 4,
+    name: 'Functional Harmony in Minor Keys',
+    description: 'Navigate the three forms of minor scale (natural, harmonic, melodic) to build chords and progressions, including the strong V7 cadence and the Andalusian cadence.',
+    whyItMatters: 'Minor key harmony is messier than major because composers routinely pull from all three minor scales. Understanding which chords come from which minor scale — and why — lets you write minor-key music that sounds intentional rather than random.',
+    prerequisites: ['theory-minor-scale-types', 'theory-secondary-dominants'],
+    exercises: [
+      {
+        name: 'Minor Key Chord Palette',
+        description: 'In A minor, compile all available chords from all three minor scales: natural minor gives Am, Bdim, C, Dm, Em, F, G. Harmonic minor adds E major, G#dim, C(maj7). Melodic minor adds D major (IV), F#dim, B minor (ii). Write all unique chords. You now have roughly 12 chords available. Group them: which come from natural, which from harmonic, which from melodic.',
+      },
+      {
+        name: 'The Andalusian Cadence',
+        description: 'Play Am-G-F-E in A minor. This is one of the most powerful progressions in Western music (flamenco, rock, classical). The E major chord (not Em) is borrowed from harmonic minor — it is the V chord with a raised 7th (G#), creating strong pull back to Am. Practice this at 80 BPM and listen for the tension-release at the E-Am movement. Try it in Dm (Dm-C-Bb-A).',
+      },
+      {
+        name: 'Neapolitan Chord',
+        description: 'The Neapolitan chord (bII, flat-two major) is a borrowed subdominant chord common in minor keys. In A minor, the Neapolitan is Bb major. Play: Am-Dm-Bb-E7-Am. The Bb creates a particularly tense, dramatic sound before the V7 resolution. It is built on the flattened second degree of the minor scale. Find it in Beethoven\'s "Moonlight Sonata" and other classical pieces.',
+      },
+      {
+        name: 'Write a Minor Key Progression',
+        description: 'Compose a 16-bar chord progression in D minor that uses at least: the natural minor iv chord (Gm), the harmonic minor V chord (A major or A7), and one chord from the melodic minor (G major, the bVII is common). Play through it and analyze every chord\'s source. The goal is intentional mixing, not random borrowing.',
+      },
+    ],
+    tab: null,
+    externalUrl: null,
+    videos: [],
+  },
+  {
+    id: 'theory-pedal-point',
+    tree: 'theory',
+    tier: 4,
+    name: 'Pedal Point & Ostinato',
+    description: 'Sustain or repeat a single bass note while harmonies above it change, creating tension through the friction between the fixed bass and moving chords.',
+    whyItMatters: 'Pedal point is one of the oldest compositional devices in music — Bach used it, Hendrix used it ("Machine Gun"), and metal guitarists use it constantly. It creates tension organically because some chords are consonant over the pedal, others clash. That contrast is the engine.',
+    prerequisites: ['theory-chord-function', 'theory-harmonic-analysis'],
+    exercises: [
+      {
+        name: 'Open String Pedal',
+        description: 'Tune to standard tuning. Loop the open E string (low E) as a pedal tone. Over it, play these chords: E5, Dsus2/E, A/E, Cmaj7/E, G/E. Some will be consonant (E5, A/E), some dissonant (Cmaj7/E, G/E). Note which intervals between the pedal and the chord create tension and which create resolution. This is functional tension-by-collision.',
+      },
+      {
+        name: 'Static Bass, Moving Harmony',
+        description: 'Hold the A string open (or at fret 5 on the low E for an A pedal). Above it, play: Am, then Fmaj7/A (F chord with A in bass), then Dm/A, then G/A. Each chord creates a different quality against the A pedal. Practice transitioning between chords while keeping the pedal constant — your picking hand must arpeggiate to sustain the bass note.',
+      },
+      {
+        name: 'Ostinato Pattern',
+        description: 'Write a repeating 2-bar bass riff (ostinato) and put different chord harmonies on top. Example: bass plays A-A-E-E (low E: open, open, fret 7, fret 7) while upper strings play: Am (bar 1) and Dm/F (bar 2, different root over same bass movement). This creates harmonic richness from harmonic rhythm contrast between bass and treble. Develop this into an 8-bar composition.',
+      },
+      {
+        name: 'Identify Pedal Point in Recordings',
+        description: 'Listen for pedal point in: "Machine Gun" by Hendrix (E pedal throughout), the intro to "Stairway to Heaven" (bass note sustaining under moving chords), Bach\'s Toccata and Fugue (organ pedal tone). For each, identify: what is the pedal note, how long does it hold, and which chords create the most tension against it.',
+      },
+    ],
+    tab: null,
+    externalUrl: null,
+    videos: [],
   },
   {
     id: 'theory-negative-harmony',
@@ -525,6 +707,7 @@ export const THEORY_NODES = [
     ],
     tab: null,
     externalUrl: null,
+    videos: [],
   },
 
   // ============================================================
@@ -558,6 +741,7 @@ export const THEORY_NODES = [
     ],
     tab: null,
     externalUrl: null,
+    videos: [],
   },
   {
     id: 'theory-composition-analysis',
@@ -583,6 +767,7 @@ export const THEORY_NODES = [
     ],
     tab: null,
     externalUrl: null,
+    videos: [],
   },
   {
     id: 'theory-polytonality',
@@ -608,6 +793,7 @@ export const THEORY_NODES = [
     ],
     tab: null,
     externalUrl: null,
+    videos: [],
   },
   {
     id: 'theory-advanced-arranging',
@@ -637,6 +823,37 @@ export const THEORY_NODES = [
     ],
     tab: null,
     externalUrl: null,
+    videos: [],
+  },
+  {
+    id: 'theory-coltrane-changes',
+    tree: 'theory',
+    tier: 5,
+    name: 'Coltrane Changes',
+    description: 'Navigate the harmonic substitution system used in "Giant Steps" — three tonal centers a major third apart, cycling through keys in equal intervals.',
+    whyItMatters: 'Coltrane Changes are the Mount Everest of jazz harmony. They divide the octave into three equal parts (major thirds), cycling through three unrelated keys so smoothly that each transition sounds inevitable. Understanding them reshapes how you think about key relationships and dominant resolution.',
+    prerequisites: ['theory-tritone-sub', 'theory-reharmonization'],
+    exercises: [
+      {
+        name: 'The Three-Key Cycle',
+        description: 'Coltrane Changes divide the octave into thirds: Bmaj7 → D7 → Gmaj7 → Bb7 → Ebmaj7 → G7 → Cmaj7. Play through this sequence slowly. Notice: the roots move by major thirds (B → G → Eb), and each major chord is preceded by its V7. The three major-third keys (B, G, Eb) form an augmented triad. Play each chord for 4 beats at 50 BPM.',
+      },
+      {
+        name: 'Play Over a II-V Substituted with Coltrane Changes',
+        description: 'Replace a static Cmaj7 (4 bars) with the Coltrane cycle: Cmaj7 (1 bar) → A7 → Dbmaj7 (1 bar) → Bb7 → Gmaj7 (1 bar) → E7 → Cmaj7 (1 bar). This is the Coltrane reharmonization of a long tonic chord. Play each chord for 1 bar at 60 BPM. Then solo over it using Lydian for major chords and Mixolydian or altered for dominant chords.',
+      },
+      {
+        name: 'Transcribe 8 Bars of Giant Steps',
+        description: 'Get the lead sheet for "Giant Steps" by John Coltrane. Transcribe 8 bars of the melody and analyze every chord: identify each tonal center, label the dominant-to-major resolutions, and notice where Coltrane uses tritone subs within the larger third-cycle. This is advanced theory in action — take it slowly. One chord per day if needed.',
+      },
+      {
+        name: 'Solo Over a Static Chord with Coltrane Approach',
+        description: 'Improvise over a simple G major backing (4 bars). Instead of staying in G Ionian, mentally impose Coltrane changes: treat the first bar as Gmaj (G Lydian), second bar as Eb7 resolution (G altered or Ab melodic minor), third bar as Ebmaj (Eb Lydian), fourth bar as return to G. Play notes that suggest these temporary key areas. This inside/outside movement is what makes this approach distinctly Coltrane.',
+      },
+    ],
+    tab: null,
+    externalUrl: null,
+    videos: [],
   },
   {
     id: 'theory-writing-for-ensemble',
@@ -666,5 +883,6 @@ export const THEORY_NODES = [
     ],
     tab: null,
     externalUrl: null,
+    videos: [],
   },
 ];
