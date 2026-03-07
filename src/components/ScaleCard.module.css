@@ -1,7 +1,7 @@
 .card {
   border: 1px solid var(--border);
   border-radius: var(--radius);
-  padding: 1.25rem;
+  padding: 0;
   background: var(--bg-card);
   transition: border-color 0.2s, box-shadow 0.2s;
 }
@@ -11,11 +11,72 @@
   box-shadow: 0 0 0 1px var(--accent-glow);
 }
 
+.cardExpanded {
+  border-color: var(--accent);
+  box-shadow: 0 0 12px var(--accent-glow);
+}
+
+/* === Collapsed Header (always visible) === */
+.cardHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem 1.25rem;
+  cursor: pointer;
+  user-select: none;
+  gap: 0.75rem;
+}
+
+.headerLeft {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+  min-width: 0;
+}
+
 .name {
-  margin: 0 0 0.5rem;
-  font-size: 1.25rem;
+  margin: 0;
+  font-size: 1.1rem;
   font-weight: 800;
   color: var(--fg);
+  white-space: nowrap;
+}
+
+.moodHint {
+  font-size: 0.8rem;
+  color: var(--fg-dim);
+  font-style: italic;
+}
+
+.tagsInline {
+  display: flex;
+  gap: 4px;
+}
+
+.tagSmall {
+  padding: 2px 8px;
+  font-size: 0.65rem;
+  font-weight: 700;
+  border-radius: 99px;
+  border: 1px solid var(--border);
+  color: var(--fg-dim);
+}
+
+.chevron {
+  font-size: 0.85rem;
+  color: var(--fg-dim);
+  transition: transform 0.2s;
+  flex-shrink: 0;
+}
+
+.chevronOpen {
+  transform: rotate(180deg);
+}
+
+/* === Expanded Body === */
+.body {
+  padding: 0 1.25rem 1.25rem;
 }
 
 .description {
@@ -33,6 +94,39 @@
 
 .detail strong {
   color: var(--fg);
+}
+
+/* === Interval Formula === */
+.intervalFormula {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin: 0.75rem 0;
+  flex-wrap: wrap;
+}
+
+.formulaLabel {
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--fg-muted);
+  margin-right: 2px;
+}
+
+.intervalDot {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 26px;
+  height: 26px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  font-family: var(--font-mono);
+  border-radius: 50%;
+  background: var(--accent-glow);
+  color: var(--accent);
+  border: 1px solid rgba(13, 147, 115, 0.2);
 }
 
 .controls {

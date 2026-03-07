@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import { CHORD_TYPES, OPEN_VOICINGS } from '../data/chords.js';
 import styles from './Chords.module.css';
 
@@ -5,18 +6,14 @@ const STRING_LABELS = ['E', 'A', 'D', 'G', 'B', 'e'];
 const FRET_COUNT = 4;
 
 function ChordDiagram({ name, voicing }) {
-  // voicing is [lowE, A, D, G, B, highE] where null = muted
   const maxFret = Math.max(...voicing.filter((f) => f !== null && f > 0));
   const minFret = Math.min(...voicing.filter((f) => f !== null && f > 0)) || 0;
-
-  // Determine starting fret for the diagram window
   const startFret = maxFret <= FRET_COUNT ? 1 : minFret;
 
   return (
     <div className={styles.diagramWrap}>
       <div className={styles.diagramLabel}>{name}</div>
       <div className={styles.diagram}>
-        {/* Open/muted indicators above strings */}
         <div className={styles.openIndicators}>
           {voicing.map((fret, i) => (
             <div key={i} className={styles.openIndicator}>
@@ -24,8 +21,6 @@ function ChordDiagram({ name, voicing }) {
             </div>
           ))}
         </div>
-
-        {/* Fret grid */}
         <div className={styles.fretGrid}>
           {Array.from({ length: FRET_COUNT }, (_, fretIdx) => {
             const fret = startFret + fretIdx;
@@ -48,7 +43,6 @@ function ChordDiagram({ name, voicing }) {
 function getVoicingsForType(chordTypeId) {
   const results = [];
   for (const [key, voicing] of Object.entries(OPEN_VOICINGS)) {
-    // key format: "C-major", "A-dom7", etc.
     const parts = key.split('-');
     const root = parts[0];
     const typeId = parts.slice(1).join('-');
@@ -59,41 +53,65 @@ function getVoicingsForType(chordTypeId) {
   return results;
 }
 
+function ChordTypeCard({ type }) {
+  const [expanded, setExpanded] = useState(false);
+  const voicings = getVoicingsForType(type.id);
+
+  return (
+    <div className={`${styles.chordTypeCard} ${expanded ? styles.cardExpanded : ''}`}>
+      <div className={styles.cardHeader} onClick={() => setExpanded(!expanded)}>
+        <div className={styles.headerLeft}>
+          <span className={styles.chordTypeName}>{type.name}</span>
+          {type.symbol && (
+            <span className={styles.symbolInline}>X{type.symbol}</span>
+          )}
+          {!expanded && (
+            <span className={styles.formulaInline}>
+              [{type.intervals.join(', ')}]
+            </span>
+          )}
+        </div>
+        <span className={`${styles.chevron} ${expanded ? styles.chevronOpen : ''}`}>&#9662;</span>
+      </div>
+
+      {expanded && (
+        <div className={styles.body}>
+          <div className={styles.chordTypeInfo}>
+            {type.symbol && (
+              <span className={styles.symbol}>X{type.symbol}</span>
+            )}
+            <span className={styles.formula}>
+              [{type.intervals.join(', ')}]
+            </span>
+          </div>
+          <p className={styles.description}>{type.description}</p>
+
+          {voicings.length > 0 && (
+            <div className={styles.voicings}>
+              {voicings.map((v) => (
+                <ChordDiagram
+                  key={v.key}
+                  name={`${v.root}${type.symbol}`}
+                  voicing={v.voicing}
+                />
+              ))}
+            </div>
+          )}
+        </div>
+      )}
+    </div>
+  );
+}
+
 export default function Chords() {
   return (
     <div className={styles.page}>
       <h2 className={styles.heading}>Chords</h2>
 
       <div className={styles.list}>
-        {CHORD_TYPES.map((type) => {
-          const voicings = getVoicingsForType(type.id);
-          return (
-            <div key={type.id} className={styles.chordTypeCard}>
-              <div className={styles.chordTypeName}>{type.name}</div>
-              <div className={styles.chordTypeInfo}>
-                {type.symbol && (
-                  <span className={styles.symbol}>X{type.symbol}</span>
-                )}
-                <span className={styles.formula}>
-                  [{type.intervals.join(', ')}]
-                </span>
-              </div>
-              <p className={styles.description}>{type.description}</p>
-
-              {voicings.length > 0 && (
-                <div className={styles.voicings}>
-                  {voicings.map((v) => (
-                    <ChordDiagram
-                      key={v.key}
-                      name={`${v.root}${type.symbol}`}
-                      voicing={v.voicing}
-                    />
-                  ))}
-                </div>
-              )}
-            </div>
-          );
-        })}
+        {CHORD_TYPES.map((type) => (
+          <ChordTypeCard key={type.id} type={type} />
+        ))}
       </div>
     </div>
   );
