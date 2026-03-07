@@ -1,21 +1,23 @@
 .card {
   border: 1px solid var(--border);
-  border-radius: var(--radius);
-  padding: 1.25rem;
+  border-radius: var(--radius-lg);
+  padding: 1.5rem;
   background: var(--bg-card);
   transition: border-color 0.2s, box-shadow 0.2s;
 }
 
 .card:hover {
-  border-color: var(--fg-dim);
-  box-shadow: 0 0 0 1px var(--accent-glow);
+  border-color: var(--border-hover);
+  box-shadow: var(--shadow-sm);
 }
 
 .name {
   margin: 0 0 0.5rem;
+  font-family: var(--font-display);
   font-size: 1.25rem;
-  font-weight: 700;
+  font-weight: 800;
   color: var(--fg);
+  letter-spacing: -0.01em;
 }
 
 .description {
@@ -33,6 +35,7 @@
 
 .detail strong {
   color: var(--fg);
+  font-weight: 600;
 }
 
 .controls {
@@ -48,7 +51,7 @@
   flex-direction: column;
   gap: 4px;
   font-size: 0.75rem;
-  font-weight: 500;
+  font-weight: 600;
   color: var(--fg-muted);
   text-transform: uppercase;
   letter-spacing: 0.04em;
@@ -84,27 +87,29 @@
 }
 
 .tag {
-  padding: 2px 10px;
+  padding: 3px 10px;
   font-size: 0.7rem;
   border-radius: 99px;
   border: 1px solid var(--border);
   background: transparent;
   color: var(--fg-muted);
+  font-weight: 500;
 }
 
 .practiceBtn {
   margin-top: 1rem;
-  padding: 8px 20px;
+  padding: 9px 22px;
   border: none;
   border-radius: var(--radius);
   background: var(--accent);
   color: #0a0a0a;
-  font-size: 0.9rem;
+  font-size: 0.88rem;
   font-weight: 700;
   cursor: pointer;
-  transition: background 0.15s;
+  transition: background 0.15s, transform 0.1s;
 }
 
 .practiceBtn:hover {
   background: var(--accent-hover);
+  transform: translateY(-1px);
 }

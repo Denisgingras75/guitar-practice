@@ -5,32 +5,36 @@ import styles from './Home.module.css';
 const sections = [
   {
     title: 'Practice',
+    colorVar: '--section-practice',
     items: [
-      { to: '/skills', name: 'Skill Trees', desc: '6 trees from foundation to mastery — track your progress' },
-      { to: '/practice', name: 'Routines', desc: 'Structured sessions, beginner to advanced' },
+      { to: '/skills', name: 'Skill Trees', desc: '6 trees from foundation to mastery', icon: '\uD83C\uDFAF' },
+      { to: '/practice', name: 'Routines', desc: 'Structured sessions by level', icon: '\uD83D\uDCCB' },
     ],
   },
   {
     title: 'Learn',
+    colorVar: '--section-learn',
     items: [
-      { to: '/scales', name: 'Scales', desc: '25+ scales with fretboard diagrams in any key' },
-      { to: '/modes', name: 'Modes', desc: 'All 7 modes — moods, chord fits, characteristic notes' },
-      { to: '/chords', name: 'Chords', desc: 'Open, barre, 7ths, extensions, voicing diagrams' },
-      { to: '/techniques', name: 'Techniques', desc: 'Bending, vibrato, legato, tapping, picking' },
+      { to: '/scales', name: 'Scales', desc: '25+ scales with fretboard diagrams', icon: '\uD83C\uDFB5' },
+      { to: '/modes', name: 'Modes', desc: '7 modes with moods & chord fits', icon: '\uD83C\uDF1F' },
+      { to: '/chords', name: 'Chords', desc: 'Open, barre, 7ths, extensions', icon: '\u270A' },
+      { to: '/techniques', name: 'Techniques', desc: 'Bending, legato, tapping, picking', icon: '\u26A1' },
     ],
   },
   {
     title: 'Songs',
+    colorVar: '--section-songs',
     items: [
-      { to: '/charts', name: 'Song Charts', desc: 'Nashville-style chord charts — browse or build your own' },
-      { to: '/guitarists', name: 'Artists', desc: 'Study Hendrix, Page, Santana, Sturgill, Rick M' },
+      { to: '/charts', name: 'Song Charts', desc: 'Nashville charts + YouTube lessons', icon: '\uD83C\uDFB6' },
+      { to: '/guitarists', name: 'Artists', desc: 'Study the greats & their techniques', icon: '\uD83C\uDFB8' },
     ],
   },
   {
     title: 'Tools',
+    colorVar: '--section-tools',
     items: [
-      { to: '/tuner', name: 'Tuner', desc: 'Chromatic tuner — mic-based pitch detection' },
-      { to: '/metronome', name: 'Metronome', desc: 'Tap tempo, subdivisions, accent — Web Audio click track' },
+      { to: '/tuner', name: 'Tuner', desc: 'Chromatic mic-based pitch detection', icon: '\uD83C\uDFA4' },
+      { to: '/metronome', name: 'Metronome', desc: 'Tap tempo, subdivisions, accents', icon: '\u23F1\uFE0F' },
     ],
   },
 ];
@@ -55,12 +59,20 @@ export default function Home() {
 
       {sections.map((section) => (
         <div key={section.title} className={styles.section}>
-          <h2 className={styles.sectionTitle}>{section.title}</h2>
+          <h2 className={styles.sectionTitle} style={{ color: `var(${section.colorVar})` }}>{section.title}</h2>
           <div className={styles.grid}>
             {section.items.map((item) => (
-              <Link key={item.to} to={item.to} className={styles.categoryCard}>
-                <div className={styles.categoryName}>{item.name}</div>
-                <div className={styles.categoryDesc}>{item.desc}</div>
+              <Link
+                key={item.to}
+                to={item.to}
+                className={styles.categoryCard}
+                style={{ borderLeftColor: `var(${section.colorVar})` }}
+              >
+                <span className={styles.categoryIcon}>{item.icon}</span>
+                <div className={styles.categoryText}>
+                  <div className={styles.categoryName}>{item.name}</div>
+                  <div className={styles.categoryDesc}>{item.desc}</div>
+                </div>
               </Link>
             ))}
           </div>
@@ -68,8 +80,8 @@ export default function Home() {
       ))}
 
       {recent.length > 0 && (
-        <>
-          <h2 className={styles.heading}>Recent Sessions</h2>
+        <div className={styles.recentSection}>
+          <h2 className={styles.sectionTitle} style={{ color: 'var(--fg-dim)' }}>Recent Sessions</h2>
           <ul className={styles.recentList}>
             {[...recent]
               .reverse()
@@ -84,7 +96,7 @@ export default function Home() {
                 </li>
               ))}
           </ul>
-        </>
+        </div>
       )}
     </div>
   );

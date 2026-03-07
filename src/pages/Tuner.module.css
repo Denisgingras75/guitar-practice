@@ -4,16 +4,18 @@
 }
 
 .heading {
+  font-family: var(--font-display);
   font-size: 1.5rem;
-  font-weight: 700;
+  font-weight: 800;
   color: var(--fg);
-  margin-bottom: 1rem;
+  margin-bottom: 1.25rem;
+  letter-spacing: -0.02em;
 }
 
 .error {
   padding: 0.75rem 1rem;
-  background: rgba(239, 68, 68, 0.1);
-  border: 1px solid rgba(239, 68, 68, 0.3);
+  background: rgba(239, 68, 68, 0.08);
+  border: 1px solid rgba(239, 68, 68, 0.25);
   border-radius: var(--radius);
   color: #ef4444;
   font-size: 0.85rem;
@@ -22,10 +24,10 @@
 
 /* === Tuner Card === */
 .tunerCard {
-  padding: 2rem 1.5rem;
+  padding: 2.5rem 1.5rem;
   background: var(--bg-card);
   border: 1px solid var(--border);
-  border-radius: var(--radius);
+  border-radius: var(--radius-lg);
   text-align: center;
   margin-bottom: 1.5rem;
 }
@@ -36,6 +38,7 @@
 }
 
 .noteName {
+  font-family: var(--font-display);
   font-size: 5rem;
   font-weight: 800;
   color: var(--fg);
@@ -52,6 +55,7 @@
 }
 
 .notePlaceholder {
+  font-family: var(--font-display);
   font-size: 5rem;
   font-weight: 800;
   color: var(--fg-dim);
@@ -108,6 +112,7 @@
 
 /* === Readouts === */
 .centsText {
+  font-family: var(--font-display);
   font-size: 1.1rem;
   font-weight: 700;
   font-variant-numeric: tabular-nums;
@@ -154,7 +159,7 @@
 }
 
 .subHeading {
-  font-size: 0.85rem;
+  font-size: 0.8rem;
   font-weight: 700;
   color: var(--fg);
   text-transform: uppercase;
@@ -187,10 +192,11 @@
 
 .stringActive {
   border-color: var(--accent);
-  box-shadow: 0 0 12px var(--accent-glow);
+  box-shadow: var(--shadow-glow);
 }
 
 .stringName {
+  font-family: var(--font-display);
   font-size: 1.5rem;
   font-weight: 800;
   color: var(--fg);
@@ -219,10 +225,10 @@
 
 /* === Tips === */
 .tips {
-  padding: 1rem 1.25rem;
+  padding: 1.25rem;
   background: var(--bg-card);
   border: 1px solid var(--border);
-  border-radius: var(--radius);
+  border-radius: var(--radius-lg);
 }
 
 .tips ul {

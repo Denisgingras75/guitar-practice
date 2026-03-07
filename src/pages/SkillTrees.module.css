@@ -12,9 +12,11 @@
 }
 
 .heading {
+  font-family: var(--font-display);
   font-size: 1.5rem;
-  font-weight: 700;
+  font-weight: 800;
   color: var(--fg);
+  letter-spacing: -0.02em;
 }
 
 .overallStats {
@@ -24,6 +26,7 @@
 }
 
 .overallPercent {
+  font-family: var(--font-display);
   font-size: 1.5rem;
   font-weight: 800;
   color: var(--accent);
@@ -54,7 +57,7 @@
 
 .progressFill {
   height: 100%;
-  background: var(--accent);
+  background: linear-gradient(90deg, var(--accent), var(--accent-hover));
   border-radius: 4px;
   transition: width 0.3s ease;
 }
@@ -77,13 +80,14 @@
 .treeCard {
   background: var(--bg-card);
   border: 1px solid var(--border);
-  border-radius: var(--radius);
+  border-radius: var(--radius-lg);
   overflow: hidden;
-  transition: border-color 0.2s;
+  transition: border-color 0.2s, box-shadow 0.2s;
 }
 
 .treeCard:hover {
-  border-color: var(--fg-dim);
+  border-color: var(--border-hover);
+  box-shadow: var(--shadow-sm);
 }
 
 .treeToggle {
@@ -92,7 +96,7 @@
   width: 100%;
   background: none;
   border: none;
-  padding: 1rem 1.25rem;
+  padding: 1.25rem 1.5rem;
   cursor: pointer;
   color: var(--fg);
   text-align: left;
@@ -113,8 +117,9 @@
 }
 
 .treeName {
+  font-family: var(--font-display);
   font-size: 1.1rem;
-  font-weight: 700;
+  font-weight: 800;
   color: var(--fg);
 }
 
@@ -131,8 +136,9 @@
 }
 
 .treePercent {
+  font-family: var(--font-display);
   font-size: 1rem;
-  font-weight: 700;
+  font-weight: 800;
   color: var(--accent);
   font-variant-numeric: tabular-nums;
 }
@@ -160,7 +166,7 @@
 
 /* === Tiers === */
 .tiers {
-  padding: 0 1.25rem 1.25rem;
+  padding: 0 1.5rem 1.5rem;
   border-top: 1px solid var(--border);
 }
 
@@ -176,7 +182,7 @@
 }
 
 .tierName {
-  font-size: 0.8rem;
+  font-size: 0.78rem;
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.04em;
@@ -202,7 +208,7 @@
   align-items: center;
   gap: 0.5rem;
   width: 100%;
-  padding: 0.6rem 0.75rem;
+  padding: 0.65rem 0.85rem;
   background: var(--bg);
   border: 1px solid var(--border);
   border-radius: var(--radius-sm);
@@ -213,7 +219,7 @@
 }
 
 .nodeCard:hover {
-  border-color: var(--fg-dim);
+  border-color: var(--border-hover);
 }
 
 .nodeCompleted {
@@ -237,7 +243,7 @@
 }
 
 .nodeLocked {
-  opacity: 0.5;
+  opacity: 0.45;
   border-left: 3px solid var(--border);
 }
 
