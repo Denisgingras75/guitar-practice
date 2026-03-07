@@ -4,8 +4,10 @@
 }
 
 .heading {
-  font-size: 1.6rem;
-  font-weight: 900;
+  font-family: var(--font-heading);
+  font-size: 1.8rem;
+  font-weight: 700;
+  letter-spacing: -0.03em;
   color: var(--fg);
   margin-bottom: 1rem;
 }
@@ -36,8 +38,9 @@
 }
 
 .noteName {
+  font-family: var(--font-heading);
   font-size: 5rem;
-  font-weight: 900;
+  font-weight: 700;
   color: var(--fg);
   line-height: 1;
   letter-spacing: -0.03em;
