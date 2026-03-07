@@ -5,7 +5,6 @@ import styles from './Home.module.css';
 const sections = [
   {
     title: 'Practice',
-    icon: '\u{1F3AF}',
     items: [
       { to: '/skills', name: 'Skill Trees', desc: '6 trees from foundation to mastery — track your progress' },
       { to: '/practice', name: 'Routines', desc: 'Structured sessions, beginner to advanced' },
@@ -13,7 +12,6 @@ const sections = [
   },
   {
     title: 'Learn',
-    icon: '\u{1F4D6}',
     items: [
       { to: '/scales', name: 'Scales', desc: '25+ scales with fretboard diagrams in any key' },
       { to: '/modes', name: 'Modes', desc: 'All 7 modes — moods, chord fits, characteristic notes' },
@@ -23,7 +21,6 @@ const sections = [
   },
   {
     title: 'Songs',
-    icon: '\u{1F3B5}',
     items: [
       { to: '/charts', name: 'Song Charts', desc: 'Nashville-style chord charts — browse or build your own' },
       { to: '/guitarists', name: 'Artists', desc: 'Study Hendrix, Page, Santana, Sturgill, Rick M' },
@@ -31,7 +28,6 @@ const sections = [
   },
   {
     title: 'Tools',
-    icon: '\u{1F527}',
     items: [
       { to: '/tuner', name: 'Tuner', desc: 'Chromatic tuner — mic-based pitch detection' },
       { to: '/metronome', name: 'Metronome', desc: 'Tap tempo, subdivisions, accent — Web Audio click track' },
@@ -59,10 +55,7 @@ export default function Home() {
 
       {sections.map((section) => (
         <div key={section.title} className={styles.section}>
-          <h2 className={styles.sectionTitle}>
-            <span className={styles.sectionIcon}>{section.icon}</span>
-            {section.title}
-          </h2>
+          <h2 className={styles.sectionTitle}>{section.title}</h2>
           <div className={styles.grid}>
             {section.items.map((item) => (
               <Link key={item.to} to={item.to} className={styles.categoryCard}>

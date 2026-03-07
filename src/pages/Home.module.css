@@ -46,21 +46,15 @@
 }
 
 .sectionTitle {
-  display: flex;
-  align-items: center;
-  gap: 0.4rem;
   font-size: 0.75rem;
-  font-weight: 800;
+  font-weight: 900;
   text-transform: uppercase;
-  letter-spacing: 0.08em;
-  color: var(--accent);
+  letter-spacing: 0.1em;
+  color: var(--fg);
   margin-bottom: 0.6rem;
-  padding-left: 1px;
-}
-
-.sectionIcon {
-  font-size: 0.85rem;
-  line-height: 1;
+  padding-left: 2px;
+  border-left: 3px solid var(--accent);
+  padding-left: 8px;
 }
 
 .heading {

@@ -5,7 +5,6 @@ import styles from './CategoryNav.module.css';
 const groups = [
   {
     label: 'Practice',
-    icon: '\u{1F3AF}',
     links: [
       { to: '/practice', label: 'Routines' },
       { to: '/skills', label: 'Skill Trees' },
@@ -13,7 +12,6 @@ const groups = [
   },
   {
     label: 'Learn',
-    icon: '\u{1F4D6}',
     links: [
       { to: '/scales', label: 'Scales' },
       { to: '/modes', label: 'Modes' },
@@ -23,7 +21,6 @@ const groups = [
   },
   {
     label: 'Songs',
-    icon: '\u{1F3B5}',
     links: [
       { to: '/charts', label: 'Charts' },
       { to: '/guitarists', label: 'Artists' },
@@ -31,7 +28,6 @@ const groups = [
   },
   {
     label: 'Tools',
-    icon: '\u{1F527}',
     links: [
       { to: '/tuner', label: 'Tuner' },
       { to: '/metronome', label: 'Metronome' },
@@ -77,7 +73,6 @@ export default function CategoryNav() {
               className={`${styles.groupBtn} ${active ? styles.groupActive : ''}`}
               onClick={() => toggleGroup(group.label)}
             >
-              <span className={styles.icon}>{group.icon}</span>
               {group.label}
               <span className={styles.arrow}>{isOpen ? '\u25B4' : '\u25BE'}</span>
             </button>
