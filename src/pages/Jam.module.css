@@ -397,6 +397,39 @@
   flex-shrink: 0;
 }
 
+/* === UG Detection Banner === */
+.ugBanner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 0.75rem 1rem;
+  background: rgba(251, 191, 36, 0.08);
+  border: 1px solid rgba(251, 191, 36, 0.3);
+  border-radius: var(--radius);
+  margin-bottom: 1rem;
+  font-size: 0.85rem;
+  color: #fbbf24;
+  font-weight: 600;
+}
+
+.convertBtn {
+  padding: 6px 16px;
+  border: none;
+  border-radius: var(--radius);
+  background: #fbbf24;
+  color: #1a1a1a;
+  font-size: 0.8rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background 0.15s;
+  flex-shrink: 0;
+}
+
+.convertBtn:hover {
+  background: #f59e0b;
+}
+
 /* === Paste === */
 .pasteHint {
   font-size: 0.8rem;

@@ -2,6 +2,7 @@ import { useState, useMemo } from 'react';
 import { STARTER_CHARTS } from '../data/charts.js';
 import { useLocalStorage } from '../hooks/useLocalStorage.js';
 import { parseChart } from '../utils/chartParser.js';
+import { looksLikeUG, convertUGToNashville } from '../utils/ugParser.js';
 import ChartRenderer from '../components/ChartRenderer.jsx';
 import styles from './Jam.module.css';
 
@@ -268,6 +269,18 @@ export default function Jam() {
 
   // === PASTE VIEW ===
   if (view === 'paste') {
+    const isUG = looksLikeUG(pasteText);
+
+    const handleConvertUG = () => {
+      const converted = convertUGToNashville(pasteText);
+      if (converted) {
+        setPasteText(converted);
+      }
+    };
+
+    // For preview: if text looks like Nashville already, show it; otherwise show nothing until converted
+    const previewText = pasteText.trim() && !isUG ? pasteText : '';
+
     return (
       <div className={styles.page}>
         <div className={styles.viewHeader}>
@@ -281,8 +294,17 @@ export default function Jam() {
 
         <h2 className={styles.heading}>Paste Chord Chart</h2>
         <p className={styles.pasteHint}>
-          Use Nashville syntax: @title, @key, [A] Section, | chords |
+          Paste from Ultimate Guitar or use Nashville syntax (@title, @key, | chords |)
         </p>
+
+        {isUG && (
+          <div className={styles.ugBanner}>
+            <span>Detected Ultimate Guitar format</span>
+            <button className={styles.convertBtn} onClick={handleConvertUG}>
+              Convert to Chart
+            </button>
+          </div>
+        )}
 
         <div className={styles.pasteLayout}>
           <textarea
@@ -290,11 +312,11 @@ export default function Jam() {
             value={pasteText}
             onChange={(e) => setPasteText(e.target.value)}
             spellCheck={false}
-            placeholder={`@title Song Name\n@key G\n@tempo 120\n@feel Rock\n\n[A] Verse\n| G | C | D | Em |\n\n[B] Chorus\n| C | D | G | G |\n\n@structure A A B A B`}
+            placeholder={`Paste from Ultimate Guitar:\n\n[Verse]\nG          C          D\nSome lyrics here...\nEm         C          G\nMore lyrics here...\n\n[Chorus]\nC    D    G    Em\n...\n\n— or Nashville syntax —\n\n@title Song Name\n@key G\n\n[A] Verse\n| G | C | D | Em |\n\n@structure A A B A B`}
           />
-          {pasteText.trim() && (
+          {previewText && (
             <div className={styles.pastePreview}>
-              <ChartRenderer text={pasteText} />
+              <ChartRenderer text={previewText} />
             </div>
           )}
         </div>
