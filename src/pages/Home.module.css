@@ -3,6 +3,49 @@
   margin: 0 auto;
 }
 
+.heroCard {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1.25rem 1.25rem;
+  background: var(--accent);
+  border-radius: var(--radius);
+  text-decoration: none;
+  color: #fafafa;
+  margin-bottom: 1.5rem;
+  transition: transform 0.15s, box-shadow 0.15s;
+}
+
+.heroCard:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 24px rgba(0, 0, 0, 0.15);
+}
+
+.heroContent {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.heroTitle {
+  font-size: 1.3rem;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+}
+
+.heroDesc {
+  font-size: 0.8rem;
+  opacity: 0.85;
+  font-weight: 500;
+}
+
+.heroArrow {
+  font-size: 1.5rem;
+  font-weight: 700;
+  opacity: 0.7;
+  flex-shrink: 0;
+}
+
 .stats {
   display: flex;
   gap: 1rem;

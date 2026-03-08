@@ -4,6 +4,13 @@ import styles from './Home.module.css';
 
 const sections = [
   {
+    title: 'Songs',
+    items: [
+      { to: '/charts', name: 'Song Charts', desc: 'Nashville-style chord charts — browse or build your own' },
+      { to: '/guitarists', name: 'Artists', desc: 'Study Hendrix, Page, Santana, Sturgill, Rick M' },
+    ],
+  },
+  {
     title: 'Practice',
     items: [
       { to: '/skills', name: 'Skill Trees', desc: '6 trees from foundation to mastery — track your progress' },
@@ -17,13 +24,6 @@ const sections = [
       { to: '/modes', name: 'Modes', desc: 'All 7 modes — moods, chord fits, characteristic notes' },
       { to: '/chords', name: 'Chords', desc: 'Open, barre, 7ths, extensions, voicing diagrams' },
       { to: '/techniques', name: 'Techniques', desc: 'Bending, vibrato, legato, tapping, picking' },
-    ],
-  },
-  {
-    title: 'Songs',
-    items: [
-      { to: '/charts', name: 'Song Charts', desc: 'Nashville-style chord charts — browse or build your own' },
-      { to: '/guitarists', name: 'Artists', desc: 'Study Hendrix, Page, Santana, Sturgill, Rick M' },
     ],
   },
   {
@@ -42,6 +42,14 @@ export default function Home() {
 
   return (
     <div className={styles.page}>
+      <Link to="/jam" className={styles.heroCard}>
+        <div className={styles.heroContent}>
+          <div className={styles.heroTitle}>Jam</div>
+          <div className={styles.heroDesc}>Your repertoire — songs, tabs, and resources all in one place</div>
+        </div>
+        <span className={styles.heroArrow}>&rarr;</span>
+      </Link>
+
       <div className={styles.stats}>
         <div className={styles.statCard}>
           <span className={styles.statValue}>{totalMin}</span>
