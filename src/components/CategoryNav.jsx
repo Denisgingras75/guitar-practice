@@ -4,6 +4,14 @@ import styles from './CategoryNav.module.css';
 
 const groups = [
   {
+    label: 'Songs',
+    links: [
+      { to: '/jam', label: 'Jam' },
+      { to: '/charts', label: 'Charts' },
+      { to: '/guitarists', label: 'Artists' },
+    ],
+  },
+  {
     label: 'Practice',
     links: [
       { to: '/practice', label: 'Routines' },
@@ -17,14 +25,6 @@ const groups = [
       { to: '/modes', label: 'Modes' },
       { to: '/chords', label: 'Chords' },
       { to: '/techniques', label: 'Techniques' },
-    ],
-  },
-  {
-    label: 'Songs',
-    links: [
-      { to: '/jam', label: 'Jam' },
-      { to: '/charts', label: 'Charts' },
-      { to: '/guitarists', label: 'Artists' },
     ],
   },
   {

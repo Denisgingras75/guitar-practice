@@ -1,37 +1,17 @@
 import { useState, useMemo } from 'react';
 import { STARTER_CHARTS } from '../data/charts.js';
 import { useLocalStorage } from '../hooks/useLocalStorage.js';
-import { parseChart } from '../utils/chartParser.js';
 import { looksLikeUG, convertUGToNashville } from '../utils/ugParser.js';
 import ChartRenderer from '../components/ChartRenderer.jsx';
-import VideoEmbed from '../components/VideoEmbed.jsx';
 import styles from './Jam.module.css';
 
-const BUCKETS = [
-  { key: 'want', label: 'Want to Know' },
-  { key: 'working', label: 'Working On' },
-  { key: 'know', label: 'Know' },
+const TABS = [
+  { key: 'songs', label: 'Songs' },
+  { key: 'bySong', label: 'Tabs by Song' },
+  { key: 'byArtist', label: 'Tabs by Artist' },
+  { key: 'denis', label: 'Denis Tabs' },
+  { key: 'resources', label: 'Resources' },
 ];
-
-const BUCKET_MOVES = {
-  want: [
-    { target: 'working', label: 'Start Learning' },
-  ],
-  working: [
-    { target: 'know', label: 'I Know This' },
-    { target: 'want', label: 'Back to Wishlist' },
-  ],
-  know: [
-    { target: 'working', label: 'Need Practice' },
-  ],
-};
-
-const VERSION_TYPES = ['Chord Chart', 'Tab', 'Simplified', 'Alternate Tuning', 'Custom'];
-
-function youtubeSearchUrl(title, artist) {
-  const q = encodeURIComponent(`${title} ${artist} guitar lesson`.trim());
-  return `https://www.youtube.com/results?search_query=${q}`;
-}
 
 function extractMeta(text) {
   const titleMatch = text.match(/@title\s+(.+)/);
@@ -44,19 +24,28 @@ function extractMeta(text) {
   };
 }
 
-// Get versions array from a song, handling legacy format
 function getVersions(song) {
   if (song.versions && song.versions.length > 0) return song.versions;
   return [{ id: 'v-default', label: 'Chord Chart', text: song.text }];
 }
 
+function youtubeSearchUrl(q) {
+  return `https://www.youtube.com/results?search_query=${encodeURIComponent(q)}`;
+}
+
+function ugSearchUrl(q) {
+  return `https://www.ultimate-guitar.com/search.php?search_type=title&value=${encodeURIComponent(q)}`;
+}
+
 export default function Jam() {
   const [jamSongs, setJamSongs] = useLocalStorage('jam-songs', []);
+  const [activeTab, setActiveTab] = useState('songs');
   const [view, setView] = useState('list'); // list | chart | add | paste
   const [activeSong, setActiveSong] = useState(null);
   const [search, setSearch] = useState('');
   const [addSearch, setAddSearch] = useState('');
   const [pasteText, setPasteText] = useState('');
+  const [resourceSearch, setResourceSearch] = useState('');
 
   // Version & edit state
   const [activeVersionIdx, setActiveVersionIdx] = useState(0);
@@ -94,7 +83,6 @@ export default function Jam() {
       s.id === songId ? { ...s, ...updates } : s
     );
     setJamSongs(updated);
-    // Keep activeSong in sync
     if (activeSong && activeSong.id === songId) {
       setActiveSong({ ...activeSong, ...updates });
     }
@@ -111,8 +99,7 @@ export default function Jam() {
       level: chart.level || '',
       text: chart.text,
       versions: [{ id: 'v-' + Date.now(), label: 'Chord Chart', text: chart.text }],
-      videos: chart.videos || [],
-      bucket: 'want',
+      source: 'library',
       addedAt: Date.now(),
     };
     setJamSongs([...jamSongs, song]);
@@ -123,24 +110,21 @@ export default function Jam() {
     if (!trimmed) return;
     const meta = extractMeta(trimmed);
     const song = {
-      id: 'jam-' + Date.now(),
+      id: 'denis-' + Date.now(),
       title: meta.title,
       artist: meta.artist,
       key: meta.key,
       genre: '',
+      level: '',
       text: trimmed,
       versions: [{ id: 'v-' + Date.now(), label: 'Chord Chart', text: trimmed }],
-      videos: [],
-      bucket: 'want',
+      source: 'denis',
       addedAt: Date.now(),
     };
     setJamSongs([...jamSongs, song]);
     setPasteText('');
     setView('list');
-  };
-
-  const moveSong = (songId, newBucket) => {
-    updateSong(songId, { bucket: newBucket });
+    setActiveTab('denis');
   };
 
   const removeSong = (songId) => {
@@ -159,6 +143,13 @@ export default function Jam() {
     setView('chart');
   };
 
+  const goBack = () => {
+    setView('list');
+    setActiveSong(null);
+    setEditing(false);
+    setAddingVersion(false);
+  };
+
   // ── Edit handlers ───────────────────────────────────────────────────────
 
   const startEditing = (versionText) => {
@@ -170,7 +161,6 @@ export default function Jam() {
     if (!activeSong) return;
     const versions = [...getVersions(activeSong)];
     versions[activeVersionIdx] = { ...versions[activeVersionIdx], text: editText };
-    // Update text to first version for backwards compat
     const newText = versions[0].text;
     const meta = extractMeta(newText);
     updateSong(activeSong.id, {
@@ -178,6 +168,7 @@ export default function Jam() {
       text: newText,
       title: meta.title || activeSong.title,
       key: meta.key || activeSong.key,
+      artist: meta.artist || activeSong.artist,
     });
     setEditing(false);
   };
@@ -188,6 +179,8 @@ export default function Jam() {
   };
 
   // ── Version handlers ────────────────────────────────────────────────────
+
+  const VERSION_TYPES = ['Chord Chart', 'Tab', 'Simplified', 'Alternate Tuning', 'Custom'];
 
   const startAddVersion = () => {
     setNewVersionLabel('Chord Chart');
@@ -218,38 +211,64 @@ export default function Jam() {
   const deleteVersion = (idx) => {
     if (!activeSong) return;
     const versions = [...getVersions(activeSong)];
-    if (versions.length <= 1) return; // Can't delete the only version
+    if (versions.length <= 1) return;
     versions.splice(idx, 1);
     const newIdx = Math.min(activeVersionIdx, versions.length - 1);
     updateSong(activeSong.id, { versions, text: versions[0].text });
     setActiveVersionIdx(newIdx);
   };
 
-  const handlePrint = () => {
-    window.print();
+  const handlePrint = () => window.print();
+
+  // ── Filtered / grouped data ─────────────────────────────────────────────
+
+  const q = search.toLowerCase();
+
+  const matchesSearch = (song) => {
+    if (!q) return true;
+    return (
+      song.title.toLowerCase().includes(q) ||
+      (song.artist || '').toLowerCase().includes(q) ||
+      (song.key || '').toLowerCase().includes(q)
+    );
   };
 
-  // Filter songs by search
-  const filteredBuckets = useMemo(() => {
-    const q = search.toLowerCase();
-    const result = {};
-    for (const b of BUCKETS) {
-      result[b.key] = jamSongs.filter((s) => {
-        if (s.bucket !== b.key) return false;
-        if (!q) return true;
-        return (
-          s.title.toLowerCase().includes(q) ||
-          s.artist.toLowerCase().includes(q) ||
-          s.key.toLowerCase().includes(q)
-        );
-      });
+  // All songs in jam, filtered
+  const allSongs = useMemo(
+    () => jamSongs.filter(matchesSearch),
+    [jamSongs, q]
+  );
+
+  // Denis tabs only
+  const denisTabs = useMemo(
+    () => jamSongs.filter((s) => s.source === 'denis').filter(matchesSearch),
+    [jamSongs, q]
+  );
+
+  // Group by song title
+  const bySong = useMemo(() => {
+    const groups = {};
+    for (const s of allSongs) {
+      const key = s.title || 'Untitled';
+      if (!groups[key]) groups[key] = [];
+      groups[key].push(s);
     }
-    return result;
-  }, [jamSongs, search]);
+    return Object.entries(groups).sort(([a], [b]) => a.localeCompare(b));
+  }, [allSongs]);
+
+  // Group by artist
+  const byArtist = useMemo(() => {
+    const groups = {};
+    for (const s of allSongs) {
+      const key = s.artist || 'Unknown';
+      if (!groups[key]) groups[key] = [];
+      groups[key].push(s);
+    }
+    return Object.entries(groups).sort(([a], [b]) => a.localeCompare(b));
+  }, [allSongs]);
 
   // === CHART VIEW ===
   if (view === 'chart' && activeSong) {
-    const moves = BUCKET_MOVES[activeSong.bucket] || [];
     const versions = getVersions(activeSong);
     const safeIdx = Math.min(activeVersionIdx, versions.length - 1);
     const currentVersion = versions[safeIdx];
@@ -356,8 +375,8 @@ export default function Jam() {
     return (
       <div className={styles.page}>
         <div className={styles.viewHeader}>
-          <button className={styles.backBtn} onClick={() => setView('list')}>
-            &larr; Jam
+          <button className={styles.backBtn} onClick={goBack}>
+            &larr; Back
           </button>
           <div className={styles.viewActions}>
             <button
@@ -385,77 +404,63 @@ export default function Jam() {
           {activeSong.key && (
             <span className={styles.songKey}>Key of {activeSong.key}</span>
           )}
-          <span className={styles.bucketLabel}>
-            {BUCKETS.find((b) => b.key === activeSong.bucket).label}
-          </span>
+          {activeSong.level && (
+            <span className={`${styles.levelBadge} ${styles['level' + activeSong.level.charAt(0).toUpperCase() + activeSong.level.slice(1)]}`}>
+              {activeSong.level}
+            </span>
+          )}
         </div>
 
-        {moves.length > 0 && (
-          <div className={styles.moveActions}>
-            {moves.map((m) => (
+        {/* Version tabs */}
+        {versions.length > 1 && (
+          <div className={styles.versionTabs}>
+            {versions.map((v, i) => (
               <button
-                key={m.target}
-                className={styles.moveBtn}
-                onClick={() => {
-                  moveSong(activeSong.id, m.target);
-                }}
+                key={v.id}
+                className={`${styles.versionTab} ${i === safeIdx ? styles.versionTabActive : ''}`}
+                onClick={() => setActiveVersionIdx(i)}
               >
-                {m.label}
+                {v.label || 'Version ' + (i + 1)}
               </button>
             ))}
           </div>
         )}
 
-        {/* Version tabs */}
-        <div className={styles.versionTabs}>
-          {versions.map((v, i) => (
-            <button
-              key={v.id}
-              className={`${styles.versionTab} ${i === safeIdx ? styles.versionTabActive : ''}`}
-              onClick={() => setActiveVersionIdx(i)}
-            >
-              {v.label || 'Version ' + (i + 1)}
-            </button>
-          ))}
-          <button className={styles.addVersionBtn} onClick={startAddVersion}>
-            +
+        <div className={styles.chartActions}>
+          <button className={styles.addVersionSmBtn} onClick={startAddVersion}>
+            + Add Version
           </button>
-        </div>
-
-        {/* Version actions */}
-        {versions.length > 1 && (
-          <div className={styles.versionActions}>
+          {versions.length > 1 && (
             <button
               className={styles.deleteVersionBtn}
               onClick={() => deleteVersion(safeIdx)}
             >
               Delete this version
             </button>
-          </div>
-        )}
+          )}
+        </div>
 
         <div className={styles.printArea}>
           <ChartRenderer text={currentVersion.text} />
         </div>
 
-        {/* YouTube & Videos */}
-        <div className={styles.videoSection}>
+        <div className={styles.chartFooter}>
           <a
-            href={youtubeSearchUrl(activeSong.title, activeSong.artist)}
+            href={youtubeSearchUrl(`${activeSong.title} ${activeSong.artist} guitar lesson`)}
             target="_blank"
             rel="noopener noreferrer"
-            className={styles.ytSearchLink}
+            className={styles.resourceLink}
           >
-            Find Lessons on YouTube &rarr;
+            YouTube Lessons &rarr;
           </a>
-
-          {activeSong.videos && activeSong.videos.length > 0 && (
-            <div className={styles.videoList}>
-              {activeSong.videos.map((v, i) => (
-                <VideoEmbed key={i} video={v} />
-              ))}
-            </div>
-          )}
+          <a
+            href={ugSearchUrl(`${activeSong.title} ${activeSong.artist}`)}
+            target="_blank"
+            rel="noopener noreferrer"
+            className={styles.resourceLink}
+          >
+            Ultimate Guitar &rarr;
+          </a>
         </div>
       </div>
     );
@@ -466,7 +471,7 @@ export default function Jam() {
     return (
       <div className={styles.page}>
         <div className={styles.viewHeader}>
-          <button className={styles.backBtn} onClick={() => setView('list')}>
+          <button className={styles.backBtn} onClick={goBack}>
             &larr; Back
           </button>
           <button
@@ -533,9 +538,7 @@ export default function Jam() {
 
     const handleConvertUG = () => {
       const converted = convertUGToNashville(pasteText);
-      if (converted) {
-        setPasteText(converted);
-      }
+      if (converted) setPasteText(converted);
     };
 
     const previewText = pasteText.trim() && !isUG ? pasteText : '';
@@ -543,15 +546,15 @@ export default function Jam() {
     return (
       <div className={styles.page}>
         <div className={styles.viewHeader}>
-          <button className={styles.backBtn} onClick={() => setView('add')}>
+          <button className={styles.backBtn} onClick={() => setView('list')}>
             &larr; Back
           </button>
           <button className={styles.saveBtn} onClick={addFromPaste}>
-            Save Song
+            Save Tab
           </button>
         </div>
 
-        <h2 className={styles.heading}>Paste Chord Chart</h2>
+        <h2 className={styles.heading}>Add to Denis Tabs</h2>
         <p className={styles.pasteHint}>
           Paste from Ultimate Guitar or use Nashville syntax (@title, @key, | chords |)
         </p>
@@ -585,29 +588,99 @@ export default function Jam() {
 
   // === MAIN LIST VIEW ===
   const totalSongs = jamSongs.length;
-  const knowCount = jamSongs.filter((s) => s.bucket === 'know').length;
-  const workingCount = jamSongs.filter((s) => s.bucket === 'working').length;
+
+  const renderSongCard = (song) => {
+    const vCount = getVersions(song).length;
+    return (
+      <button
+        key={song.id}
+        className={styles.songCard}
+        onClick={() => openChart(song)}
+      >
+        <div className={styles.songCardInfo}>
+          <span className={styles.songTitle}>{song.title}</span>
+          {song.artist && (
+            <span className={styles.songCardArtist}>{song.artist}</span>
+          )}
+        </div>
+        <div className={styles.songCardMeta}>
+          {vCount > 1 && (
+            <span className={styles.versionCountBadge}>
+              {vCount} versions
+            </span>
+          )}
+          {song.level && (
+            <span className={`${styles.levelBadge} ${styles['level' + song.level.charAt(0).toUpperCase() + song.level.slice(1)]}`}>
+              {song.level}
+            </span>
+          )}
+          {song.key && (
+            <span className={styles.keyBadge}>{song.key}</span>
+          )}
+        </div>
+      </button>
+    );
+  };
+
+  const renderGroupedList = (groups) => (
+    <div className={styles.groupedList}>
+      {groups.map(([groupName, songs]) => (
+        <div key={groupName} className={styles.bucket}>
+          <div className={styles.bucketHeader}>
+            <h3 className={styles.bucketLabel}>{groupName}</h3>
+            <span className={styles.bucketCount}>{songs.length}</span>
+          </div>
+          <div className={styles.songList}>
+            {songs.map(renderSongCard)}
+          </div>
+        </div>
+      ))}
+      {groups.length === 0 && (
+        <p className={styles.empty}>No songs found.</p>
+      )}
+    </div>
+  );
 
   return (
     <div className={styles.page}>
       <div className={styles.headerRow}>
         <h2 className={styles.heading}>Jam</h2>
-        <button className={styles.addTopBtn} onClick={() => setView('add')}>
-          + Add Song
-        </button>
+        <div className={styles.headerActions}>
+          <button className={styles.addTopBtn} onClick={() => setView('add')}>
+            + Add Song
+          </button>
+          <button className={styles.pasteTopBtn} onClick={() => setView('paste')}>
+            + Paste Tab
+          </button>
+        </div>
       </div>
 
+      {/* Stats */}
       {totalSongs > 0 && (
         <div className={styles.statsBar}>
-          <span className={styles.stat}><strong>{knowCount}</strong> known</span>
+          <span className={styles.stat}><strong>{totalSongs}</strong> songs</span>
           <span className={styles.statDivider}>|</span>
-          <span className={styles.stat}><strong>{workingCount}</strong> learning</span>
+          <span className={styles.stat}><strong>{denisTabs.length}</strong> custom tabs</span>
           <span className={styles.statDivider}>|</span>
-          <span className={styles.stat}><strong>{totalSongs}</strong> total</span>
+          <span className={styles.stat}><strong>{new Set(jamSongs.map((s) => s.artist).filter(Boolean)).size}</strong> artists</span>
         </div>
       )}
 
-      {totalSongs > 0 && (
+      {/* Tab bar */}
+      <div className={styles.tabBar}>
+        {TABS.map((tab) => (
+          <button
+            key={tab.key}
+            className={`${styles.tabBtn} ${activeTab === tab.key ? styles.tabBtnActive : ''}`}
+            onClick={() => setActiveTab(tab.key)}
+          >
+            {tab.label}
+          </button>
+        ))}
+      </div>
+
+      {/* Search (not on resources tab) */}
+      {activeTab !== 'resources' && totalSongs > 0 && (
         <input
           className={styles.search}
           type="text"
@@ -617,7 +690,8 @@ export default function Jam() {
         />
       )}
 
-      {totalSongs === 0 ? (
+      {/* Empty state */}
+      {totalSongs === 0 && activeTab !== 'resources' ? (
         <div className={styles.emptyState}>
           <p className={styles.emptyTitle}>No songs yet</p>
           <p className={styles.emptyText}>
@@ -631,57 +705,125 @@ export default function Jam() {
           </button>
         </div>
       ) : (
-        BUCKETS.map((bucket) => {
-          const songs = filteredBuckets[bucket.key];
-          return (
-            <div key={bucket.key} className={styles.bucket}>
-              <div className={styles.bucketHeader}>
-                <h3 className={styles.bucketLabel}>{bucket.label}</h3>
-                <span className={styles.bucketCount}>{songs.length}</span>
-              </div>
-              {songs.length === 0 ? (
-                <p className={styles.bucketEmpty}>No songs here yet.</p>
-              ) : (
-                <div className={styles.songList}>
-                  {songs.map((song) => {
-                    const vCount = getVersions(song).length;
-                    return (
-                      <button
-                        key={song.id}
-                        className={styles.songCard}
-                        onClick={() => openChart(song)}
-                      >
-                        <div className={styles.songCardInfo}>
-                          <span className={styles.songTitle}>{song.title}</span>
-                          {song.artist && (
-                            <span className={styles.songCardArtist}>
-                              {song.artist}
-                            </span>
-                          )}
-                        </div>
-                        <div className={styles.songCardMeta}>
-                          {vCount > 1 && (
-                            <span className={styles.versionCountBadge}>
-                              {vCount} versions
-                            </span>
-                          )}
-                          {song.level && (
-                            <span className={`${styles.levelBadge} ${styles['level' + song.level.charAt(0).toUpperCase() + song.level.slice(1)]}`}>
-                              {song.level}
-                            </span>
-                          )}
-                          {song.key && (
-                            <span className={styles.keyBadge}>{song.key}</span>
-                          )}
-                        </div>
-                      </button>
-                    );
-                  })}
-                </div>
+        <>
+          {/* Songs tab — flat list of all songs */}
+          {activeTab === 'songs' && (
+            <div className={styles.songList}>
+              {allSongs.map(renderSongCard)}
+              {allSongs.length === 0 && totalSongs > 0 && (
+                <p className={styles.empty}>No matches.</p>
               )}
             </div>
-          );
-        })
+          )}
+
+          {/* Tabs by Song */}
+          {activeTab === 'bySong' && renderGroupedList(bySong)}
+
+          {/* Tabs by Artist */}
+          {activeTab === 'byArtist' && renderGroupedList(byArtist)}
+
+          {/* Denis Tabs */}
+          {activeTab === 'denis' && (
+            <>
+              <div className={styles.songList}>
+                {denisTabs.map(renderSongCard)}
+                {denisTabs.length === 0 && (
+                  <div className={styles.emptyState}>
+                    <p className={styles.emptyTitle}>No custom tabs yet</p>
+                    <p className={styles.emptyText}>
+                      Paste chord charts from Ultimate Guitar or write your own.
+                    </p>
+                    <button
+                      className={styles.addTopBtn}
+                      onClick={() => setView('paste')}
+                    >
+                      + Paste Your First Tab
+                    </button>
+                  </div>
+                )}
+              </div>
+            </>
+          )}
+
+          {/* Resources tab */}
+          {activeTab === 'resources' && (
+            <div className={styles.resourcesSection}>
+              <input
+                className={styles.search}
+                type="text"
+                placeholder="Search for a song or artist..."
+                value={resourceSearch}
+                onChange={(e) => setResourceSearch(e.target.value)}
+              />
+
+              {resourceSearch.trim() && (
+                <div className={styles.resourceLinks}>
+                  <a
+                    href={youtubeSearchUrl(`${resourceSearch} guitar lesson`)}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className={styles.resourceCard}
+                  >
+                    <span className={styles.resourceIcon}>YT</span>
+                    <div className={styles.resourceCardInfo}>
+                      <span className={styles.resourceCardTitle}>YouTube Guitar Lessons</span>
+                      <span className={styles.resourceCardSub}>Search "{resourceSearch}" on YouTube</span>
+                    </div>
+                    <span className={styles.resourceArrow}>&rarr;</span>
+                  </a>
+
+                  <a
+                    href={youtubeSearchUrl(`${resourceSearch} guitar tab`)}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className={styles.resourceCard}
+                  >
+                    <span className={styles.resourceIcon}>YT</span>
+                    <div className={styles.resourceCardInfo}>
+                      <span className={styles.resourceCardTitle}>YouTube Tabs</span>
+                      <span className={styles.resourceCardSub}>Search "{resourceSearch}" tabs on YouTube</span>
+                    </div>
+                    <span className={styles.resourceArrow}>&rarr;</span>
+                  </a>
+
+                  <a
+                    href={ugSearchUrl(resourceSearch)}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className={styles.resourceCard}
+                  >
+                    <span className={styles.resourceIcon}>UG</span>
+                    <div className={styles.resourceCardInfo}>
+                      <span className={styles.resourceCardTitle}>Ultimate Guitar</span>
+                      <span className={styles.resourceCardSub}>Search "{resourceSearch}" on Ultimate Guitar</span>
+                    </div>
+                    <span className={styles.resourceArrow}>&rarr;</span>
+                  </a>
+
+                  <a
+                    href={youtubeSearchUrl(`${resourceSearch} backing track`)}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className={styles.resourceCard}
+                  >
+                    <span className={styles.resourceIcon}>BT</span>
+                    <div className={styles.resourceCardInfo}>
+                      <span className={styles.resourceCardTitle}>Backing Tracks</span>
+                      <span className={styles.resourceCardSub}>Search "{resourceSearch}" backing tracks</span>
+                    </div>
+                    <span className={styles.resourceArrow}>&rarr;</span>
+                  </a>
+                </div>
+              )}
+
+              {!resourceSearch.trim() && (
+                <p className={styles.pasteHint}>
+                  Type a song or artist name above to search YouTube, Ultimate Guitar, and more.
+                </p>
+              )}
+            </div>
+          )}
+        </>
       )}
     </div>
   );

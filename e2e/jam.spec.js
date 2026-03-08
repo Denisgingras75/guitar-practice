@@ -22,6 +22,15 @@ test.describe('Jam Page', () => {
     await expect(page.getByText('Add Your First Song')).toBeVisible();
   });
 
+  test('shows tab bar with all tabs', async ({ page }) => {
+    await page.goto('/jam');
+    await expect(page.getByRole('button', { name: 'Songs' })).toBeVisible();
+    await expect(page.getByRole('button', { name: 'Tabs by Song' })).toBeVisible();
+    await expect(page.getByRole('button', { name: 'Tabs by Artist' })).toBeVisible();
+    await expect(page.getByRole('button', { name: 'Denis Tabs' })).toBeVisible();
+    await expect(page.getByRole('button', { name: 'Resources' })).toBeVisible();
+  });
+
   test('can add a song from library', async ({ page }) => {
     await page.goto('/jam');
     await page.getByRole('button', { name: /Add Song/i }).first().click();
@@ -36,30 +45,8 @@ test.describe('Jam Page', () => {
     // Go back to jam list
     await page.getByRole('button', { name: /Back/i }).click();
 
-    // Song should appear in "Want to Know" bucket
+    // Song should appear in Songs tab
     await expect(page.getByText('Oye Como Va')).toBeVisible();
-  });
-
-  test('can move song between buckets', async ({ page }) => {
-    await page.goto('/jam');
-
-    // Add a song first
-    await page.getByRole('button', { name: /Add Song/i }).first().click();
-    await page.getByPlaceholder('Search songs, artists, keys').fill('Paranoid');
-    await page.getByRole('button', { name: '+ Add' }).first().click();
-    await page.getByRole('button', { name: /Back/i }).click();
-
-    // Open the song
-    await page.getByText('Paranoid').click();
-
-    // Move to "Working On"
-    await page.getByRole('button', { name: 'Start Learning' }).click();
-
-    // Go back and verify it moved
-    await page.getByRole('button', { name: /Jam/i }).click();
-
-    // "Want to Know" should show 0, "Working On" should show 1 and contain Paranoid
-    await expect(page.getByText('WORKING ON').locator('..').locator('..').getByText('Paranoid')).toBeVisible();
   });
 
   test('can view chart for a song', async ({ page }) => {
@@ -81,6 +68,30 @@ test.describe('Jam Page', () => {
     // Should see action buttons
     await expect(page.getByRole('button', { name: 'Edit' })).toBeVisible();
     await expect(page.getByRole('button', { name: 'Print' })).toBeVisible();
+
+    // Should see YouTube and UG links in footer
+    await expect(page.getByText('YouTube Lessons')).toBeVisible();
+    await expect(page.getByText('Ultimate Guitar')).toBeVisible();
+  });
+
+  test('back button works from chart view', async ({ page }) => {
+    await page.goto('/jam');
+
+    // Add a song
+    await page.getByRole('button', { name: /Add Song/i }).first().click();
+    await page.getByPlaceholder('Search songs, artists, keys').fill('Paranoid');
+    await page.getByRole('button', { name: '+ Add' }).first().click();
+    await page.getByRole('button', { name: /Back/i }).click();
+
+    // Open the song
+    await page.getByText('Paranoid').click();
+
+    // Click back
+    await page.getByRole('button', { name: /Back/i }).click();
+
+    // Should be back on list view with heading and tab bar
+    await expect(page.getByRole('heading', { name: 'Jam' })).toBeVisible();
+    await expect(page.getByRole('button', { name: 'Songs' })).toBeVisible();
   });
 
   test('can edit a song chart', async ({ page }) => {
@@ -126,11 +137,8 @@ test.describe('Jam Page', () => {
     // Open the song
     await page.getByText('Ripple').click();
 
-    // Should see version tab "Chord Chart"
-    await expect(page.getByRole('button', { name: 'Chord Chart' })).toBeVisible();
-
-    // Click + to add version
-    await page.getByRole('button', { name: '+' }).click();
+    // Click + Add Version
+    await page.getByRole('button', { name: '+ Add Version' }).click();
     await expect(page.getByRole('heading', { name: 'Add Version' })).toBeVisible();
 
     // Select "Tab" type
@@ -150,8 +158,7 @@ test.describe('Jam Page', () => {
   test('can paste and convert UG format', async ({ page }) => {
     await page.goto('/jam');
 
-    await page.getByRole('button', { name: /Add Song/i }).first().click();
-    await page.getByRole('button', { name: 'Paste Chart' }).click();
+    await page.getByRole('button', { name: /Paste Tab/i }).click();
 
     // Paste UG-style text
     const ugText = `[Verse]
@@ -180,7 +187,42 @@ Singing all night too`;
     expect(converted).toContain('@structure');
   });
 
-  test('search filters songs in buckets', async ({ page }) => {
+  test('pasted tabs appear in Denis Tabs', async ({ page }) => {
+    await page.goto('/jam');
+
+    // Paste a custom tab
+    await page.getByRole('button', { name: /Paste Tab/i }).click();
+    await page.locator('textarea').fill('@title My Custom Song\n@key Am\n\n[A] Verse\n| Am | G | F | E |');
+    await page.getByRole('button', { name: 'Save Tab' }).click();
+
+    // Should switch to Denis Tabs
+    await expect(page.getByRole('button', { name: 'Denis Tabs' })).toBeVisible();
+
+    // Click Denis Tabs tab to see it
+    await page.getByRole('button', { name: 'Denis Tabs' }).click();
+    await expect(page.getByText('My Custom Song')).toBeVisible();
+  });
+
+  test('tabs by artist groups songs correctly', async ({ page }) => {
+    await page.goto('/jam');
+
+    // Add two songs from different artists
+    await page.getByRole('button', { name: /Add Song/i }).first().click();
+    await page.getByPlaceholder('Search songs, artists, keys').fill('Paranoid');
+    await page.getByRole('button', { name: '+ Add' }).first().click();
+    await page.getByPlaceholder('Search songs, artists, keys').fill('Evil Ways');
+    await page.getByRole('button', { name: '+ Add' }).first().click();
+    await page.getByRole('button', { name: /Back/i }).click();
+
+    // Switch to Tabs by Artist
+    await page.getByRole('button', { name: 'Tabs by Artist' }).click();
+
+    // Should see artist group headers
+    await expect(page.getByText('Black Sabbath')).toBeVisible();
+    await expect(page.getByText('Santana')).toBeVisible();
+  });
+
+  test('search filters songs across tabs', async ({ page }) => {
     await page.goto('/jam');
 
     // Add two songs
@@ -198,7 +240,7 @@ Singing all night too`;
     // Search for one
     await page.getByPlaceholder('Search your repertoire').fill('Paranoid');
     await expect(page.getByText('Paranoid')).toBeVisible();
-    // Ripple should be filtered out (not visible in any bucket)
+    // Ripple should be filtered out
     await expect(page.locator('button', { hasText: 'Ripple' })).not.toBeVisible();
   });
 
@@ -232,26 +274,21 @@ Singing all night too`;
     await expect(page.getByText('easy')).toBeVisible();
   });
 
-  test('version count shows on song card when multiple versions', async ({ page }) => {
+  test('resources tab has search with YouTube and UG links', async ({ page }) => {
     await page.goto('/jam');
 
-    // Add a song
-    await page.getByRole('button', { name: /Add Song/i }).first().click();
-    await page.getByPlaceholder('Search songs, artists, keys').fill('Free Fallin');
-    await page.getByRole('button', { name: '+ Add' }).first().click();
-    await page.getByRole('button', { name: /Back/i }).click();
+    // Click Resources tab
+    await page.getByRole('button', { name: 'Resources' }).click();
 
-    // Open and add a second version
-    await page.getByText("Free Fallin'").click();
-    await page.getByRole('button', { name: '+' }).click();
-    await page.getByRole('button', { name: 'Tab' }).click();
-    await page.locator('textarea').fill('@title Free Fallin Tab\n@key F\n\n[A] Main\n| D | Asus4 | D | Asus4 |');
-    await page.getByRole('button', { name: 'Save Version' }).click();
+    // Should see search hint
+    await expect(page.getByText('Type a song or artist name')).toBeVisible();
 
-    // Go back to list
-    await page.getByRole('button', { name: /Jam/i }).click();
+    // Type a search
+    await page.getByPlaceholder('Search for a song or artist').fill('Stairway to Heaven');
 
-    // Should show "2 versions" badge
-    await expect(page.getByText('2 versions')).toBeVisible();
+    // Should show resource cards
+    await expect(page.getByText('YouTube Guitar Lessons')).toBeVisible();
+    await expect(page.getByText('Ultimate Guitar')).toBeVisible();
+    await expect(page.getByText('Backing Tracks')).toBeVisible();
   });
 });
