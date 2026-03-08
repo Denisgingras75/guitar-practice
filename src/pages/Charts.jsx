@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useMemo } from 'react';
 import { STARTER_CHARTS } from '../data/charts.js';
 import { useLocalStorage } from '../hooks/useLocalStorage.js';
 import ChartRenderer from '../components/ChartRenderer.jsx';
@@ -35,14 +35,45 @@ const EMPTY_CHART = `@title New Song
 
 const ALL_GENRES = [...new Set(STARTER_CHARTS.map((c) => c.genre).filter(Boolean))];
 
+function extractMeta(text) {
+  const titleMatch = text.match(/@title\s+(.+)/);
+  const keyMatch = text.match(/@key\s+(.+)/);
+  return {
+    title: titleMatch ? titleMatch[1].trim() : 'Untitled',
+    key: keyMatch ? keyMatch[1].trim() : '',
+  };
+}
+
 export default function Charts() {
   const [userCharts, setUserCharts] = useLocalStorage('user-charts', []);
+  const [jamSongs, setJamSongs] = useLocalStorage('jam-songs', []);
   const [view, setView] = useState('list');
   const [activeChart, setActiveChart] = useState(null);
   const [editText, setEditText] = useState('');
   const [editId, setEditId] = useState(null);
   const [search, setSearch] = useState('');
   const [genreFilter, setGenreFilter] = useState(null);
+
+  const jamIds = useMemo(() => new Set(jamSongs.map((s) => s.id)), [jamSongs]);
+
+  const addToJam = (chart, e) => {
+    e.stopPropagation();
+    if (jamIds.has(chart.id)) return;
+    const meta = extractMeta(chart.text);
+    const song = {
+      id: chart.id,
+      title: meta.title,
+      artist: chart.artist || '',
+      key: meta.key,
+      genre: chart.genre || '',
+      level: chart.level || '',
+      text: chart.text,
+      versions: [{ id: 'v-' + Date.now(), label: 'Chord Chart', text: chart.text }],
+      source: 'library',
+      addedAt: Date.now(),
+    };
+    setJamSongs([...jamSongs, song]);
+  };
 
   const allCharts = [
     ...STARTER_CHARTS.map((c) => ({ ...c, source: 'starter' })),
@@ -58,6 +89,17 @@ export default function Charts() {
     const genre = (c.genre || '').toLowerCase();
     return text.includes(q) || artist.includes(q) || genre.includes(q) || c.id.includes(q);
   });
+
+  // Group by artist
+  const byArtist = useMemo(() => {
+    const groups = {};
+    for (const c of filtered) {
+      const artist = c.artist || 'Other';
+      if (!groups[artist]) groups[artist] = [];
+      groups[artist].push(c);
+    }
+    return Object.entries(groups).sort(([a], [b]) => a.localeCompare(b));
+  }, [filtered]);
 
   const openChart = (chart) => {
     setActiveChart(chart);
@@ -134,49 +176,68 @@ export default function Charts() {
 
         <p className={styles.songCount}>{filtered.length} song{filtered.length !== 1 ? 's' : ''}</p>
 
-        <div className={styles.chartList}>
-          {filtered.map((chart) => {
-            const titleMatch = chart.text.match(/@title\s+(.+)/);
-            const keyMatch = chart.text.match(/@key\s+(.+)/);
-            const title = titleMatch ? titleMatch[1] : chart.id;
-            const key = keyMatch ? keyMatch[1] : '';
-            const gs = getGenreStyle(chart.genre);
-            const hasVideos = chart.videos && chart.videos.length > 0;
+        {byArtist.map(([artist, charts]) => (
+          <div key={artist} className={styles.artistGroup}>
+            <div className={styles.artistHeader}>
+              <h3 className={styles.artistLabel}>{artist}</h3>
+              <span className={styles.artistCount}>{charts.length}</span>
+            </div>
+            <div className={styles.chartList}>
+              {charts.map((chart) => {
+                const titleMatch = chart.text.match(/@title\s+(.+)/);
+                const keyMatch = chart.text.match(/@key\s+(.+)/);
+                const title = titleMatch ? titleMatch[1] : chart.id;
+                const key = keyMatch ? keyMatch[1] : '';
+                const gs = getGenreStyle(chart.genre);
+                const hasVideos = chart.videos && chart.videos.length > 0;
+                const inJam = jamIds.has(chart.id);
 
-            return (
-              <button
-                key={chart.id + chart.source}
-                className={`${styles.chartCard} ${gs.border}`}
-                onClick={() => openChart(chart)}
-              >
-                <div className={styles.chartCardInfo}>
-                  <span className={styles.chartTitle}>{title}</span>
-                  {chart.artist && <span className={styles.chartArtist}>{chart.artist}</span>}
-                </div>
-                <div className={styles.chartCardMeta}>
-                  {hasVideos && (
-                    <span className={styles.videoBadge}>
-                      <svg width="10" height="10" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
-                      {chart.videos.length}
-                    </span>
-                  )}
-                  {chart.level && (
-                    <span className={`${styles.levelBadge} ${styles['level' + chart.level.charAt(0).toUpperCase() + chart.level.slice(1)]}`}>
-                      {chart.level}
-                    </span>
-                  )}
-                  {key && <span className={styles.keyBadge}>{key}</span>}
-                  {chart.genre && (
-                    <span className={`${styles.genreBadge} ${gs.badge}`}>
-                      {chart.genre.replace('-', ' ')}
-                    </span>
-                  )}
-                  {chart.source === 'user' && <span className={styles.userBadge}>Mine</span>}
-                </div>
-              </button>
-            );
-          })}
-        </div>
+                return (
+                  <button
+                    key={chart.id + chart.source}
+                    className={`${styles.chartCard} ${gs.border}`}
+                    onClick={() => openChart(chart)}
+                  >
+                    <div className={styles.chartCardInfo}>
+                      <span className={styles.chartTitle}>{title}</span>
+                    </div>
+                    <div className={styles.chartCardMeta}>
+                      {hasVideos && (
+                        <span className={styles.videoBadge}>
+                          <svg width="10" height="10" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+                          {chart.videos.length}
+                        </span>
+                      )}
+                      {chart.level && (
+                        <span className={`${styles.levelBadge} ${styles['level' + chart.level.charAt(0).toUpperCase() + chart.level.slice(1)]}`}>
+                          {chart.level}
+                        </span>
+                      )}
+                      {key && <span className={styles.keyBadge}>{key}</span>}
+                      {chart.genre && (
+                        <span className={`${styles.genreBadge} ${gs.badge}`}>
+                          {chart.genre.replace('-', ' ')}
+                        </span>
+                      )}
+                      {chart.source === 'user' && <span className={styles.userBadge}>Mine</span>}
+                      {inJam ? (
+                        <span className={styles.inJamBadge}>In Jam</span>
+                      ) : (
+                        <span
+                          className={styles.addJamBtn}
+                          role="button"
+                          onClick={(e) => addToJam(chart, e)}
+                        >
+                          + Jam
+                        </span>
+                      )}
+                    </div>
+                  </button>
+                );
+              })}
+            </div>
+          </div>
+        ))}
 
         {filtered.length === 0 && (
           <p className={styles.empty}>No charts match your search.</p>
