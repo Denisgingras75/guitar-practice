@@ -10,7 +10,7 @@ function SmartRenderer({ text }) {
   if (looksLikeLyrics(text)) {
     return <LyricsRenderer text={text} />;
   }
-  return <SmartRenderer text={text} />;
+  return <ChartRenderer text={text} />;
 }
 
 const GENRE_STYLES = {
