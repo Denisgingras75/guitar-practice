@@ -46,6 +46,7 @@ export default function Jam() {
   const [addSearch, setAddSearch] = useState('');
   const [pasteText, setPasteText] = useState('');
   const [resourceSearch, setResourceSearch] = useState('');
+  const [showResourceSearch, setShowResourceSearch] = useState(false);
 
   // Version & edit state
   const [activeVersionIdx, setActiveVersionIdx] = useState(0);
@@ -466,6 +467,99 @@ export default function Jam() {
     );
   }
 
+  // === RESOURCE SEARCH VIEW ===
+  if (view === 'resourceSearch') {
+    return (
+      <div className={styles.page}>
+        <div className={styles.viewHeader}>
+          <button className={styles.backBtn} onClick={() => { setView('list'); setResourceSearch(''); }}>
+            &larr; Back
+          </button>
+        </div>
+
+        <h2 className={styles.heading}>Search YouTube &amp; Ultimate Guitar</h2>
+        <p className={styles.pasteHint}>
+          Search for songs, tabs, lessons, and backing tracks across YouTube and Ultimate Guitar.
+        </p>
+
+        <input
+          className={styles.search}
+          type="text"
+          placeholder="Search for a song or artist..."
+          value={resourceSearch}
+          onChange={(e) => setResourceSearch(e.target.value)}
+          autoFocus
+        />
+
+        {resourceSearch.trim() && (
+          <div className={styles.resourceLinks}>
+            <a
+              href={youtubeSearchUrl(`${resourceSearch} guitar lesson`)}
+              target="_blank"
+              rel="noopener noreferrer"
+              className={styles.resourceCard}
+            >
+              <span className={styles.resourceIcon}>YT</span>
+              <div className={styles.resourceCardInfo}>
+                <span className={styles.resourceCardTitle}>YouTube Guitar Lessons</span>
+                <span className={styles.resourceCardSub}>Search &ldquo;{resourceSearch}&rdquo; on YouTube</span>
+              </div>
+              <span className={styles.resourceArrow}>&rarr;</span>
+            </a>
+
+            <a
+              href={youtubeSearchUrl(`${resourceSearch} guitar tab`)}
+              target="_blank"
+              rel="noopener noreferrer"
+              className={styles.resourceCard}
+            >
+              <span className={styles.resourceIcon}>YT</span>
+              <div className={styles.resourceCardInfo}>
+                <span className={styles.resourceCardTitle}>YouTube Tabs</span>
+                <span className={styles.resourceCardSub}>Search &ldquo;{resourceSearch}&rdquo; tabs on YouTube</span>
+              </div>
+              <span className={styles.resourceArrow}>&rarr;</span>
+            </a>
+
+            <a
+              href={ugSearchUrl(resourceSearch)}
+              target="_blank"
+              rel="noopener noreferrer"
+              className={styles.resourceCard}
+            >
+              <span className={styles.resourceIcon}>UG</span>
+              <div className={styles.resourceCardInfo}>
+                <span className={styles.resourceCardTitle}>Ultimate Guitar</span>
+                <span className={styles.resourceCardSub}>Search &ldquo;{resourceSearch}&rdquo; on Ultimate Guitar</span>
+              </div>
+              <span className={styles.resourceArrow}>&rarr;</span>
+            </a>
+
+            <a
+              href={youtubeSearchUrl(`${resourceSearch} backing track`)}
+              target="_blank"
+              rel="noopener noreferrer"
+              className={styles.resourceCard}
+            >
+              <span className={styles.resourceIcon}>BT</span>
+              <div className={styles.resourceCardInfo}>
+                <span className={styles.resourceCardTitle}>Backing Tracks</span>
+                <span className={styles.resourceCardSub}>Search &ldquo;{resourceSearch}&rdquo; backing tracks</span>
+              </div>
+              <span className={styles.resourceArrow}>&rarr;</span>
+            </a>
+          </div>
+        )}
+
+        {!resourceSearch.trim() && (
+          <p className={styles.empty}>
+            Type a song or artist name above to search YouTube, Ultimate Guitar, and more.
+          </p>
+        )}
+      </div>
+    );
+  }
+
   // === ADD FROM LIBRARY ===
   if (view === 'add') {
     return (
@@ -651,6 +745,9 @@ export default function Jam() {
           </button>
           <button className={styles.pasteTopBtn} onClick={() => setView('paste')}>
             + Paste Tab
+          </button>
+          <button className={styles.resourceSearchBtn} onClick={() => setView('resourceSearch')}>
+            Search YouTube / UG
           </button>
         </div>
       </div>
