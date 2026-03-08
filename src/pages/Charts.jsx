@@ -160,6 +160,11 @@ export default function Charts() {
                       {chart.videos.length}
                     </span>
                   )}
+                  {chart.level && (
+                    <span className={`${styles.levelBadge} ${styles['level' + chart.level.charAt(0).toUpperCase() + chart.level.slice(1)]}`}>
+                      {chart.level}
+                    </span>
+                  )}
                   {key && <span className={styles.keyBadge}>{key}</span>}
                   {chart.genre && (
                     <span className={`${styles.genreBadge} ${gs.badge}`}>

@@ -147,6 +147,34 @@
   font-weight: 500;
 }
 
+/* === Level Badge === */
+.levelBadge {
+  font-size: 0.55rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  padding: 2px 8px;
+  border-radius: 99px;
+  border: 1px solid var(--fg-dim);
+  color: var(--fg-dim);
+  flex-shrink: 0;
+}
+
+.levelEasy {
+  border-color: #4ade80;
+  color: #4ade80;
+}
+
+.levelIntermediate {
+  border-color: #fbbf24;
+  color: #fbbf24;
+}
+
+.levelAdvanced {
+  border-color: #f87171;
+  color: #f87171;
+}
+
 /* === Key Badge === */
 .keyBadge {
   font-size: 0.6rem;

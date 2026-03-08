@@ -72,6 +72,7 @@ export default function Jam() {
       artist: chart.artist || meta.artist,
       key: meta.key,
       genre: chart.genre || '',
+      level: chart.level || '',
       text: chart.text,
       videos: chart.videos || [],
       bucket: 'want',
@@ -237,6 +238,11 @@ export default function Jam() {
                   )}
                 </div>
                 <div className={styles.addCardRight}>
+                  {chart.level && (
+                    <span className={`${styles.levelBadge} ${styles['level' + chart.level.charAt(0).toUpperCase() + chart.level.slice(1)]}`}>
+                      {chart.level}
+                    </span>
+                  )}
                   {meta.key && (
                     <span className={styles.keyBadge}>{meta.key}</span>
                   )}
@@ -358,6 +364,11 @@ export default function Jam() {
                           </span>
                         )}
                       </div>
+                      {song.level && (
+                        <span className={`${styles.levelBadge} ${styles['level' + song.level.charAt(0).toUpperCase() + song.level.slice(1)]}`}>
+                          {song.level}
+                        </span>
+                      )}
                       {song.key && (
                         <span className={styles.keyBadge}>{song.key}</span>
                       )}

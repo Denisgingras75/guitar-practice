@@ -15,6 +15,7 @@ export const STARTER_CHARTS = [
     id: 'hungersite',
     artist: 'Goose',
     genre: 'jam',
+    level: 'intermediate',
     text: `@title Hungersite
 @key Eb
 @tempo 140
@@ -44,6 +45,7 @@ export const STARTER_CHARTS = [
     id: 'arcadia',
     artist: 'Goose',
     genre: 'jam',
+    level: 'intermediate',
     text: `@title Arcadia
 @key Db
 @tempo 92
@@ -74,6 +76,7 @@ export const STARTER_CHARTS = [
     id: 'tumble',
     artist: 'Goose',
     genre: 'jam',
+    level: 'intermediate',
     text: `@title Tumble
 @key F
 @tempo 130
@@ -105,6 +108,7 @@ export const STARTER_CHARTS = [
     id: 'turtles-all-the-way-down',
     artist: 'Sturgill Simpson',
     genre: 'country',
+    level: 'intermediate',
     text: `@title Turtles All The Way Down
 @key E
 @tempo 91
@@ -135,6 +139,7 @@ export const STARTER_CHARTS = [
     id: 'living-the-dream',
     artist: 'Sturgill Simpson',
     genre: 'country',
+    level: 'intermediate',
     text: `@title Living the Dream
 @key F
 @tempo 77
@@ -164,6 +169,7 @@ export const STARTER_CHARTS = [
     id: 'in-bloom',
     artist: 'Sturgill Simpson',
     genre: 'country',
+    level: 'intermediate',
     text: `@title In Bloom (Nirvana cover)
 @key Bb
 @tempo 92
@@ -194,6 +200,7 @@ export const STARTER_CHARTS = [
     id: 'black-dog',
     artist: 'Led Zeppelin',
     genre: 'rock',
+    level: 'advanced',
     text: `@title Black Dog
 @key A
 @tempo 172
@@ -228,6 +235,7 @@ export const STARTER_CHARTS = [
     id: 'going-to-california',
     artist: 'Led Zeppelin',
     genre: 'classic-rock',
+    level: 'intermediate',
     text: `@title Going to California
 @key D
 @tempo 70
@@ -261,6 +269,7 @@ export const STARTER_CHARTS = [
     id: 'the-ocean',
     artist: 'Led Zeppelin',
     genre: 'rock',
+    level: 'advanced',
     text: `@title The Ocean
 @key A
 @tempo 112
@@ -293,6 +302,7 @@ export const STARTER_CHARTS = [
     id: 'fast-car',
     artist: 'Tracy Chapman',
     genre: 'folk',
+    level: 'intermediate',
     text: `@title Fast Car
 @key C
 @tempo 104
@@ -324,6 +334,7 @@ export const STARTER_CHARTS = [
     id: 'give-me-one-reason',
     artist: 'Tracy Chapman',
     genre: 'blues',
+    level: 'intermediate',
     text: `@title Give Me One Reason
 @key F#
 @tempo 116
@@ -351,6 +362,7 @@ export const STARTER_CHARTS = [
     id: 'talkin-bout-a-revolution',
     artist: 'Tracy Chapman',
     genre: 'folk',
+    level: 'easy',
     text: `@title Talkin' Bout a Revolution
 @key G
 @tempo 110
@@ -380,6 +392,7 @@ export const STARTER_CHARTS = [
     id: 'found-god-in-a-tomato',
     artist: 'Psychedelic Porn Crumpets',
     genre: 'psychedelic',
+    level: 'easy',
     text: `@title Found God in a Tomato
 @key C
 @tempo 82
@@ -410,6 +423,7 @@ export const STARTER_CHARTS = [
     id: 'cornflake',
     artist: 'Psychedelic Porn Crumpets',
     genre: 'psychedelic',
+    level: 'intermediate',
     text: `@title Cornflake
 @key E
 @tempo 120
@@ -442,6 +456,7 @@ export const STARTER_CHARTS = [
     id: 'the-thrill-is-gone',
     artist: 'B.B. King',
     genre: 'blues',
+    level: 'intermediate',
     text: `@title The Thrill Is Gone
 @key Bm
 @tempo 70
@@ -472,6 +487,7 @@ export const STARTER_CHARTS = [
     id: 'pride-and-joy',
     artist: 'Stevie Ray Vaughan',
     genre: 'blues',
+    level: 'advanced',
     text: `@title Pride and Joy
 @key E
 @tempo 118
@@ -505,6 +521,7 @@ export const STARTER_CHARTS = [
     id: 'red-house',
     artist: 'Jimi Hendrix',
     genre: 'blues',
+    level: 'intermediate',
     text: `@title Red House
 @key Bb
 @tempo 66
@@ -540,6 +557,7 @@ export const STARTER_CHARTS = [
     id: 'wish-you-were-here',
     artist: 'Pink Floyd',
     genre: 'classic-rock',
+    level: 'intermediate',
     text: `@title Wish You Were Here
 @key C (G shapes / open)
 @tempo 66
@@ -569,6 +587,7 @@ export const STARTER_CHARTS = [
     id: 'blackbird',
     artist: 'The Beatles',
     genre: 'classic-rock',
+    level: 'advanced',
     text: `@title Blackbird
 @key G
 @tempo 96
@@ -600,6 +619,7 @@ export const STARTER_CHARTS = [
     id: 'little-wing',
     artist: 'Jimi Hendrix',
     genre: 'classic-rock',
+    level: 'advanced',
     text: `@title Little Wing
 @key Em
 @tempo 60
@@ -632,6 +652,7 @@ export const STARTER_CHARTS = [
     id: 'comfortably-numb',
     artist: 'Pink Floyd',
     genre: 'classic-rock',
+    level: 'intermediate',
     text: `@title Comfortably Numb
 @key B
 @tempo 63
@@ -674,6 +695,7 @@ export const STARTER_CHARTS = [
     id: 'house-of-the-rising-sun',
     artist: 'The Animals',
     genre: 'classic-rock',
+    level: 'easy',
     text: `@title House of the Rising Sun
 @key Am
 @tempo 77
@@ -701,6 +723,7 @@ export const STARTER_CHARTS = [
     id: 'have-you-ever-seen-the-rain',
     artist: 'Creedence Clearwater Revival',
     genre: 'rock',
+    level: 'easy',
     text: `@title Have You Ever Seen the Rain
 @key C
 @tempo 116
@@ -732,6 +755,7 @@ export const STARTER_CHARTS = [
     id: 'sittin-on-the-dock-of-the-bay',
     artist: 'Otis Redding',
     genre: 'soul',
+    level: 'easy',
     text: `@title (Sittin' On) The Dock of the Bay
 @key G
 @tempo 101
@@ -771,6 +795,7 @@ export const STARTER_CHARTS = [
     id: 'stairway-to-heaven',
     artist: 'Led Zeppelin',
     genre: 'classic-rock',
+    level: 'advanced',
     text: `@title Stairway to Heaven
 @key Am
 @tempo 72
@@ -810,6 +835,7 @@ export const STARTER_CHARTS = [
     id: 'hotel-california',
     artist: 'Eagles',
     genre: 'classic-rock',
+    level: 'intermediate',
     text: `@title Hotel California
 @key Bm
 @tempo 74
@@ -839,6 +865,7 @@ export const STARTER_CHARTS = [
     id: 'sultans-of-swing',
     artist: 'Dire Straits',
     genre: 'classic-rock',
+    level: 'advanced',
     text: `@title Sultans of Swing
 @key Dm
 @tempo 148
@@ -872,6 +899,7 @@ export const STARTER_CHARTS = [
     id: 'dust-in-the-wind',
     artist: 'Kansas',
     genre: 'classic-rock',
+    level: 'intermediate',
     text: `@title Dust in the Wind
 @key C
 @tempo 90
@@ -897,6 +925,7 @@ export const STARTER_CHARTS = [
     id: 'wonderwall',
     artist: 'Oasis',
     genre: 'rock',
+    level: 'easy',
     text: `@title Wonderwall
 @key F#m (Capo 2)
 @tempo 87
@@ -924,6 +953,7 @@ export const STARTER_CHARTS = [
     id: 'purple-rain',
     artist: 'Prince',
     genre: 'rock',
+    level: 'intermediate',
     text: `@title Purple Rain
 @key Bb
 @tempo 58
@@ -953,6 +983,7 @@ export const STARTER_CHARTS = [
     id: 'while-my-guitar-gently-weeps',
     artist: 'The Beatles',
     genre: 'classic-rock',
+    level: 'intermediate',
     text: `@title While My Guitar Gently Weeps
 @key Am
 @tempo 116
@@ -984,6 +1015,7 @@ export const STARTER_CHARTS = [
     id: 'hallelujah',
     artist: 'Leonard Cohen',
     genre: 'folk',
+    level: 'easy',
     text: `@title Hallelujah
 @key C
 @tempo 56
@@ -1008,6 +1040,7 @@ export const STARTER_CHARTS = [
     id: 'layla-unplugged',
     artist: 'Eric Clapton',
     genre: 'blues',
+    level: 'intermediate',
     text: `@title Layla (Unplugged)
 @key Dm
 @tempo 95
@@ -1038,6 +1071,7 @@ export const STARTER_CHARTS = [
     id: 'knockin-on-heavens-door',
     artist: 'Bob Dylan',
     genre: 'folk',
+    level: 'easy',
     text: `@title Knockin' on Heaven's Door
 @key G
 @tempo 69
@@ -1057,6 +1091,7 @@ export const STARTER_CHARTS = [
     id: 'hey-joe',
     artist: 'Jimi Hendrix',
     genre: 'blues',
+    level: 'easy',
     text: `@title Hey Joe
 @key E
 @tempo 80
@@ -1084,6 +1119,7 @@ export const STARTER_CHARTS = [
     id: 'behind-blue-eyes',
     artist: 'The Who',
     genre: 'classic-rock',
+    level: 'intermediate',
     text: `@title Behind Blue Eyes
 @key Em
 @tempo 60
@@ -1115,6 +1151,7 @@ export const STARTER_CHARTS = [
     id: 'simple-man',
     artist: 'Lynyrd Skynyrd',
     genre: 'classic-rock',
+    level: 'easy',
     text: `@title Simple Man
 @key Am
 @tempo 60
@@ -1135,6 +1172,1131 @@ export const STARTER_CHARTS = [
 @structure A A B A A B C B`,
     videos: [
       { title: 'Simple Man — Guitar Lesson', channel: 'Marty Music', url: 'https://www.youtube.com/watch?v=sJoPSJaiMK4' },
+    ],
+  },
+
+  // ─── SANTANA ──────────────────────────────────────────────────────────────
+
+  {
+    id: 'oye-como-va',
+    artist: 'Santana',
+    genre: 'rock',
+    level: 'easy',
+    text: `@title Oye Como Va
+@key Am
+@tempo 126
+@feel Latin Rock Groove — two chords, infectious rhythm
+
+[A] Main Groove
+||: Am7 | Am7 | D9 | D9 :|| x4
+
+[B] Organ Solo (same changes)
+||: Am7 | Am7 | D9 | D9 :|| open
+
+[C] Guitar Solo (same changes)
+||: Am7 | Am7 | D9 | D9 :|| open
+
+@structure A B A C A`,
+  },
+
+  {
+    id: 'evil-ways',
+    artist: 'Santana',
+    genre: 'rock',
+    level: 'easy',
+    text: `@title Evil Ways
+@key Gm
+@tempo 120
+@feel Latin Rock — two-chord groove, organ stabs
+
+[A] Main Groove / Verse
+||: Gm7 | C7 | Gm7 | C7 :|| x4
+
+[B] Bridge
+| Gm7 | D7 | Gm7 | C7 |
+| Gm7 | D7 | Gm7 | C7 |
+
+[C] Solo (G minor pentatonic)
+||: Gm7 | C7 | Gm7 | C7 :|| open
+
+@structure A B A C A B A`,
+  },
+
+  {
+    id: 'black-magic-woman',
+    artist: 'Santana',
+    genre: 'rock',
+    level: 'intermediate',
+    text: `@title Black Magic Woman
+@key Dm
+@tempo 130
+@feel Latin Blues Rock — minor key, hypnotic groove
+
+[A] Intro / Verse
+| Dm | Am7 | Dm | Am7 |
+| Dm | Gm7 | A7 | Dm |
+
+[B] Chorus
+| Dm | Bb | A7 | Dm |
+| Gm | A7 | Dm | Dm |
+
+[C] Solo (D minor pentatonic / D blues)
+||: Dm | Gm7 | Dm | A7 :|| open
+
+@structure A A B A A B C A B`,
+    videos: [
+      { title: 'Black Magic Woman — Guitar Lesson', channel: 'Marty Music', url: 'https://www.youtube.com/watch?v=t7UE-gj0PtA' },
+    ],
+  },
+
+  {
+    id: 'smooth',
+    artist: 'Santana',
+    genre: 'rock',
+    level: 'intermediate',
+    text: `@title Smooth
+@key Am
+@tempo 116
+@feel Latin Pop-Rock — Rob Thomas vocals, Santana lead
+
+[A] Verse
+| Am | F | E7 | E7 |
+| Am | F | E7 | E7 |
+
+[B] Pre-Chorus
+| Dm7 | Dm7 | E7 | E7 |
+
+[C] Chorus
+| Am | F | E7 | E7 |
+| Am | F | E7 | E7 |
+
+[D] Solo (A minor pentatonic / A harmonic minor)
+||: Am | F | E7 | E7 :|| open
+
+@structure A B C A B C D C`,
+  },
+
+  {
+    id: 'maria-maria',
+    artist: 'Santana',
+    genre: 'rock',
+    level: 'intermediate',
+    text: `@title Maria Maria
+@key Am
+@tempo 96
+@feel Latin Hip-Hop Rock — melodic, rhythmic groove
+
+[A] Intro / Verse
+| Am | Dm | E7 | Am |
+| Am | Dm | E7 | Am |
+
+[B] Chorus
+| F | G | Am | Am |
+| F | G | E7 | E7 |
+
+[C] Solo (A minor / A harmonic minor)
+||: Am | Dm | E7 | Am :|| open
+
+@structure A A B A A B C B`,
+  },
+
+  {
+    id: 'samba-pa-ti',
+    artist: 'Santana',
+    genre: 'rock',
+    level: 'advanced',
+    text: `@title Samba Pa Ti
+@key G
+@tempo 72
+@feel Slow Latin Instrumental — emotional bends, sustain
+
+[A] Theme
+| Am | Bm | C | D |
+| G | C | Am | D |
+
+[B] Build
+| Am | D | G | Em |
+| C | D | G | G |
+
+[C] Climax
+| Am | D | G | C |
+| Am | D | Em | Em |
+
+[D] Solo (A minor pentatonic / G major)
+||: Am | D | G | C :|| open
+
+@structure A A B A B C D A`,
+  },
+
+  {
+    id: 'europa',
+    artist: 'Santana',
+    genre: 'rock',
+    level: 'advanced',
+    text: `@title Europa (Earth's Cry Heaven's Smile)
+@key Cm
+@tempo 66
+@feel Slow Latin Jazz-Rock Instrumental — soaring melody, jazz changes
+
+[A] Intro (rubato feel)
+| Cm | Fm7 | Bb7 | Ebmaj7 |
+| Abmaj7 | Dm7b5 | G7 | Cm |
+
+[B] Theme
+| Cm | Fm7 | Bb7 | Ebmaj7 |
+| Abmaj7 | Dm7b5 | G7 | Cm |
+
+[C] Bridge
+| Fm | Fm | Cm | Cm |
+| Dm7b5 | G7 | Cm | Cm |
+
+[D] Solo (C harmonic minor / C minor pentatonic)
+||: Cm | Fm7 | Bb7 | Ebmaj7 :|| open
+
+@structure A B C B D B C`,
+  },
+
+  // ─── MORE GOOSE ─────────────────────────────────────────────────────────
+
+  {
+    id: 'rockdale',
+    artist: 'Goose',
+    genre: 'jam',
+    level: 'intermediate',
+    text: `@title Rockdale
+@key A
+@tempo 138
+@feel Driving Jam Rock — A major groove, extended jams
+
+[A] Intro / Main Riff
+||: A | A | D | D :|| x4
+
+[B] Verse
+| A | A | D | D |
+| A | A | E | D |
+
+[C] Chorus
+| D | A | E | A |
+| D | A | E | E |
+
+[D] Jam (A Mixolydian)
+||: A | D | E | A :|| open
+
+@structure A B C B C D B C`,
+  },
+
+  {
+    id: 'butter-rum',
+    artist: 'Goose',
+    genre: 'jam',
+    level: 'intermediate',
+    text: `@title Butter Rum
+@key C
+@tempo 108
+@feel Mellow Funk-Rock Groove — laid-back pocket
+
+[A] Intro / Verse
+| C | F | Am | G |
+| C | F | G | G |
+
+[B] Chorus
+| Am | F | C | G |
+| Am | F | G | G |
+
+[C] Jam (C major / A minor pentatonic)
+||: C | F | Am | G :|| open
+
+@structure A A B A A B C B`,
+  },
+
+  {
+    id: 'hot-tea',
+    artist: 'Goose',
+    genre: 'jam',
+    level: 'easy',
+    text: `@title Hot Tea
+@key D
+@tempo 118
+@feel Feel-Good Groove — open chords, upbeat
+
+[A] Main Groove
+||: D | G | D | A :|| x4
+
+[B] Verse
+| D | G | D | A |
+| D | G | A | A |
+
+[C] Chorus
+| G | A | D | D |
+| G | A | Bm | A |
+
+[D] Jam (D major)
+||: D | G | A | D :|| open
+
+@structure A B C B C D C`,
+  },
+
+  {
+    id: 'so-ready',
+    artist: 'Goose',
+    genre: 'jam',
+    level: 'easy',
+    text: `@title So Ready
+@key G
+@tempo 124
+@feel Upbeat Rock — anthemic, crowd singalong
+
+[A] Verse
+| G | C | G | D |
+| G | C | D | D |
+
+[B] Chorus
+| Em | C | G | D |
+| Em | C | D | D |
+
+[C] Jam (G major / E minor)
+||: G | C | D | Em :|| open
+
+@structure A B A B C B`,
+  },
+
+  {
+    id: 'seekers-on-the-ridge',
+    artist: 'Goose',
+    genre: 'jam',
+    level: 'intermediate',
+    text: `@title Seekers on the Ridge
+@key Dm
+@tempo 100
+@feel Dark Groove — minor key, building intensity
+
+[A] Intro / Verse
+| Dm | Am | C | G |
+| Dm | Am | F | F |
+
+[B] Build
+| Bb | F | C | Dm |
+| Bb | F | Am | Am |
+
+[C] Chorus
+| Dm | F | C | Am |
+| Dm | F | Bb | A7 |
+
+[D] Jam (D minor / D dorian)
+||: Dm | Am | F | G :|| open
+
+@structure A B C A B C D C`,
+  },
+
+  {
+    id: 'borne',
+    artist: 'Goose',
+    genre: 'jam',
+    level: 'intermediate',
+    text: `@title Borne
+@key Bb
+@tempo 132
+@feel Soaring Jam Rock — Bb major, big build
+
+[A] Intro
+||: Bb | Eb | F | Bb :|| x4
+
+[B] Verse
+| Bb | Eb | Cm | F |
+| Bb | Eb | F | F |
+
+[C] Chorus
+| Eb | F | Bb | Gm |
+| Eb | F | Bb | Bb |
+
+[D] Jam (Bb major / Bb Mixolydian)
+||: Bb | Eb | F | Bb :|| open
+
+@structure A B C B C D C`,
+  },
+
+  {
+    id: 'arrow',
+    artist: 'Goose',
+    genre: 'jam',
+    level: 'intermediate',
+    text: `@title Arrow
+@key E
+@tempo 144
+@feel High-Energy Jam — E major, driving rhythm
+
+[A] Main Riff
+||: E | A | B | E :|| x4
+
+[B] Verse
+| E | A | C#m | B |
+| E | A | B | B |
+
+[C] Chorus
+| A | B | E | C#m |
+| A | B | E | E |
+
+[D] Jam (E major / C# minor)
+||: E | A | B | C#m :|| open
+
+@structure A B C B C D C`,
+  },
+
+  // ─── MORE LED ZEPPELIN ──────────────────────────────────────────────────
+
+  {
+    id: 'whole-lotta-love',
+    artist: 'Led Zeppelin',
+    genre: 'rock',
+    level: 'intermediate',
+    text: `@title Whole Lotta Love
+@key E
+@tempo 90
+@feel Heavy Blues Rock — iconic riff, theramin break
+
+[A] Main Riff
+||: E5 | E5 | E5 | E5 :|| x4
+
+[B] Verse
+| E5 | E5 | E5 | E5 |
+| D5 | E5 | D5 | E5 |
+
+[C] Pre-Chorus
+| E5 | D5 | E5 | E5 |
+
+[D] Theramin Break (free)
+| E (free) | % | % | % |
+
+[E] Solo (E minor pentatonic / E blues)
+||: E5 | D5 | E5 | E5 :|| open
+
+@structure A B C A B C D E A B C`,
+    videos: [
+      { title: 'Whole Lotta Love — Riff Guitar Lesson', channel: 'Marty Music', url: 'https://www.youtube.com/watch?v=HIdCiK7OczY' },
+    ],
+  },
+
+  {
+    id: 'kashmir',
+    artist: 'Led Zeppelin',
+    genre: 'rock',
+    level: 'advanced',
+    text: `@title Kashmir
+@key D
+@tempo 80
+@feel Epic Eastern Rock — DADGAD tuning, orchestral
+
+[A] Main Riff (DADGAD tuning)
+||: D5 | D5 | D5 | D5 :|| x4
+
+[B] Verse
+| D5 | D5 | D5 | D5 |
+| D5 | D5 | D5 | D5 |
+
+[C] Orchestral Section
+| G | A | Bm | Bm |
+| G | A | D | D |
+
+[D] Bridge
+| Gm | Gm | D | D |
+| Gm | Gm | A | A |
+
+@structure A B C A B C D A B C A`,
+    videos: [
+      { title: 'Kashmir — Guitar Lesson', channel: 'Marty Music', url: 'https://www.youtube.com/watch?v=AKnb8VFiVnI' },
+    ],
+  },
+
+  {
+    id: 'rock-and-roll',
+    artist: 'Led Zeppelin',
+    genre: 'rock',
+    level: 'intermediate',
+    text: `@title Rock and Roll
+@key A
+@tempo 170
+@feel Fast 12-Bar Rock — straight-ahead, full throttle
+
+[A] Intro
+| A | A | A | A |
+
+[B] Verse (12-bar)
+| A | A | A | A |
+| D | D | A | A |
+| E | D | A | E |
+
+[C] Solo (A minor pentatonic)
+| A | A | A | A |
+| D | D | A | A |
+| E | D | A | E |
+
+@structure A B B C B B`,
+    videos: [
+      { title: 'Rock and Roll — Guitar Lesson', channel: 'Marty Music', url: 'https://www.youtube.com/watch?v=uQmFhRFtJQo' },
+    ],
+  },
+
+  {
+    id: 'immigrant-song',
+    artist: 'Led Zeppelin',
+    genre: 'rock',
+    level: 'intermediate',
+    text: `@title Immigrant Song
+@key F#m
+@tempo 112
+@feel Viking Metal Proto — relentless riff, war cry intro
+
+[A] Main Riff
+||: F#m | F#m | A | A :|| x4
+
+[B] Verse
+| F#m | F#m | A | A |
+| F#m | F#m | A | A |
+
+[C] Break
+| F#m | F#m | B | B |
+| E | D | A | A |
+
+@structure A B A B C A B`,
+    videos: [
+      { title: 'Immigrant Song — Guitar Lesson', channel: 'Marty Music', url: 'https://www.youtube.com/watch?v=H0dEX5xFp68' },
+    ],
+  },
+
+  {
+    id: 'ramble-on',
+    artist: 'Led Zeppelin',
+    genre: 'classic-rock',
+    level: 'intermediate',
+    text: `@title Ramble On
+@key E
+@tempo 132
+@feel Folk-Rock Fingerpicking to Heavy Chorus
+
+[A] Verse (fingerpicked)
+||: E | E | A | E :|| x4
+
+[B] Pre-Chorus
+| C#m | C#m | F#m | F#m |
+| A | A | B | B |
+
+[C] Chorus (strummed, heavy)
+| A | A | Am | Am |
+| E | E | A | Am |
+
+@structure A A B C A A B C`,
+  },
+
+  {
+    id: 'over-the-hills',
+    artist: 'Led Zeppelin',
+    genre: 'classic-rock',
+    level: 'intermediate',
+    text: `@title Over the Hills and Far Away
+@key D
+@tempo 98
+@feel Acoustic Intro to Electric Rock — dynamic range
+
+[A] Intro (acoustic picked)
+||: D | D | G/D | D :|| x2
+
+[B] Verse (electric)
+| G | D | A | G |
+| D | A | G | A |
+
+[C] Chorus
+| C | G | D | D |
+| C | G | D | D |
+
+[D] Solo (D major pentatonic / D Mixolydian)
+| G | D | A | G |
+| G | D | A | A |
+
+@structure A B C B C D B C`,
+    videos: [
+      { title: 'Over the Hills and Far Away — Guitar Lesson', channel: 'Marty Music', url: 'https://www.youtube.com/watch?v=mwUmqNJi-3E' },
+    ],
+  },
+
+  {
+    id: 'dazed-and-confused',
+    artist: 'Led Zeppelin',
+    genre: 'rock',
+    level: 'advanced',
+    text: `@title Dazed and Confused
+@key E
+@tempo 82
+@feel Psychedelic Blues — descending chromatic bass, bow section
+
+[A] Main Riff (chromatic descent)
+| E | E | E | E |
+| E | Eb | D | Db |
+
+[B] Verse
+| E | E | E | E |
+| A | A | E | E |
+
+[C] Middle Section
+| A | A | E | E |
+| B | A | E | E |
+
+[D] Bow / Psychedelic Section (free)
+||: E | E | E | E :|| open
+
+[E] Fast Section
+| E | D | E | D |
+| A | G | E | E |
+
+@structure A B A B C D E A B`,
+  },
+
+  {
+    id: 'babe-im-gonna-leave-you',
+    artist: 'Led Zeppelin',
+    genre: 'classic-rock',
+    level: 'intermediate',
+    text: `@title Babe I'm Gonna Leave You
+@key Am
+@tempo 134
+@feel Acoustic Ballad to Heavy Rock — extreme dynamics
+
+[A] Verse (fingerpicked, descending bass)
+| Am | Am/G | D7/F# | F |
+| E7 | E7 | Am | Am |
+
+[B] Build
+| Am | Am | F | G |
+| Am | Am | F | E7 |
+
+[C] Heavy Section (strummed)
+| Am | D | Am | D |
+| F | E7 | Am | Am |
+
+@structure A A B C A A B C`,
+    videos: [
+      { title: 'Babe Im Gonna Leave You — Guitar Lesson', channel: 'Marty Music', url: 'https://www.youtube.com/watch?v=nBGJbkqrNAE' },
+    ],
+  },
+
+  {
+    id: 'thank-you',
+    artist: 'Led Zeppelin',
+    genre: 'classic-rock',
+    level: 'easy',
+    text: `@title Thank You
+@key D
+@tempo 102
+@feel Gentle Rock Ballad — organ-driven, simple and beautiful
+
+[A] Verse
+| D | C/D | G/D | D |
+| D | C/D | G/D | D |
+
+[B] Chorus
+| G | A | Bm | A |
+| G | F#m | Em | A |
+
+[C] Bridge
+| D | C | G | D |
+| D | C | G | A |
+
+@structure A B A B C A B`,
+  },
+
+  {
+    id: 'no-quarter',
+    artist: 'Led Zeppelin',
+    genre: 'rock',
+    level: 'advanced',
+    text: `@title No Quarter
+@key C#m
+@tempo 60
+@feel Dark Atmospheric Rock — slow, heavy, keyboard-driven
+
+[A] Intro (atmospheric)
+||: C#m | C#m | C#m | C#m :|| x4
+
+[B] Verse
+| C#m | E | C#m | E |
+| A | A | C#m | C#m |
+
+[C] Chorus
+| F#m | C#m | E | B |
+| F#m | C#m | A | A |
+
+[D] Solo (C# minor / C# blues)
+||: C#m | E | A | B :|| open
+
+@structure A B C A B C D B C`,
+  },
+
+  // ─── NEIL YOUNG ─────────────────────────────────────────────────────────
+
+  {
+    id: 'heart-of-gold',
+    artist: 'Neil Young',
+    genre: 'folk',
+    level: 'easy',
+    text: `@title Heart of Gold
+@key Em
+@tempo 98
+@feel Folk-Rock — harmonica intro, steady strum
+
+[A] Intro
+| Em | C | D | G |
+
+[B] Verse
+| Em | C | D | G |
+| Em | C | D | G |
+| Em | D | Em | Em |
+
+[C] Chorus
+| C | D | G | G |
+| Em | Em | C | D |
+
+@structure A B C B C`,
+    videos: [
+      { title: 'Heart of Gold — Guitar Lesson', channel: 'Marty Music', url: 'https://www.youtube.com/watch?v=7UXsYouLXGY' },
+    ],
+  },
+
+  {
+    id: 'old-man',
+    artist: 'Neil Young',
+    genre: 'folk',
+    level: 'intermediate',
+    text: `@title Old Man
+@key D
+@tempo 142
+@feel Folk-Rock — banjo-style picking, drop D tuning option
+
+[A] Intro / Riff
+| Dm | D | F | C |
+| Dm | D | F | C |
+
+[B] Verse
+| D | F | C | G |
+| D | F | C | C |
+
+[C] Chorus
+| F | C | G | D |
+| F | C | G | D |
+
+@structure A B C B C A`,
+    videos: [
+      { title: 'Old Man — Guitar Lesson', channel: 'Justin Guitar', url: 'https://www.youtube.com/watch?v=K-BBXM5w1O0' },
+    ],
+  },
+
+  // ─── TOM PETTY ──────────────────────────────────────────────────────────
+
+  {
+    id: 'free-fallin',
+    artist: 'Tom Petty',
+    genre: 'rock',
+    level: 'easy',
+    text: `@title Free Fallin'
+@key F
+@tempo 84
+@feel Laid-Back Rock — Capo 3, D and Asus4 shapes
+
+[A] Verse
+||: D | Dsus4 | D | Asus4 :|| x4
+
+[B] Chorus
+||: D | Dsus4 | D | Asus4 :|| x4
+
+@structure A A B A A B B`,
+    videos: [
+      { title: 'Free Fallin — Guitar Lesson', channel: 'Marty Music', url: 'https://www.youtube.com/watch?v=V0GELSp2Ihc' },
+    ],
+  },
+
+  {
+    id: 'runnin-down-a-dream',
+    artist: 'Tom Petty',
+    genre: 'rock',
+    level: 'intermediate',
+    text: `@title Runnin' Down a Dream
+@key E
+@tempo 170
+@feel Driving Rock — palm muted verse, open chorus
+
+[A] Intro Riff
+||: E | E | E | E :|| x2
+
+[B] Verse
+| E | E | E | E |
+| G | A | E | E |
+
+[C] Chorus
+| G | A | E | E |
+| G | A | E | E |
+
+[D] Solo (E minor pentatonic)
+||: E | G | A | E :|| open
+
+@structure A B C B C D B C`,
+  },
+
+  // ─── ALLMAN BROTHERS ────────────────────────────────────────────────────
+
+  {
+    id: 'midnight-rider',
+    artist: 'The Allman Brothers Band',
+    genre: 'rock',
+    level: 'easy',
+    text: `@title Midnight Rider
+@key D
+@tempo 108
+@feel Southern Rock Groove — simple and soulful
+
+[A] Verse
+| D | D | D | D |
+| Gm | Gm | D | D |
+
+[B] Chorus
+| Bb | C | D | D |
+| Bb | C | D | D |
+
+@structure A B A B A B`,
+    videos: [
+      { title: 'Midnight Rider — Guitar Lesson', channel: 'Marty Music', url: 'https://www.youtube.com/watch?v=f0-p3-i7mHs' },
+    ],
+  },
+
+  {
+    id: 'whipping-post',
+    artist: 'The Allman Brothers Band',
+    genre: 'rock',
+    level: 'advanced',
+    text: `@title Whipping Post
+@key A
+@tempo 102
+@feel Epic Southern Blues-Rock — 11/8 time signature intro
+
+[A] Intro Riff (11/8 feel: 3+3+3+2)
+||: A | Bm | C :|| x4
+
+[B] Verse
+| A | A | D | D |
+| A | A | E | E |
+
+[C] Chorus
+| F | G | A | A |
+| F | G | A | A |
+
+[D] Solo (A minor pentatonic / A blues)
+||: A | D | E | A :|| open
+
+@structure A B C B C D B C`,
+    videos: [
+      { title: 'Whipping Post — Guitar Lesson', channel: 'GuitarLessons365', url: 'https://www.youtube.com/watch?v=T-tXRfVTnsE' },
+    ],
+  },
+
+  // ─── GRATEFUL DEAD ──────────────────────────────────────────────────────
+
+  {
+    id: 'friend-of-the-devil',
+    artist: 'Grateful Dead',
+    genre: 'folk',
+    level: 'easy',
+    text: `@title Friend of the Devil
+@key G
+@tempo 120
+@feel Uptempo Folk — major key, walking bass feel
+
+[A] Verse
+| G | C | G | C |
+| G | D | D | G |
+
+[B] Chorus
+| Am | Am | Em | Em |
+| Am | Em | D | D |
+
+@structure A B A B A B`,
+    videos: [
+      { title: 'Friend of the Devil — Guitar Lesson', channel: 'Marty Music', url: 'https://www.youtube.com/watch?v=zPHGz-AsCXk' },
+    ],
+  },
+
+  {
+    id: 'ripple',
+    artist: 'Grateful Dead',
+    genre: 'folk',
+    level: 'easy',
+    text: `@title Ripple
+@key G
+@tempo 100
+@feel Gentle Folk — fingerpicking or light strum, peaceful
+
+[A] Verse
+| G | G | C | C |
+| G | G | D | D |
+
+[B] Chorus
+| Am | D | G | C |
+| Am | D | G | G |
+
+[C] Bridge
+| Am | G | C | G |
+| Am | G | D | D |
+
+@structure A B A B C A B`,
+    videos: [
+      { title: 'Ripple — Guitar Lesson', channel: 'Marty Music', url: 'https://www.youtube.com/watch?v=6FAYZoEBi9k' },
+    ],
+  },
+
+  // ─── JOHN MAYER ─────────────────────────────────────────────────────────
+
+  {
+    id: 'gravity',
+    artist: 'John Mayer',
+    genre: 'blues',
+    level: 'intermediate',
+    text: `@title Gravity
+@key G
+@tempo 70
+@feel Slow Blues-Pop — Hendrix-influenced, feel over speed
+
+[A] Intro / Verse
+| G | C | G | C |
+| G | C | G | C |
+
+[B] Chorus
+| Am7 | D7 | G | Em |
+| Am7 | D7 | G | G |
+
+[C] Bridge
+| Gm | Gm | C | C |
+| Eb | D | D | D |
+
+[D] Solo (G major / G minor pentatonic)
+||: G | C | Am7 | D7 :|| open
+
+@structure A B A B C D B`,
+    videos: [
+      { title: 'Gravity — Guitar Lesson', channel: 'Justin Guitar', url: 'https://www.youtube.com/watch?v=NZrDpqiovMo' },
+    ],
+  },
+
+  // ─── CREAM ──────────────────────────────────────────────────────────────
+
+  {
+    id: 'sunshine-of-your-love',
+    artist: 'Cream',
+    genre: 'rock',
+    level: 'intermediate',
+    text: `@title Sunshine of Your Love
+@key D
+@tempo 114
+@feel Psychedelic Blues-Rock — iconic riff, Clapton solo
+
+[A] Intro / Riff
+||: D5 | D5 | D5 | D5 :|| x2
+
+[B] Verse
+| D5 | D5 | D5 | D5 |
+| G5 | G5 | D5 | D5 |
+
+[C] Chorus
+| A | C/G | G | A |
+| A | C/G | G | A |
+
+[D] Solo (D minor pentatonic / D blues)
+||: D5 | G5 | A | D5 :|| open
+
+@structure A B C B C D C`,
+    videos: [
+      { title: 'Sunshine of Your Love — Guitar Lesson', channel: 'Marty Music', url: 'https://www.youtube.com/watch?v=MsQ4MKHCyhI' },
+    ],
+  },
+
+  // ─── FLEETWOOD MAC ──────────────────────────────────────────────────────
+
+  {
+    id: 'the-chain',
+    artist: 'Fleetwood Mac',
+    genre: 'rock',
+    level: 'intermediate',
+    text: `@title The Chain
+@key Am
+@tempo 152
+@feel Rock — dynamic build, legendary bass outro
+
+[A] Verse
+| Am | Am | G | G |
+| Am | Am | G | G |
+
+[B] Pre-Chorus
+| C | Am | G | G |
+| C | F | Am | Am |
+
+[C] Chorus
+| Em | Am | Em | Am |
+| C | Am | G | G |
+
+[D] Bass Outro (iconic riff)
+||: Am | Am | Am | Am :|| x4
+
+@structure A B C A B C D`,
+  },
+
+  // ─── EAGLES ─────────────────────────────────────────────────────────────
+
+  {
+    id: 'take-it-easy',
+    artist: 'Eagles',
+    genre: 'classic-rock',
+    level: 'easy',
+    text: `@title Take It Easy
+@key G
+@tempo 138
+@feel Country-Rock — open chords, feel-good
+
+[A] Intro
+| G | G | D | C |
+
+[B] Verse
+| G | G | D | C |
+| G | G | Am | C |
+| Em | D | C | G |
+
+[C] Chorus
+| Em | C | G | Am |
+| C | G | D | G |
+
+@structure A B C B C`,
+    videos: [
+      { title: 'Take It Easy — Guitar Lesson', channel: 'Marty Music', url: 'https://www.youtube.com/watch?v=SrO_BNldW2Y' },
+    ],
+  },
+
+  // ─── BLACK SABBATH ──────────────────────────────────────────────────────
+
+  {
+    id: 'paranoid',
+    artist: 'Black Sabbath',
+    genre: 'rock',
+    level: 'easy',
+    text: `@title Paranoid
+@key E
+@tempo 164
+@feel Fast Metal Riff — palm muted, power chords
+
+[A] Main Riff
+||: E5 | E5 | D5 | G5 / D5 :|| x2
+
+[B] Verse
+| E5 | E5 | D5 | G5 / D5 |
+| E5 | E5 | D5 | G5 / D5 |
+
+[C] Bridge
+| B5 | E5 | B5 | E5 |
+| B5 | D5 | E5 | E5 |
+
+[D] Solo (E minor pentatonic)
+||: E5 | D5 | G5 | E5 :|| open
+
+@structure A B A B C D A B`,
+    videos: [
+      { title: 'Paranoid — Guitar Lesson', channel: 'Marty Music', url: 'https://www.youtube.com/watch?v=QjifTaC0smo' },
+    ],
+  },
+
+  // ─── MORE HENDRIX ───────────────────────────────────────────────────────
+
+  {
+    id: 'voodoo-child-slight-return',
+    artist: 'Jimi Hendrix',
+    genre: 'blues',
+    level: 'advanced',
+    text: `@title Voodoo Child (Slight Return)
+@key E
+@tempo 88
+@feel Heavy Psychedelic Blues — wah-wah, Hendrix chord (E7#9)
+
+[A] Intro / Main Riff
+||: E7#9 | E7#9 | E7#9 | E7#9 :|| x4
+
+[B] Verse
+| E7#9 | E7#9 | D | E |
+| E7#9 | E7#9 | D | E |
+
+[C] Turnaround
+| G | F | E7#9 | E7#9 |
+
+[D] Solo (E minor pentatonic / E blues)
+||: E7#9 | D | E | E7#9 :|| open
+
+@structure A B C A B C D B C`,
+    videos: [
+      { title: 'Voodoo Child — Guitar Lesson', channel: 'GuitarLessons365', url: 'https://www.youtube.com/watch?v=FdKJ_bB1qYA' },
+    ],
+  },
+
+  // ─── MORE SRV ───────────────────────────────────────────────────────────
+
+  {
+    id: 'texas-flood',
+    artist: 'Stevie Ray Vaughan',
+    genre: 'blues',
+    level: 'advanced',
+    text: `@title Texas Flood
+@key G
+@tempo 60
+@feel Slow Texas Blues — deep feel, heavy string bending
+
+[A] 12-Bar Slow Blues
+| G7 | G7 | G7 | G7 |
+| C7 | C7 | G7 | G7 |
+| D7 | C7 | G7 | D7 |
+
+[B] Verse (same 12-bar)
+| G7 | G7 | G7 | G7 |
+| C7 | C7 | G7 | G7 |
+| D7 | C7 | G7 | D7 |
+
+[C] Solo (G minor pentatonic / G blues)
+| G7 | G7 | G7 | G7 |
+| C7 | C7 | G7 | G7 |
+| D7 | C7 | G7 | G7 |
+
+@structure A B A B C B B`,
+    videos: [
+      { title: 'Texas Flood — SRV Guitar Lesson', channel: 'GuitarLessons365', url: 'https://www.youtube.com/watch?v=b9AvF5j3pFw' },
+    ],
+  },
+
+  // ─── DEREK & THE DOMINOS ────────────────────────────────────────────────
+
+  {
+    id: 'bell-bottom-blues',
+    artist: 'Derek and the Dominos',
+    genre: 'blues',
+    level: 'intermediate',
+    text: `@title Bell Bottom Blues
+@key C
+@tempo 72
+@feel Slow Rock Ballad — Clapton's most emotional vocal
+
+[A] Verse
+| C | E7/B | Am | C/G |
+| F | F | G | G |
+
+[B] Pre-Chorus
+| Am | Em/G | F | G |
+| Am | Em/G | D | D |
+
+[C] Chorus
+| A | A | E | E |
+| Dm | Dm | E7 | E7 |
+
+@structure A B C A B C A`,
+    videos: [
+      { title: 'Bell Bottom Blues — Guitar Lesson', channel: 'Marty Music', url: 'https://www.youtube.com/watch?v=bqJUhJL-kds' },
     ],
   },
 ];
