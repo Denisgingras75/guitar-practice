@@ -667,6 +667,60 @@
   }
 }
 
+/* === Stats Bar === */
+.statsBar {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.6rem 1rem;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  margin-bottom: 1.25rem;
+  font-size: 0.8rem;
+  color: var(--fg-muted);
+}
+
+.stat strong {
+  color: var(--fg);
+  font-weight: 700;
+}
+
+.statDivider {
+  color: var(--border);
+  font-size: 0.7rem;
+}
+
+/* === Video Section === */
+.videoSection {
+  margin-top: 1.5rem;
+  padding-top: 1rem;
+  border-top: 1px solid var(--border);
+}
+
+.ytSearchLink {
+  display: inline-block;
+  padding: 8px 18px;
+  border: 1px solid var(--accent);
+  border-radius: var(--radius);
+  color: var(--accent);
+  font-size: 0.8rem;
+  font-weight: 700;
+  text-decoration: none;
+  transition: all 0.15s;
+  margin-bottom: 1rem;
+}
+
+.ytSearchLink:hover {
+  background: var(--accent-glow);
+}
+
+.videoList {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
 /* === Responsive === */
 @media (min-width: 640px) {
   .pasteLayout {

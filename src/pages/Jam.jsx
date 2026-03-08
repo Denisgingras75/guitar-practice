@@ -4,6 +4,7 @@ import { useLocalStorage } from '../hooks/useLocalStorage.js';
 import { parseChart } from '../utils/chartParser.js';
 import { looksLikeUG, convertUGToNashville } from '../utils/ugParser.js';
 import ChartRenderer from '../components/ChartRenderer.jsx';
+import VideoEmbed from '../components/VideoEmbed.jsx';
 import styles from './Jam.module.css';
 
 const BUCKETS = [
@@ -26,6 +27,11 @@ const BUCKET_MOVES = {
 };
 
 const VERSION_TYPES = ['Chord Chart', 'Tab', 'Simplified', 'Alternate Tuning', 'Custom'];
+
+function youtubeSearchUrl(title, artist) {
+  const q = encodeURIComponent(`${title} ${artist} guitar lesson`.trim());
+  return `https://www.youtube.com/results?search_query=${q}`;
+}
 
 function extractMeta(text) {
   const titleMatch = text.match(/@title\s+(.+)/);
@@ -431,6 +437,26 @@ export default function Jam() {
         <div className={styles.printArea}>
           <ChartRenderer text={currentVersion.text} />
         </div>
+
+        {/* YouTube & Videos */}
+        <div className={styles.videoSection}>
+          <a
+            href={youtubeSearchUrl(activeSong.title, activeSong.artist)}
+            target="_blank"
+            rel="noopener noreferrer"
+            className={styles.ytSearchLink}
+          >
+            Find Lessons on YouTube &rarr;
+          </a>
+
+          {activeSong.videos && activeSong.videos.length > 0 && (
+            <div className={styles.videoList}>
+              {activeSong.videos.map((v, i) => (
+                <VideoEmbed key={i} video={v} />
+              ))}
+            </div>
+          )}
+        </div>
       </div>
     );
   }
@@ -559,6 +585,8 @@ export default function Jam() {
 
   // === MAIN LIST VIEW ===
   const totalSongs = jamSongs.length;
+  const knowCount = jamSongs.filter((s) => s.bucket === 'know').length;
+  const workingCount = jamSongs.filter((s) => s.bucket === 'working').length;
 
   return (
     <div className={styles.page}>
@@ -568,6 +596,16 @@ export default function Jam() {
           + Add Song
         </button>
       </div>
+
+      {totalSongs > 0 && (
+        <div className={styles.statsBar}>
+          <span className={styles.stat}><strong>{knowCount}</strong> known</span>
+          <span className={styles.statDivider}>|</span>
+          <span className={styles.stat}><strong>{workingCount}</strong> learning</span>
+          <span className={styles.statDivider}>|</span>
+          <span className={styles.stat}><strong>{totalSongs}</strong> total</span>
+        </div>
+      )}
 
       {totalSongs > 0 && (
         <input
