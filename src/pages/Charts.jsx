@@ -2,8 +2,16 @@ import { useState, useMemo } from 'react';
 import { STARTER_CHARTS } from '../data/charts.js';
 import { useLocalStorage } from '../hooks/useLocalStorage.js';
 import ChartRenderer from '../components/ChartRenderer.jsx';
+import LyricsRenderer, { looksLikeLyrics } from '../components/LyricsRenderer.jsx';
 import VideoEmbed from '../components/VideoEmbed.jsx';
 import styles from './Charts.module.css';
+
+function SmartRenderer({ text }) {
+  if (looksLikeLyrics(text)) {
+    return <LyricsRenderer text={text} />;
+  }
+  return <SmartRenderer text={text} />;
+}
 
 const GENRE_STYLES = {
   blues: { border: styles.borderBlues, badge: styles.genreBlues },
@@ -289,7 +297,7 @@ export default function Charts() {
           </div>
         )}
 
-        <ChartRenderer text={activeChart.text} />
+        <SmartRenderer text={activeChart.text} />
       </div>
     );
   }
@@ -315,7 +323,7 @@ export default function Charts() {
         </div>
         <div className={styles.previewPane}>
           <label className={styles.editorLabel}>Preview</label>
-          <ChartRenderer text={editText} />
+          <SmartRenderer text={editText} />
         </div>
       </div>
     </div>

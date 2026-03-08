@@ -3,7 +3,15 @@ import { STARTER_CHARTS } from '../data/charts.js';
 import { useLocalStorage } from '../hooks/useLocalStorage.js';
 import { looksLikeUG, convertUGToNashville } from '../utils/ugParser.js';
 import ChartRenderer from '../components/ChartRenderer.jsx';
+import LyricsRenderer, { looksLikeLyrics } from '../components/LyricsRenderer.jsx';
 import styles from './Jam.module.css';
+
+function SmartRenderer({ text }) {
+  if (looksLikeLyrics(text)) {
+    return <LyricsRenderer text={text} />;
+  }
+  return <SmartRenderer text={text} />;
+}
 
 const TABS = [
   { key: 'songs', label: 'Songs' },
@@ -181,7 +189,7 @@ export default function Jam() {
 
   // ── Version handlers ────────────────────────────────────────────────────
 
-  const VERSION_TYPES = ['Chord Chart', 'Tab', 'Simplified', 'Alternate Tuning', 'Custom'];
+  const VERSION_TYPES = ['Chord Chart', 'Lyrics & Chords', 'Tab', 'Simplified', 'Alternate Tuning', 'Custom'];
 
   const startAddVersion = () => {
     setNewVersionLabel('Chord Chart');
@@ -330,7 +338,7 @@ export default function Jam() {
             />
             {previewText && (
               <div className={styles.pastePreview}>
-                <ChartRenderer text={previewText} />
+                <SmartRenderer text={previewText} />
               </div>
             )}
           </div>
@@ -364,7 +372,7 @@ export default function Jam() {
             />
             {editText.trim() && (
               <div className={styles.pastePreview}>
-                <ChartRenderer text={editText} />
+                <SmartRenderer text={editText} />
               </div>
             )}
           </div>
@@ -442,7 +450,7 @@ export default function Jam() {
         </div>
 
         <div className={styles.printArea}>
-          <ChartRenderer text={currentVersion.text} />
+          <SmartRenderer text={currentVersion.text} />
         </div>
 
         <div className={styles.chartFooter}>
@@ -672,7 +680,7 @@ export default function Jam() {
           />
           {previewText && (
             <div className={styles.pastePreview}>
-              <ChartRenderer text={previewText} />
+              <SmartRenderer text={previewText} />
             </div>
           )}
         </div>
