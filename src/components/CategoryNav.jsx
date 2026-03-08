@@ -22,6 +22,7 @@ const groups = [
   {
     label: 'Songs',
     links: [
+      { to: '/jam', label: 'Jam' },
       { to: '/charts', label: 'Charts' },
       { to: '/guitarists', label: 'Artists' },
     ],

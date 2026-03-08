@@ -10,6 +10,7 @@ import Routines from './pages/Routines.jsx';
 import Tuner from './pages/Tuner.jsx';
 import SkillTrees from './pages/SkillTrees.jsx';
 import Charts from './pages/Charts.jsx';
+import Jam from './pages/Jam.jsx';
 import Metronome from './pages/Metronome.jsx';
 import CheatSheet from './pages/CheatSheet.jsx';
 import './App.css';
@@ -34,6 +35,7 @@ function App() {
             <Route path="/practice" element={<Routines />} />
             <Route path="/tuner" element={<Tuner />} />
             <Route path="/charts" element={<Charts />} />
+            <Route path="/jam" element={<Jam />} />
             <Route path="/metronome" element={<Metronome />} />
             <Route path="/cheatsheet" element={<CheatSheet />} />
           </Routes>
