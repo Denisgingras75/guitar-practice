@@ -4,14 +4,18 @@ import { getScalePositions } from '../theory/fretboard.js';
 import Fretboard from './Fretboard.jsx';
 import styles from './ScaleCard.module.css';
 
+const ALL_POSITIONS_VALUE = -1;
+
 export default function ScaleCard({ scale, onPractice }) {
   const [expanded, setExpanded] = useState(false);
   const [root, setRoot] = useState('A');
-  const [positionIndex, setPositionIndex] = useState(0);
+  const [positionIndex, setPositionIndex] = useState(ALL_POSITIONS_VALUE);
   const [showIntervals, setShowIntervals] = useState(false);
 
-  const position = scale.positions[positionIndex];
-  const positions = getScalePositions(root, scale.intervals, position.minFret, position.maxFret);
+  const isAllPositions = positionIndex === ALL_POSITIONS_VALUE;
+  const minFret = isAllPositions ? 0 : scale.positions[positionIndex].minFret;
+  const maxFret = isAllPositions ? 17 : scale.positions[positionIndex].maxFret;
+  const positions = getScalePositions(root, scale.intervals, minFret, maxFret);
 
   return (
     <div className={`${styles.card} ${expanded ? styles.cardExpanded : ''}`}>
