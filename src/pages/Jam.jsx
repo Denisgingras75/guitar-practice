@@ -25,6 +25,8 @@ const BUCKET_MOVES = {
   ],
 };
 
+const VERSION_TYPES = ['Chord Chart', 'Tab', 'Simplified', 'Alternate Tuning', 'Custom'];
+
 function extractMeta(text) {
   const titleMatch = text.match(/@title\s+(.+)/);
   const keyMatch = text.match(/@key\s+(.+)/);
@@ -36,6 +38,12 @@ function extractMeta(text) {
   };
 }
 
+// Get versions array from a song, handling legacy format
+function getVersions(song) {
+  if (song.versions && song.versions.length > 0) return song.versions;
+  return [{ id: 'v-default', label: 'Chord Chart', text: song.text }];
+}
+
 export default function Jam() {
   const [jamSongs, setJamSongs] = useLocalStorage('jam-songs', []);
   const [view, setView] = useState('list'); // list | chart | add | paste
@@ -43,6 +51,14 @@ export default function Jam() {
   const [search, setSearch] = useState('');
   const [addSearch, setAddSearch] = useState('');
   const [pasteText, setPasteText] = useState('');
+
+  // Version & edit state
+  const [activeVersionIdx, setActiveVersionIdx] = useState(0);
+  const [editing, setEditing] = useState(false);
+  const [editText, setEditText] = useState('');
+  const [addingVersion, setAddingVersion] = useState(false);
+  const [newVersionLabel, setNewVersionLabel] = useState('Chord Chart');
+  const [newVersionText, setNewVersionText] = useState('');
 
   // Songs already in jam by chart id
   const jamIds = useMemo(
@@ -65,6 +81,19 @@ export default function Jam() {
     });
   }, [addSearch, jamIds]);
 
+  // ── Helpers ─────────────────────────────────────────────────────────────
+
+  const updateSong = (songId, updates) => {
+    const updated = jamSongs.map((s) =>
+      s.id === songId ? { ...s, ...updates } : s
+    );
+    setJamSongs(updated);
+    // Keep activeSong in sync
+    if (activeSong && activeSong.id === songId) {
+      setActiveSong({ ...activeSong, ...updates });
+    }
+  };
+
   const addFromLibrary = (chart) => {
     const meta = extractMeta(chart.text);
     const song = {
@@ -75,6 +104,7 @@ export default function Jam() {
       genre: chart.genre || '',
       level: chart.level || '',
       text: chart.text,
+      versions: [{ id: 'v-' + Date.now(), label: 'Chord Chart', text: chart.text }],
       videos: chart.videos || [],
       bucket: 'want',
       addedAt: Date.now(),
@@ -93,6 +123,7 @@ export default function Jam() {
       key: meta.key,
       genre: '',
       text: trimmed,
+      versions: [{ id: 'v-' + Date.now(), label: 'Chord Chart', text: trimmed }],
       videos: [],
       bucket: 'want',
       addedAt: Date.now(),
@@ -103,9 +134,7 @@ export default function Jam() {
   };
 
   const moveSong = (songId, newBucket) => {
-    setJamSongs(
-      jamSongs.map((s) => (s.id === songId ? { ...s, bucket: newBucket } : s))
-    );
+    updateSong(songId, { bucket: newBucket });
   };
 
   const removeSong = (songId) => {
@@ -118,7 +147,76 @@ export default function Jam() {
 
   const openChart = (song) => {
     setActiveSong(song);
+    setActiveVersionIdx(0);
+    setEditing(false);
+    setAddingVersion(false);
     setView('chart');
+  };
+
+  // ── Edit handlers ───────────────────────────────────────────────────────
+
+  const startEditing = (versionText) => {
+    setEditText(versionText);
+    setEditing(true);
+  };
+
+  const saveEdit = () => {
+    if (!activeSong) return;
+    const versions = [...getVersions(activeSong)];
+    versions[activeVersionIdx] = { ...versions[activeVersionIdx], text: editText };
+    // Update text to first version for backwards compat
+    const newText = versions[0].text;
+    const meta = extractMeta(newText);
+    updateSong(activeSong.id, {
+      versions,
+      text: newText,
+      title: meta.title || activeSong.title,
+      key: meta.key || activeSong.key,
+    });
+    setEditing(false);
+  };
+
+  const cancelEdit = () => {
+    setEditing(false);
+    setEditText('');
+  };
+
+  // ── Version handlers ────────────────────────────────────────────────────
+
+  const startAddVersion = () => {
+    setNewVersionLabel('Chord Chart');
+    setNewVersionText('');
+    setAddingVersion(true);
+    setEditing(false);
+  };
+
+  const saveNewVersion = () => {
+    if (!activeSong || !newVersionText.trim()) return;
+    const versions = [...getVersions(activeSong)];
+    versions.push({
+      id: 'v-' + Date.now(),
+      label: newVersionLabel,
+      text: newVersionText.trim(),
+    });
+    updateSong(activeSong.id, { versions });
+    setActiveVersionIdx(versions.length - 1);
+    setAddingVersion(false);
+    setNewVersionText('');
+  };
+
+  const cancelAddVersion = () => {
+    setAddingVersion(false);
+    setNewVersionText('');
+  };
+
+  const deleteVersion = (idx) => {
+    if (!activeSong) return;
+    const versions = [...getVersions(activeSong)];
+    if (versions.length <= 1) return; // Can't delete the only version
+    versions.splice(idx, 1);
+    const newIdx = Math.min(activeVersionIdx, versions.length - 1);
+    updateSong(activeSong.id, { versions, text: versions[0].text });
+    setActiveVersionIdx(newIdx);
   };
 
   const handlePrint = () => {
@@ -146,6 +244,109 @@ export default function Jam() {
   // === CHART VIEW ===
   if (view === 'chart' && activeSong) {
     const moves = BUCKET_MOVES[activeSong.bucket] || [];
+    const versions = getVersions(activeSong);
+    const safeIdx = Math.min(activeVersionIdx, versions.length - 1);
+    const currentVersion = versions[safeIdx];
+
+    // Adding a new version
+    if (addingVersion) {
+      const isUG = looksLikeUG(newVersionText);
+      const handleConvertUG = () => {
+        const converted = convertUGToNashville(newVersionText);
+        if (converted) setNewVersionText(converted);
+      };
+      const previewText = newVersionText.trim() && !isUG ? newVersionText : '';
+
+      return (
+        <div className={styles.page}>
+          <div className={styles.viewHeader}>
+            <button className={styles.backBtn} onClick={cancelAddVersion}>
+              &larr; Back to Song
+            </button>
+            <button className={styles.saveBtn} onClick={saveNewVersion}>
+              Save Version
+            </button>
+          </div>
+
+          <h2 className={styles.heading}>Add Version</h2>
+
+          <div className={styles.versionLabelRow}>
+            <label className={styles.fieldLabel}>Version type</label>
+            <div className={styles.versionTypeOptions}>
+              {VERSION_TYPES.map((t) => (
+                <button
+                  key={t}
+                  className={`${styles.versionTypeBtn} ${newVersionLabel === t ? styles.versionTypeActive : ''}`}
+                  onClick={() => setNewVersionLabel(t)}
+                >
+                  {t}
+                </button>
+              ))}
+            </div>
+          </div>
+
+          {isUG && (
+            <div className={styles.ugBanner}>
+              <span>Detected Ultimate Guitar format</span>
+              <button className={styles.convertBtn} onClick={handleConvertUG}>
+                Convert to Chart
+              </button>
+            </div>
+          )}
+
+          <div className={styles.pasteLayout}>
+            <textarea
+              className={styles.pasteEditor}
+              value={newVersionText}
+              onChange={(e) => setNewVersionText(e.target.value)}
+              spellCheck={false}
+              placeholder="Paste chord chart, tab, or Nashville syntax..."
+            />
+            {previewText && (
+              <div className={styles.pastePreview}>
+                <ChartRenderer text={previewText} />
+              </div>
+            )}
+          </div>
+        </div>
+      );
+    }
+
+    // Editing current version
+    if (editing) {
+      return (
+        <div className={styles.page}>
+          <div className={styles.viewHeader}>
+            <button className={styles.backBtn} onClick={cancelEdit}>
+              &larr; Cancel
+            </button>
+            <button className={styles.saveBtn} onClick={saveEdit}>
+              Save Changes
+            </button>
+          </div>
+
+          <h2 className={styles.heading}>
+            Edit: {currentVersion.label || 'Chart'}
+          </h2>
+
+          <div className={styles.pasteLayout}>
+            <textarea
+              className={styles.pasteEditor}
+              value={editText}
+              onChange={(e) => setEditText(e.target.value)}
+              spellCheck={false}
+            />
+            {editText.trim() && (
+              <div className={styles.pastePreview}>
+                <ChartRenderer text={editText} />
+              </div>
+            )}
+          </div>
+        </div>
+      );
+    }
+
+    // Normal chart view
     return (
       <div className={styles.page}>
         <div className={styles.viewHeader}>
@@ -153,6 +354,12 @@ export default function Jam() {
             &larr; Jam
           </button>
           <div className={styles.viewActions}>
+            <button
+              className={styles.editBtn}
+              onClick={() => startEditing(currentVersion.text)}
+            >
+              Edit
+            </button>
             <button className={styles.printBtn} onClick={handlePrint}>
               Print
             </button>
@@ -185,7 +392,6 @@ export default function Jam() {
                 className={styles.moveBtn}
                 onClick={() => {
                   moveSong(activeSong.id, m.target);
-                  setActiveSong({ ...activeSong, bucket: m.target });
                 }}
               >
                 {m.label}
@@ -194,8 +400,36 @@ export default function Jam() {
           </div>
         )}
 
+        {/* Version tabs */}
+        <div className={styles.versionTabs}>
+          {versions.map((v, i) => (
+            <button
+              key={v.id}
+              className={`${styles.versionTab} ${i === safeIdx ? styles.versionTabActive : ''}`}
+              onClick={() => setActiveVersionIdx(i)}
+            >
+              {v.label || 'Version ' + (i + 1)}
+            </button>
+          ))}
+          <button className={styles.addVersionBtn} onClick={startAddVersion}>
+            +
+          </button>
+        </div>
+
+        {/* Version actions */}
+        {versions.length > 1 && (
+          <div className={styles.versionActions}>
+            <button
+              className={styles.deleteVersionBtn}
+              onClick={() => deleteVersion(safeIdx)}
+            >
+              Delete this version
+            </button>
+          </div>
+        )}
+
         <div className={styles.printArea}>
-          <ChartRenderer text={activeSong.text} />
+          <ChartRenderer text={currentVersion.text} />
         </div>
       </div>
     );
@@ -278,7 +512,6 @@ export default function Jam() {
       }
     };
 
-    // For preview: if text looks like Nashville already, show it; otherwise show nothing until converted
     const previewText = pasteText.trim() && !isUG ? pasteText : '';
 
     return (
@@ -372,30 +605,40 @@ export default function Jam() {
                 <p className={styles.bucketEmpty}>No songs here yet.</p>
               ) : (
                 <div className={styles.songList}>
-                  {songs.map((song) => (
-                    <button
-                      key={song.id}
-                      className={styles.songCard}
-                      onClick={() => openChart(song)}
-                    >
-                      <div className={styles.songCardInfo}>
-                        <span className={styles.songTitle}>{song.title}</span>
-                        {song.artist && (
-                          <span className={styles.songCardArtist}>
-                            {song.artist}
-                          </span>
-                        )}
-                      </div>
-                      {song.level && (
-                        <span className={`${styles.levelBadge} ${styles['level' + song.level.charAt(0).toUpperCase() + song.level.slice(1)]}`}>
-                          {song.level}
-                        </span>
-                      )}
-                      {song.key && (
-                        <span className={styles.keyBadge}>{song.key}</span>
-                      )}
-                    </button>
-                  ))}
+                  {songs.map((song) => {
+                    const vCount = getVersions(song).length;
+                    return (
+                      <button
+                        key={song.id}
+                        className={styles.songCard}
+                        onClick={() => openChart(song)}
+                      >
+                        <div className={styles.songCardInfo}>
+                          <span className={styles.songTitle}>{song.title}</span>
+                          {song.artist && (
+                            <span className={styles.songCardArtist}>
+                              {song.artist}
+                            </span>
+                          )}
+                        </div>
+                        <div className={styles.songCardMeta}>
+                          {vCount > 1 && (
+                            <span className={styles.versionCountBadge}>
+                              {vCount} versions
+                            </span>
+                          )}
+                          {song.level && (
+                            <span className={`${styles.levelBadge} ${styles['level' + song.level.charAt(0).toUpperCase() + song.level.slice(1)]}`}>
+                              {song.level}
+                            </span>
+                          )}
+                          {song.key && (
+                            <span className={styles.keyBadge}>{song.key}</span>
+                          )}
+                        </div>
+                      </button>
+                    );
+                  })}
                 </div>
               )}
             </div>

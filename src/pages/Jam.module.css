@@ -493,11 +493,167 @@
   font-size: 0.85rem;
 }
 
+/* === Song Card Meta === */
+.songCardMeta {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  flex-shrink: 0;
+}
+
+/* === Version Count Badge === */
+.versionCountBadge {
+  font-size: 0.55rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  padding: 2px 8px;
+  border-radius: 99px;
+  border: 1px solid var(--fg-dim);
+  color: var(--fg-dim);
+}
+
+/* === Edit Button === */
+.editBtn {
+  padding: 6px 16px;
+  border: 1px solid var(--accent);
+  border-radius: var(--radius);
+  background: transparent;
+  color: var(--accent);
+  font-size: 0.8rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.15s;
+}
+
+.editBtn:hover {
+  background: var(--accent-glow);
+}
+
+/* === Version Tabs === */
+.versionTabs {
+  display: flex;
+  gap: 4px;
+  margin-bottom: 1rem;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.versionTab {
+  padding: 6px 14px;
+  border: 1px solid var(--border);
+  border-radius: 99px;
+  background: transparent;
+  color: var(--fg-muted);
+  font-size: 0.75rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.15s;
+}
+
+.versionTab:hover {
+  border-color: var(--fg-dim);
+  color: var(--fg);
+}
+
+.versionTabActive {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: #fafafa;
+}
+
+.addVersionBtn {
+  width: 28px;
+  height: 28px;
+  border: 1px dashed var(--border);
+  border-radius: 50%;
+  background: transparent;
+  color: var(--fg-dim);
+  font-size: 1rem;
+  font-weight: 700;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.15s;
+}
+
+.addVersionBtn:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+/* === Version Actions === */
+.versionActions {
+  margin-bottom: 0.75rem;
+}
+
+.deleteVersionBtn {
+  background: none;
+  border: none;
+  color: #ef4444;
+  font-size: 0.75rem;
+  font-weight: 600;
+  cursor: pointer;
+  padding: 0;
+  transition: opacity 0.15s;
+}
+
+.deleteVersionBtn:hover {
+  opacity: 0.7;
+}
+
+/* === Add Version Form === */
+.versionLabelRow {
+  margin-bottom: 1rem;
+}
+
+.fieldLabel {
+  display: block;
+  font-size: 0.7rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--fg-muted);
+  margin-bottom: 0.4rem;
+}
+
+.versionTypeOptions {
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+}
+
+.versionTypeBtn {
+  padding: 6px 14px;
+  border: 1px solid var(--border);
+  border-radius: 99px;
+  background: transparent;
+  color: var(--fg-muted);
+  font-size: 0.75rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.15s;
+}
+
+.versionTypeBtn:hover {
+  border-color: var(--fg-dim);
+  color: var(--fg);
+}
+
+.versionTypeActive {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: #fafafa;
+}
+
 /* === Print === */
 @media print {
   .viewHeader,
   .moveActions,
-  .songMeta {
+  .songMeta,
+  .versionTabs,
+  .versionActions {
     display: none !important;
   }
 
