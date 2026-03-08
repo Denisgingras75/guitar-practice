@@ -12,10 +12,11 @@
 }
 
 .heading {
-  font-size: 1.6rem;
-  font-weight: 900;
+  font-family: var(--font-heading);
+  font-size: 1.8rem;
+  font-weight: 700;
+  letter-spacing: -0.03em;
   color: var(--fg);
-  letter-spacing: -0.02em;
 }
 
 .newBtn {

@@ -20,8 +20,9 @@
 
 .statValue {
   display: block;
-  font-size: 1.8rem;
-  font-weight: 800;
+  font-family: var(--font-heading);
+  font-size: 2rem;
+  font-weight: 700;
   color: var(--fg);
   font-variant-numeric: tabular-nums;
 }

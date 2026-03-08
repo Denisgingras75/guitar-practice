@@ -4,8 +4,10 @@
 }
 
 .heading {
-  font-size: 1.6rem;
-  font-weight: 900;
+  font-family: var(--font-heading);
+  font-size: 1.8rem;
+  font-weight: 700;
+  letter-spacing: -0.03em;
   color: var(--fg);
   margin-bottom: 1rem;
 }
@@ -18,28 +20,47 @@
 
 /* === Technique Card === */
 .card {
-  padding: 1.25rem;
+  padding: 0;
   background: var(--bg-card);
   border: 1px solid var(--border);
   border-radius: var(--radius);
-  transition: border-color 0.2s;
+  transition: border-color 0.2s, box-shadow 0.2s;
 }
 
 .card:hover {
   border-color: var(--fg-dim);
+  box-shadow: 0 0 0 1px var(--accent-glow);
 }
 
+.cardExpanded {
+  border-color: var(--accent);
+  box-shadow: 0 0 12px var(--accent-glow);
+}
+
+/* === Header (always visible) === */
 .cardHeader {
   display: flex;
   align-items: center;
+  justify-content: space-between;
+  padding: 1rem 1.25rem;
+  cursor: pointer;
+  user-select: none;
+  gap: 0.75rem;
+}
+
+.headerLeft {
+  display: flex;
+  align-items: center;
   gap: 0.5rem;
-  margin-bottom: 0.5rem;
+  flex-wrap: wrap;
+  min-width: 0;
 }
 
 .techName {
   font-size: 1.1rem;
   font-weight: 800;
   color: var(--fg);
+  white-space: nowrap;
 }
 
 .badge {
@@ -67,6 +88,22 @@
 .instrumentBadge[data-instrument="acoustic"] {
   border-color: #f59e0b;
   color: #f59e0b;
+}
+
+.chevron {
+  font-size: 0.85rem;
+  color: var(--fg-dim);
+  transition: transform 0.2s;
+  flex-shrink: 0;
+}
+
+.chevronOpen {
+  transform: rotate(180deg);
+}
+
+/* === Expanded Body === */
+.body {
+  padding: 0 1.25rem 1.25rem;
 }
 
 .description {

@@ -11,6 +11,7 @@ import Tuner from './pages/Tuner.jsx';
 import SkillTrees from './pages/SkillTrees.jsx';
 import Charts from './pages/Charts.jsx';
 import Metronome from './pages/Metronome.jsx';
+import CheatSheet from './pages/CheatSheet.jsx';
 import './App.css';
 
 function App() {
@@ -34,6 +35,7 @@ function App() {
             <Route path="/tuner" element={<Tuner />} />
             <Route path="/charts" element={<Charts />} />
             <Route path="/metronome" element={<Metronome />} />
+            <Route path="/cheatsheet" element={<CheatSheet />} />
           </Routes>
         </main>
       </div>
