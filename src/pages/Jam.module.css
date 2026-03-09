@@ -807,6 +807,187 @@
   flex-shrink: 0;
 }
 
+/* === Paste Mode Tabs === */
+.pasteModeTabs {
+  display: flex;
+  gap: 4px;
+  margin-bottom: 1rem;
+}
+
+.pasteModeTab {
+  padding: 8px 18px;
+  border: 1px solid var(--border);
+  border-radius: 99px;
+  background: transparent;
+  color: var(--fg-muted);
+  font-size: 0.8rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.15s;
+}
+
+.pasteModeTab:hover {
+  border-color: var(--fg-dim);
+  color: var(--fg);
+}
+
+.pasteModeTabActive {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: #fafafa;
+}
+
+/* === PDF Upload === */
+.pdfUploadSection {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.pdfUploadLabel {
+  display: inline-block;
+  cursor: pointer;
+}
+
+.pdfFileInput {
+  display: none;
+}
+
+.pdfUploadBtn {
+  display: inline-block;
+  padding: 8px 18px;
+  border: 1px solid var(--accent);
+  border-radius: var(--radius);
+  background: transparent;
+  color: var(--accent);
+  font-size: 0.85rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.15s;
+}
+
+.pdfUploadBtn:hover {
+  background: var(--accent-glow);
+}
+
+.pdfUploadBtnLg {
+  display: inline-block;
+  padding: 14px 32px;
+  border: 2px dashed var(--accent);
+  border-radius: var(--radius);
+  background: var(--accent-glow);
+  color: var(--accent);
+  font-size: 0.95rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.15s;
+}
+
+.pdfUploadBtnLg:hover {
+  background: var(--accent);
+  color: #fafafa;
+}
+
+.pdfDropHint {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  padding: 3rem 2rem;
+  text-align: center;
+  border: 2px dashed var(--border);
+  border-radius: var(--radius);
+  background: var(--bg-card);
+  color: var(--fg-muted);
+  font-size: 0.9rem;
+}
+
+.pdfDropSub {
+  font-size: 0.75rem;
+  color: var(--fg-dim);
+  max-width: 400px;
+}
+
+.pdfMetaFields {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+
+.pdfMetaField {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.pdfMetaField .search {
+  margin-bottom: 0;
+}
+
+.pdfUploadSuccess {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: #4ade80;
+}
+
+.pdfUploadActions {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.pdfChangeBtn {
+  padding: 6px 14px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background: transparent;
+  color: var(--fg-muted);
+  font-size: 0.8rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.15s;
+}
+
+.pdfChangeBtn:hover {
+  border-color: var(--fg-dim);
+  color: var(--fg);
+}
+
+/* === PDF Viewer === */
+.pdfViewer {
+  width: 100%;
+  border-radius: var(--radius);
+  overflow: hidden;
+  border: 1px solid var(--border);
+  background: var(--bg-card);
+}
+
+.pdfObject {
+  width: 100%;
+  height: 80vh;
+  min-height: 500px;
+  border: none;
+}
+
+.pdfFallback {
+  padding: 2rem;
+  text-align: center;
+  color: var(--fg-muted);
+  font-size: 0.9rem;
+}
+
+.pdfDownloadLink {
+  color: var(--accent);
+  font-weight: 700;
+  text-decoration: underline;
+}
+
+.pdfPreviewWrap {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
 /* === Print === */
 @media print {
   .viewHeader,
