@@ -1,7 +1,7 @@
 import { useState, useMemo } from 'react';
 import { STARTER_CHARTS } from '../data/charts.js';
 import { useLocalStorage } from '../hooks/useLocalStorage.js';
-import { looksLikeUG, convertUGToNashville } from '../utils/ugParser.js';
+import { looksLikeUG, convertUGToNashville, cleanUGToLyrics } from '../utils/ugParser.js';
 import ChartRenderer from '../components/ChartRenderer.jsx';
 import LyricsRenderer, { looksLikeLyrics } from '../components/LyricsRenderer.jsx';
 import styles from './Jam.module.css';
@@ -117,18 +117,51 @@ export default function Jam() {
   const addFromPaste = () => {
     const trimmed = pasteText.trim();
     if (!trimmed) return;
+    const now = Date.now();
+
+    // If it looks like UG, auto-create both Lyrics & Chords and Chord Chart versions
+    if (looksLikeUG(trimmed)) {
+      const lyricsText = cleanUGToLyrics(trimmed) || trimmed;
+      const nashvilleText = convertUGToNashville(trimmed);
+      const meta = extractMeta(lyricsText);
+      const versions = [
+        { id: 'v-' + now, label: 'Lyrics & Chords', text: lyricsText },
+      ];
+      if (nashvilleText) {
+        versions.push({ id: 'v-' + (now + 1), label: 'Chord Chart', text: nashvilleText });
+      }
+      const song = {
+        id: 'denis-' + now,
+        title: meta.title || 'Untitled',
+        artist: meta.artist,
+        key: meta.key,
+        genre: '',
+        level: '',
+        text: lyricsText,
+        versions,
+        source: 'denis',
+        addedAt: now,
+      };
+      setJamSongs([...jamSongs, song]);
+      setPasteText('');
+      setView('list');
+      setActiveTab('denis');
+      return;
+    }
+
+    // Non-UG paste — keep original behavior
     const meta = extractMeta(trimmed);
     const song = {
-      id: 'denis-' + Date.now(),
+      id: 'denis-' + now,
       title: meta.title,
       artist: meta.artist,
       key: meta.key,
       genre: '',
       level: '',
       text: trimmed,
-      versions: [{ id: 'v-' + Date.now(), label: 'Chord Chart', text: trimmed }],
+      versions: [{ id: 'v-' + now, label: 'Chord Chart', text: trimmed }],
       source: 'denis',
-      addedAt: Date.now(),
+      addedAt: now,
     };
     setJamSongs([...jamSongs, song]);
     setPasteText('');
@@ -289,6 +322,13 @@ export default function Jam() {
         const converted = convertUGToNashville(newVersionText);
         if (converted) setNewVersionText(converted);
       };
+      const handleCleanLyrics = () => {
+        const cleaned = cleanUGToLyrics(newVersionText);
+        if (cleaned) {
+          setNewVersionText(cleaned);
+          setNewVersionLabel('Lyrics & Chords');
+        }
+      };
       const previewText = newVersionText.trim() && !isUG ? newVersionText : '';
 
       return (
@@ -322,6 +362,9 @@ export default function Jam() {
           {isUG && (
             <div className={styles.ugBanner}>
               <span>Detected Ultimate Guitar format</span>
+              <button className={styles.convertBtn} onClick={handleCleanLyrics}>
+                Clean as Lyrics
+              </button>
               <button className={styles.convertBtn} onClick={handleConvertUG}>
                 Convert to Chart
               </button>
@@ -643,7 +686,17 @@ export default function Jam() {
       if (converted) setPasteText(converted);
     };
 
-    const previewText = pasteText.trim() && !isUG ? pasteText : '';
+    const handleCleanLyrics = () => {
+      const cleaned = cleanUGToLyrics(pasteText);
+      if (cleaned) setPasteText(cleaned);
+    };
+
+    // Show preview: if UG detected, preview the cleaned lyrics version; otherwise preview as-is
+    const previewText = pasteText.trim()
+      ? isUG
+        ? cleanUGToLyrics(pasteText) || ''
+        : pasteText
+      : '';
 
     return (
       <div className={styles.page}>
@@ -663,9 +716,12 @@ export default function Jam() {
 
         {isUG && (
           <div className={styles.ugBanner}>
-            <span>Detected Ultimate Guitar format</span>
+            <span>Detected Ultimate Guitar format — Save will auto-create Lyrics &amp; Chords + Chord Chart versions</span>
+            <button className={styles.convertBtn} onClick={handleCleanLyrics}>
+              Clean as Lyrics
+            </button>
             <button className={styles.convertBtn} onClick={handleConvertUG}>
-              Convert to Chart
+              Convert to Nashville Only
             </button>
           </div>
         )}

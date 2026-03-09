@@ -1,8 +1,8 @@
 /**
- * Ultimate Guitar → Nashville chart converter.
+ * Ultimate Guitar parser & converters.
  *
- * Parses chords-over-lyrics text (as copied from UG) into
- * Nashville-style bar notation that ChartRenderer understands.
+ * - convertUGToNashville: strips lyrics, produces Nashville bar notation
+ * - cleanUGToLyrics: cleans messy UG paste into proper chord-over-lyrics
  */
 
 // ── Chord detection ─────────────────────────────────────────────────────────
@@ -190,4 +190,185 @@ export function convertUGToNashville(text, songTitle, songArtist) {
   out.push('@structure ' + structure.join(' '));
 
   return out.join('\n');
+}
+
+// ── UG junk line detection ─────────────────────────────────────────────────
+
+const UG_JUNK_RE =
+  /^(XXO|Adjust|Transpose|Simplify|Tuning:|Pin Chords|Rate this tab|♡|Capo|Key:|Strumming|There is no strumming|x[0-9]+$|[0-9]+fr$)/i;
+
+const UG_JUNK_EXACT = new Set([
+  'xxo', 'adjust', 'transpose', 'simplify', 'pin chords',
+  'rate this tab', '♡', 'ooo', 'xoo', 'oxo', 'oox', 'x',
+]);
+
+function isJunkLine(line) {
+  const trimmed = line.trim();
+  if (!trimmed) return false;
+  if (UG_JUNK_EXACT.has(trimmed.toLowerCase())) return true;
+  if (UG_JUNK_RE.test(trimmed)) return true;
+  // Pure fret/string diagrams like "x32010" or "320003"
+  if (/^[x0-9]{4,6}$/i.test(trimmed)) return true;
+  return false;
+}
+
+// ── Clean UG paste → proper chord-over-lyrics ──────────────────────────────
+
+/**
+ * Takes messy text copied from Ultimate Guitar and produces clean
+ * chord-over-lyrics text that LyricsRenderer can display.
+ *
+ * Handles:
+ * - Stripping UG UI junk (Pin Chords, Rate this tab, chord diagrams, etc.)
+ * - Merging consecutive chord-only lines that UG splits across rows
+ * - Pairing chord lines with their lyric lines
+ * - Extracting key/capo metadata
+ * - Deduplicating repeated sections
+ */
+export function cleanUGToLyrics(text, songTitle, songArtist) {
+  const rawLines = text.split('\n');
+
+  // Extract metadata from junk lines before stripping
+  let detectedKey = '';
+  let detectedCapo = '';
+  for (const line of rawLines) {
+    const trimmed = line.trim();
+    const keyMatch = trimmed.match(/Key:\s*([A-G][#b]?m?\d*)/i);
+    if (keyMatch) detectedKey = keyMatch[1];
+    const capoMatch = trimmed.match(/Capo\s*:?\s*(\d+)/i);
+    if (capoMatch) detectedCapo = capoMatch[1];
+  }
+
+  // Strip junk lines
+  const cleaned = rawLines.filter((line) => !isJunkLine(line));
+
+  // Now process into sections with properly paired chord/lyric lines
+  const sections = [];
+  let current = null;
+
+  // Buffer for merging consecutive chord-only lines
+  let chordBuffer = [];
+
+  function flushChordBuffer() {
+    if (chordBuffer.length === 0) return;
+    // Merge consecutive chord lines into one spaced line
+    const merged = chordBuffer.join('  ');
+    if (current) {
+      current.lines.push({ type: 'chords', text: merged });
+    }
+    chordBuffer = [];
+  }
+
+  for (let i = 0; i < cleaned.length; i++) {
+    const raw = cleaned[i];
+    const trimmed = raw.trim();
+
+    // Section header?
+    const sectionName = parseSectionName(trimmed);
+    if (sectionName) {
+      flushChordBuffer();
+      current = { name: sectionName, lines: [] };
+      sections.push(current);
+      continue;
+    }
+
+    // Blank line
+    if (!trimmed) {
+      flushChordBuffer();
+      continue;
+    }
+
+    // Create default section if none
+    if (!current) {
+      current = { name: 'Intro', lines: [] };
+      sections.push(current);
+    }
+
+    if (isChordLine(raw)) {
+      // Check if next non-blank, non-header, non-chord line is a lyric
+      let nextIdx = i + 1;
+      while (nextIdx < cleaned.length && !cleaned[nextIdx].trim()) nextIdx++;
+
+      const nextLine = nextIdx < cleaned.length ? cleaned[nextIdx] : '';
+      const nextTrimmed = nextLine.trim();
+
+      if (
+        nextTrimmed &&
+        !isChordLine(nextLine) &&
+        !parseSectionName(nextTrimmed) &&
+        !isJunkLine(nextLine) &&
+        nextTrimmed.length > 1
+      ) {
+        // This chord line has a lyric partner — flush any buffered chords first
+        flushChordBuffer();
+        current.lines.push({
+          type: 'chord-lyric',
+          chordLine: trimmed,
+          lyricLine: nextTrimmed,
+        });
+        i = nextIdx; // skip the lyric line
+      } else {
+        // Chord-only — buffer for potential merging
+        chordBuffer.push(trimmed);
+      }
+    } else {
+      // Lyric line with no chord above
+      flushChordBuffer();
+      // Skip very short junk fragments (single chars that slipped through)
+      if (trimmed.length <= 1 && !/[a-zA-Z]/.test(trimmed)) continue;
+      current.lines.push({ type: 'lyric', text: trimmed });
+    }
+  }
+  flushChordBuffer();
+
+  // ── Build output ────────────────────────────────────────────────────────
+
+  if (sections.length === 0) return null;
+
+  // Guess key from first chord if not detected from metadata
+  if (!detectedKey) {
+    for (const sec of sections) {
+      for (const line of sec.lines) {
+        const chordText = line.type === 'chord-lyric' ? line.chordLine : line.type === 'chords' ? line.text : '';
+        if (chordText) {
+          const tokens = chordText.split(/\s+/).filter(isChord);
+          if (tokens.length > 0) {
+            detectedKey = guessKey(tokens);
+            break;
+          }
+        }
+      }
+      if (detectedKey) break;
+    }
+  }
+
+  const out = [];
+
+  // Metadata
+  if (songTitle) out.push(`@title ${songTitle}`);
+  if (detectedKey) out.push(`@key ${detectedKey}`);
+  if (detectedCapo) out.push(`@capo ${detectedCapo}`);
+  if (out.length > 0) out.push('');
+
+  for (const section of sections) {
+    // Skip sections that are entirely empty
+    if (section.lines.length === 0) continue;
+
+    out.push(`[${section.name}]`);
+
+    for (const line of section.lines) {
+      if (line.type === 'chord-lyric') {
+        out.push(line.chordLine);
+        out.push(line.lyricLine);
+      } else if (line.type === 'chords') {
+        out.push(line.text);
+      } else if (line.type === 'lyric') {
+        out.push(line.text);
+      }
+    }
+
+    out.push('');
+  }
+
+  return out.join('\n').replace(/\n{3,}/g, '\n\n').trim();
 }
