@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useRef } from 'react';
 import { GUITARISTS } from '../data/guitarists.js';
 import PracticeTimer from '../components/PracticeTimer.jsx';
 import { usePracticeLog } from '../hooks/usePracticeLog.js';
@@ -8,6 +8,7 @@ export default function Guitarists() {
   const [practicing, setPracticing] = useState(null);
   const [expanded, setExpanded] = useState(null);
   const { addEntry } = usePracticeLog();
+  const timerRef = useRef(null);
 
   var handleComplete = function (entry) {
     addEntry(entry);
@@ -16,6 +17,12 @@ export default function Guitarists() {
 
   var handlePractice = function (name, guitarist) {
     setPracticing({ name: name + ' (' + guitarist + ')', category: 'guitarists' });
+    // Scroll to the timer so the user can see it
+    setTimeout(function () {
+      if (timerRef.current) {
+        timerRef.current.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    }, 50);
   };
 
   var toggleExpand = function (id) {
@@ -27,7 +34,7 @@ export default function Guitarists() {
       <h2 className={styles.heading}>Guitarists</h2>
 
       {practicing && (
-        <div className={styles.timerWrap}>
+        <div ref={timerRef} className={styles.timerWrap}>
           <PracticeTimer
             topic={practicing}
             onComplete={handleComplete}
