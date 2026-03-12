@@ -1,7 +1,7 @@
 import { useState, useMemo } from 'react';
 import { STARTER_CHARTS } from '../data/charts.js';
 import { useLocalStorage } from '../hooks/useLocalStorage.js';
-import { looksLikeUG, convertUGToNashville, cleanUGToLyrics } from '../utils/ugParser.js';
+import { looksLikeUG, convertUGToNashville, cleanUGToLyrics, extractUGTitleArtist } from '../utils/ugParser.js';
 import ChartRenderer from '../components/ChartRenderer.jsx';
 import LyricsRenderer, { looksLikeLyrics } from '../components/LyricsRenderer.jsx';
 import styles from './Jam.module.css';
@@ -53,6 +53,8 @@ export default function Jam() {
   const [search, setSearch] = useState('');
   const [addSearch, setAddSearch] = useState('');
   const [pasteText, setPasteText] = useState('');
+  const [pasteTitle, setPasteTitle] = useState('');
+  const [pasteArtist, setPasteArtist] = useState('');
   const [resourceSearch, setResourceSearch] = useState('');
   const [showResourceSearch, setShowResourceSearch] = useState(false);
 
@@ -118,12 +120,18 @@ export default function Jam() {
     const trimmed = pasteText.trim();
     if (!trimmed) return;
     const now = Date.now();
+    const userTitle = pasteTitle.trim();
+    const userArtist = pasteArtist.trim();
 
     // If it looks like UG, auto-create both Lyrics & Chords and Chord Chart versions
     if (looksLikeUG(trimmed)) {
-      const lyricsText = cleanUGToLyrics(trimmed) || trimmed;
-      const nashvilleText = convertUGToNashville(trimmed);
+      const lyricsText = cleanUGToLyrics(trimmed, userTitle, userArtist) || trimmed;
+      const nashvilleText = convertUGToNashville(trimmed, userTitle, userArtist);
       const meta = extractMeta(lyricsText);
+      // Also try auto-extraction as fallback
+      const autoMeta = extractUGTitleArtist(trimmed);
+      const finalTitle = userTitle || meta.title || autoMeta.title || 'Untitled';
+      const finalArtist = userArtist || meta.artist || autoMeta.artist || '';
       const versions = [
         { id: 'v-' + now, label: 'Lyrics & Chords', text: lyricsText },
       ];
@@ -132,8 +140,8 @@ export default function Jam() {
       }
       const song = {
         id: 'denis-' + now,
-        title: meta.title || 'Untitled',
-        artist: meta.artist,
+        title: finalTitle,
+        artist: finalArtist,
         key: meta.key,
         genre: '',
         level: '',
@@ -144,6 +152,8 @@ export default function Jam() {
       };
       setJamSongs([...jamSongs, song]);
       setPasteText('');
+      setPasteTitle('');
+      setPasteArtist('');
       setView('list');
       setActiveTab('denis');
       return;
@@ -153,8 +163,8 @@ export default function Jam() {
     const meta = extractMeta(trimmed);
     const song = {
       id: 'denis-' + now,
-      title: meta.title,
-      artist: meta.artist,
+      title: userTitle || meta.title,
+      artist: userArtist || meta.artist,
       key: meta.key,
       genre: '',
       level: '',
@@ -165,6 +175,8 @@ export default function Jam() {
     };
     setJamSongs([...jamSongs, song]);
     setPasteText('');
+    setPasteTitle('');
+    setPasteArtist('');
     setView('list');
     setActiveTab('denis');
   };
@@ -681,27 +693,39 @@ export default function Jam() {
   if (view === 'paste') {
     const isUG = looksLikeUG(pasteText);
 
+    // Auto-detect title/artist from UG text when fields are empty
+    const autoMeta = isUG ? extractUGTitleArtist(pasteText) : { title: '', artist: '' };
+    const displayTitle = pasteTitle || autoMeta.title;
+    const displayArtist = pasteArtist || autoMeta.artist;
+
     const handleConvertUG = () => {
-      const converted = convertUGToNashville(pasteText);
+      const converted = convertUGToNashville(pasteText, pasteTitle, pasteArtist);
       if (converted) setPasteText(converted);
     };
 
     const handleCleanLyrics = () => {
-      const cleaned = cleanUGToLyrics(pasteText);
-      if (cleaned) setPasteText(cleaned);
+      const cleaned = cleanUGToLyrics(pasteText, pasteTitle, pasteArtist);
+      if (cleaned) {
+        setPasteText(cleaned);
+      }
+    };
+
+    const handleAutoFill = () => {
+      if (autoMeta.title && !pasteTitle) setPasteTitle(autoMeta.title);
+      if (autoMeta.artist && !pasteArtist) setPasteArtist(autoMeta.artist);
     };
 
     // Show preview: if UG detected, preview the cleaned lyrics version; otherwise preview as-is
     const previewText = pasteText.trim()
       ? isUG
-        ? cleanUGToLyrics(pasteText) || ''
+        ? cleanUGToLyrics(pasteText, pasteTitle, pasteArtist) || ''
         : pasteText
       : '';
 
     return (
       <div className={styles.page}>
         <div className={styles.viewHeader}>
-          <button className={styles.backBtn} onClick={() => setView('list')}>
+          <button className={styles.backBtn} onClick={() => { setView('list'); setPasteTitle(''); setPasteArtist(''); }}>
             &larr; Back
           </button>
           <button className={styles.saveBtn} onClick={addFromPaste}>
@@ -711,8 +735,30 @@ export default function Jam() {
 
         <h2 className={styles.heading}>Add to Denis Tabs</h2>
         <p className={styles.pasteHint}>
-          Paste from Ultimate Guitar or use Nashville syntax (@title, @key, | chords |)
+          Paste from Ultimate Guitar, Google, or use Nashville syntax (@title, @key, | chords |)
         </p>
+
+        <div className={styles.metaInputRow}>
+          <input
+            className={styles.metaInput}
+            type="text"
+            placeholder={displayTitle ? `Title: ${displayTitle}` : 'Song title...'}
+            value={pasteTitle}
+            onChange={(e) => setPasteTitle(e.target.value)}
+          />
+          <input
+            className={styles.metaInput}
+            type="text"
+            placeholder={displayArtist ? `Artist: ${displayArtist}` : 'Artist...'}
+            value={pasteArtist}
+            onChange={(e) => setPasteArtist(e.target.value)}
+          />
+          {isUG && (autoMeta.title || autoMeta.artist) && !pasteTitle && !pasteArtist && (
+            <button className={styles.autoFillBtn} onClick={handleAutoFill}>
+              Auto-fill
+            </button>
+          )}
+        </div>
 
         {isUG && (
           <div className={styles.ugBanner}>
@@ -732,7 +778,7 @@ export default function Jam() {
             value={pasteText}
             onChange={(e) => setPasteText(e.target.value)}
             spellCheck={false}
-            placeholder={`Paste from Ultimate Guitar:\n\n[Verse]\nG          C          D\nSome lyrics here...\nEm         C          G\nMore lyrics here...\n\n[Chorus]\nC    D    G    Em\n...\n\n— or Nashville syntax —\n\n@title Song Name\n@key G\n\n[A] Verse\n| G | C | D | Em |\n\n@structure A A B A B`}
+            placeholder={`Paste from Ultimate Guitar or Google:\n\n[Verse]\nG          C          D\nSome lyrics here...\nEm         C          G\nMore lyrics here...\n\n[Chorus]\nC    D    G    Em\n...\n\n— or Nashville syntax —\n\n@title Song Name\n@key G\n\n[A] Verse\n| G | C | D | Em |\n\n@structure A A B A B`}
           />
           {previewText && (
             <div className={styles.pastePreview}>

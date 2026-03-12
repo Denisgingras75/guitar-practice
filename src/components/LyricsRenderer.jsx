@@ -5,7 +5,7 @@ import styles from './LyricsRenderer.module.css';
  * (as opposed to Nashville chart format).
  */
 const CHORD_RE =
-  /^[A-G][#b]?(m|min|maj|dim|aug|sus[24]?|add|M|msus|madd)?\d{0,2}(b5|#5|#9|b9|#11|b13)?(\/[A-G][#b]?)?$/;
+  /^[A-G][#b]?(m|min|maj|dim|aug|sus[24]?|add|M|msus|madd|[+°ø])?(maj|M)?\d{0,2}(sus[24]?)?(add\d{1,2})?(b5|#5|#9|b9|#11|b13|b7)?(\/[A-G][#b]?)?$/;
 
 function isChord(token) {
   const clean = token.replace(/[()[\]]/g, '');

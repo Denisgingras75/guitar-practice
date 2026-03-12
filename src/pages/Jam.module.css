@@ -581,6 +581,54 @@
   background: #f59e0b;
 }
 
+/* === Meta Input Row (Title/Artist) === */
+.metaInputRow {
+  display: flex;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+  align-items: center;
+}
+
+.metaInput {
+  flex: 1;
+  padding: 10px 14px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background: var(--bg-card);
+  color: var(--fg);
+  font-size: 0.85rem;
+  outline: none;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.metaInput:focus {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px var(--accent-glow);
+}
+
+.metaInput::placeholder {
+  color: var(--fg-dim);
+}
+
+.autoFillBtn {
+  padding: 8px 14px;
+  border: 1px solid var(--accent);
+  border-radius: var(--radius);
+  background: var(--accent-glow);
+  color: var(--accent);
+  font-size: 0.8rem;
+  font-weight: 700;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: all 0.15s;
+  flex-shrink: 0;
+}
+
+.autoFillBtn:hover {
+  background: var(--accent);
+  color: #fafafa;
+}
+
 /* === Paste === */
 .pasteHint {
   font-size: 0.8rem;
