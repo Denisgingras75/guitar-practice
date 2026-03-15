@@ -28,6 +28,12 @@ const groups = [
     ],
   },
   {
+    label: 'Battle',
+    links: [
+      { to: '/battles', label: 'Freestyle' },
+    ],
+  },
+  {
     label: 'Tools',
     links: [
       { to: '/cheatsheet', label: 'Cheat Sheet' },

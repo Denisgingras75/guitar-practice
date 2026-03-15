@@ -1,0 +1,444 @@
+.page {
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.heading {
+  font-family: var(--font-heading);
+  font-size: 1.8rem;
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  color: var(--fg);
+  margin-bottom: 0.25rem;
+}
+
+.subtitle {
+  color: var(--fg-muted);
+  font-size: 0.9rem;
+  margin-bottom: 1.5rem;
+}
+
+.loading {
+  text-align: center;
+  color: var(--fg-dim);
+  padding: 2rem 0;
+}
+
+/* === Sections === */
+.section {
+  margin-bottom: 2rem;
+}
+
+.sectionTitle {
+  font-family: var(--font-heading);
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--fg);
+  margin-bottom: 0.75rem;
+}
+
+.sectionHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 0.75rem;
+}
+
+.sectionHeader .sectionTitle {
+  margin-bottom: 0;
+}
+
+/* === Genre Filter === */
+.genreFilter {
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+  margin-bottom: 0.75rem;
+}
+
+.genreBtn {
+  padding: 6px 14px;
+  border: 1px solid var(--border);
+  border-radius: 99px;
+  background: transparent;
+  color: var(--fg-muted);
+  font-size: 0.75rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.15s;
+}
+
+.genreBtn:hover {
+  border-color: var(--fg-dim);
+  color: var(--fg);
+}
+
+.genreActive {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: #fff;
+}
+
+/* === Beat Grid === */
+.beatGrid {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.beatCard {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 14px;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  transition: border-color 0.15s;
+}
+
+.beatCard:hover {
+  border-color: var(--fg-dim);
+}
+
+.beatPlaying {
+  border-color: var(--accent);
+  background: var(--accent-glow);
+}
+
+.beatInfo {
+  display: flex;
+  flex-direction: column;
+  min-width: 120px;
+}
+
+.beatName {
+  font-weight: 700;
+  font-size: 0.85rem;
+  color: var(--fg);
+}
+
+.beatMeta {
+  font-size: 0.7rem;
+  color: var(--fg-dim);
+  margin-top: 2px;
+}
+
+/* === Step Pattern === */
+.beatPattern {
+  display: flex;
+  gap: 2px;
+  flex: 1;
+}
+
+.step {
+  width: 6px;
+  height: 16px;
+  border-radius: 2px;
+  background: var(--bg-hover);
+  transition: background 0.08s;
+}
+
+.stepActive {
+  background: var(--border);
+}
+
+.stepCurrent {
+  background: var(--accent) !important;
+  box-shadow: 0 0 6px var(--accent-glow);
+}
+
+.previewBtn {
+  padding: 6px 14px;
+  border: 1px solid var(--accent);
+  border-radius: var(--radius-sm);
+  background: transparent;
+  color: var(--accent);
+  font-size: 0.75rem;
+  font-weight: 700;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: all 0.15s;
+}
+
+.previewBtn:hover {
+  background: var(--accent-glow);
+}
+
+.previewStop {
+  background: #ef4444;
+  border-color: #ef4444;
+  color: #fff;
+}
+
+.previewStop:hover {
+  background: #dc2626;
+}
+
+/* === Custom Beats === */
+.addBtn {
+  padding: 6px 14px;
+  border: 1px solid var(--accent);
+  border-radius: var(--radius-sm);
+  background: transparent;
+  color: var(--accent);
+  font-size: 0.8rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.15s;
+}
+
+.addBtn:hover {
+  background: var(--accent-glow);
+}
+
+.uploadForm {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 0.75rem;
+  flex-wrap: wrap;
+}
+
+.fileLabel {
+  padding: 8px 16px;
+  border: 1px solid var(--accent);
+  border-radius: var(--radius-sm);
+  background: var(--accent-glow);
+  color: var(--accent);
+  font-size: 0.8rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.15s;
+}
+
+.fileLabel:hover {
+  background: var(--accent);
+  color: #fff;
+}
+
+.fileInput {
+  display: none;
+}
+
+.customBeatItem {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 14px;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  margin-bottom: 6px;
+}
+
+.customBeatName {
+  font-weight: 600;
+  font-size: 0.85rem;
+}
+
+.empty {
+  color: var(--fg-dim);
+  font-size: 0.85rem;
+  font-style: italic;
+  padding: 1rem 0;
+}
+
+/* === New Battle Form === */
+.newBattleBtn {
+  padding: 8px 18px;
+  border: none;
+  border-radius: var(--radius);
+  background: var(--accent);
+  color: #fff;
+  font-size: 0.85rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background 0.15s;
+}
+
+.newBattleBtn:hover {
+  background: var(--accent-hover);
+}
+
+.newBattleForm {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 1.25rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  margin-bottom: 1rem;
+}
+
+.input {
+  width: 100%;
+  padding: 10px 14px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  background: var(--bg);
+  color: var(--fg);
+  font-size: 0.9rem;
+  font-family: var(--font);
+  transition: border-color 0.15s;
+}
+
+.input:focus {
+  outline: none;
+  border-color: var(--accent);
+}
+
+.playersSection {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.playersLabel {
+  font-size: 0.7rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--fg-muted);
+}
+
+.playerRow {
+  display: flex;
+  gap: 6px;
+  align-items: center;
+}
+
+.removePlayerBtn {
+  width: 32px;
+  height: 32px;
+  border: 1px solid var(--border);
+  border-radius: 50%;
+  background: transparent;
+  color: var(--fg-dim);
+  font-size: 1.2rem;
+  cursor: pointer;
+  flex-shrink: 0;
+  transition: all 0.15s;
+}
+
+.removePlayerBtn:hover {
+  border-color: #ef4444;
+  color: #ef4444;
+}
+
+.addPlayerBtn {
+  padding: 6px 14px;
+  border: 1px dashed var(--border);
+  border-radius: var(--radius-sm);
+  background: transparent;
+  color: var(--fg-dim);
+  font-size: 0.8rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.15s;
+  align-self: flex-start;
+}
+
+.addPlayerBtn:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+.startBtn {
+  padding: 12px 24px;
+  border: none;
+  border-radius: var(--radius);
+  background: var(--accent);
+  color: #fff;
+  font-size: 1rem;
+  font-weight: 800;
+  cursor: pointer;
+  transition: background 0.15s;
+}
+
+.startBtn:hover {
+  background: var(--accent-hover);
+}
+
+.startBtn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* === Battle List === */
+.battleCard {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 14px;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  margin-bottom: 8px;
+  cursor: pointer;
+  transition: all 0.15s;
+}
+
+.battleCard:hover {
+  border-color: var(--accent);
+  background: var(--accent-glow);
+}
+
+.battleInfo {
+  display: flex;
+  flex-direction: column;
+}
+
+.battleName {
+  font-weight: 700;
+  font-size: 0.95rem;
+  color: var(--fg);
+}
+
+.battleMeta {
+  font-size: 0.75rem;
+  color: var(--fg-dim);
+  margin-top: 2px;
+}
+
+.battleActions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.battleStatus {
+  padding: 4px 10px;
+  border-radius: 99px;
+  font-size: 0.65rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.statusActive {
+  background: rgba(13, 147, 115, 0.12);
+  color: var(--accent);
+}
+
+.statusDone {
+  background: var(--bg-hover);
+  color: var(--fg-dim);
+}
+
+.deleteBtn {
+  padding: 4px 10px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  background: transparent;
+  color: var(--fg-dim);
+  font-size: 0.7rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.15s;
+}
+
+.deleteBtn:hover {
+  border-color: #ef4444;
+  color: #ef4444;
+}

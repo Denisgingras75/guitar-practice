@@ -13,6 +13,8 @@ import Charts from './pages/Charts.jsx';
 import Jam from './pages/Jam.jsx';
 import Metronome from './pages/Metronome.jsx';
 import CheatSheet from './pages/CheatSheet.jsx';
+import Battles from './pages/Battles.jsx';
+import BattleRoom from './pages/BattleRoom.jsx';
 import './App.css';
 
 function App() {
@@ -38,6 +40,8 @@ function App() {
             <Route path="/jam" element={<Jam />} />
             <Route path="/metronome" element={<Metronome />} />
             <Route path="/cheatsheet" element={<CheatSheet />} />
+            <Route path="/battles" element={<Battles />} />
+            <Route path="/battles/:id" element={<BattleRoom />} />
           </Routes>
         </main>
       </div>

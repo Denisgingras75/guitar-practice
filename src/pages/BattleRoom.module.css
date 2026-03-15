@@ -1,0 +1,438 @@
+.page {
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.loading, .notFound {
+  text-align: center;
+  color: var(--fg-dim);
+  padding: 2rem 0;
+}
+
+.backLink {
+  background: none;
+  border: none;
+  color: var(--accent);
+  font-size: 0.85rem;
+  font-weight: 600;
+  cursor: pointer;
+  padding: 0;
+  margin-bottom: 0.5rem;
+  display: inline-block;
+}
+
+.backLink:hover {
+  color: var(--accent-hover);
+}
+
+.backBtn {
+  margin-top: 1rem;
+  padding: 10px 20px;
+  border: none;
+  border-radius: var(--radius);
+  background: var(--accent);
+  color: #fff;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.heading {
+  font-family: var(--font-heading);
+  font-size: 1.6rem;
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  color: var(--fg);
+  margin-bottom: 0.75rem;
+}
+
+/* === Player Bar === */
+.playerBar {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin-bottom: 1.5rem;
+}
+
+.playerChip {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 14px;
+  border: 1px solid var(--border);
+  border-radius: 99px;
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: var(--fg-muted);
+  transition: all 0.15s;
+}
+
+.playerActive {
+  border-color: var(--accent);
+  color: var(--accent);
+  background: var(--accent-glow);
+}
+
+.roundCount {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: var(--bg-hover);
+  font-size: 0.65rem;
+  font-weight: 800;
+  color: var(--fg-dim);
+}
+
+.playerActive .roundCount {
+  background: var(--accent);
+  color: #fff;
+}
+
+/* === Record Section === */
+.recordSection {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 1.5rem;
+  margin-bottom: 1.5rem;
+  text-align: center;
+}
+
+.turnLabel {
+  font-family: var(--font-heading);
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: var(--fg);
+  margin-bottom: 1rem;
+}
+
+/* === Beat Selector === */
+.beatSelect {
+  margin-bottom: 1.25rem;
+  text-align: left;
+}
+
+.selectLabel {
+  display: block;
+  font-size: 0.7rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--fg-muted);
+  margin-bottom: 0.5rem;
+}
+
+.beatChips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.beatChip {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 6px 12px;
+  border: 1px solid var(--border);
+  border-radius: 99px;
+  background: transparent;
+  color: var(--fg-muted);
+  font-size: 0.72rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.15s;
+}
+
+.beatChip:hover {
+  border-color: var(--fg-dim);
+  color: var(--fg);
+}
+
+.beatChipActive {
+  border-color: var(--accent);
+  background: var(--accent);
+  color: #fff;
+}
+
+.chipBpm {
+  font-size: 0.6rem;
+  opacity: 0.7;
+}
+
+.customChip {
+  border-style: dashed;
+}
+
+/* === Recording Controls === */
+.recControls {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  margin-bottom: 1rem;
+  min-height: 56px;
+}
+
+.countdown {
+  font-family: var(--font-heading);
+  font-size: 3rem;
+  font-weight: 800;
+  color: var(--accent);
+  animation: pulse 1s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { transform: scale(1); opacity: 1; }
+  50% { transform: scale(1.3); opacity: 0.7; }
+}
+
+.recBtn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 14px 32px;
+  border: none;
+  border-radius: var(--radius);
+  background: #ef4444;
+  color: #fff;
+  font-size: 1.1rem;
+  font-weight: 800;
+  cursor: pointer;
+  transition: all 0.15s;
+}
+
+.recBtn:hover {
+  background: #dc2626;
+}
+
+.recBtn:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+.recBtnActive {
+  animation: recPulse 1.5s ease-in-out infinite;
+}
+
+@keyframes recPulse {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(239, 68, 68, 0.4); }
+  50% { box-shadow: 0 0 0 12px rgba(239, 68, 68, 0); }
+}
+
+.recDot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: #fff;
+}
+
+.recBtnActive .recDot {
+  background: #fff;
+  animation: blink 1s infinite;
+}
+
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.3; }
+}
+
+.recTime {
+  font-family: var(--font-mono);
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #ef4444;
+  font-variant-numeric: tabular-nums;
+}
+
+/* === Preview === */
+.previewSection {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.audioPlayer {
+  width: 100%;
+  height: 40px;
+  border-radius: var(--radius-sm);
+}
+
+.previewActions {
+  display: flex;
+  gap: 8px;
+  justify-content: center;
+}
+
+.saveBtn {
+  padding: 10px 28px;
+  border: none;
+  border-radius: var(--radius);
+  background: var(--accent);
+  color: #fff;
+  font-size: 0.9rem;
+  font-weight: 800;
+  cursor: pointer;
+  transition: background 0.15s;
+}
+
+.saveBtn:hover {
+  background: var(--accent-hover);
+}
+
+.retakeBtn {
+  padding: 10px 20px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background: transparent;
+  color: var(--fg-muted);
+  font-size: 0.9rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.15s;
+}
+
+.retakeBtn:hover {
+  border-color: var(--fg-dim);
+  color: var(--fg);
+}
+
+/* === Timeline === */
+.timeline {
+  margin-bottom: 2rem;
+}
+
+.timelineHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 0.75rem;
+}
+
+.sectionTitle {
+  font-family: var(--font-heading);
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--fg);
+}
+
+.shareBtn {
+  padding: 6px 14px;
+  border: 1px solid var(--accent);
+  border-radius: var(--radius-sm);
+  background: transparent;
+  color: var(--accent);
+  font-size: 0.75rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.15s;
+}
+
+.shareBtn:hover {
+  background: var(--accent-glow);
+}
+
+.empty {
+  color: var(--fg-dim);
+  font-size: 0.85rem;
+  font-style: italic;
+  padding: 1rem 0;
+  text-align: center;
+}
+
+/* === Round Cards === */
+.roundCard {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 14px;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  margin-bottom: 8px;
+  transition: border-color 0.15s;
+}
+
+.roundCard:hover {
+  border-color: var(--fg-dim);
+}
+
+.roundNum {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: var(--bg-hover);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.7rem;
+  font-weight: 800;
+  color: var(--fg-muted);
+  flex-shrink: 0;
+}
+
+.roundInfo {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  min-width: 0;
+}
+
+.roundPlayer {
+  font-weight: 700;
+  font-size: 0.9rem;
+  color: var(--fg);
+}
+
+.roundMeta {
+  font-size: 0.72rem;
+  color: var(--fg-dim);
+  margin-top: 1px;
+}
+
+.roundActions {
+  display: flex;
+  gap: 6px;
+}
+
+.playBtn {
+  padding: 6px 14px;
+  border: none;
+  border-radius: var(--radius-sm);
+  background: var(--accent);
+  color: #fff;
+  font-size: 0.75rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background 0.15s;
+}
+
+.playBtn:hover {
+  background: var(--accent-hover);
+}
+
+.playBtnActive {
+  background: #ef4444;
+}
+
+.playBtnActive:hover {
+  background: #dc2626;
+}
+
+.dlBtn {
+  padding: 6px 10px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  background: transparent;
+  color: var(--fg-dim);
+  font-size: 0.7rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.15s;
+}
+
+.dlBtn:hover {
+  border-color: var(--fg-dim);
+  color: var(--fg);
+}
