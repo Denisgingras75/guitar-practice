@@ -2,16 +2,15 @@ import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
 import { VitePWA } from 'vite-plugin-pwa'
 
-// https://vite.dev/config/
 export default defineConfig({
   plugins: [
     react(),
     VitePWA({
       registerType: 'autoUpdate',
       manifest: {
-        name: 'Guitar Practice',
-        short_name: 'Guitar',
-        description: 'Personal guitar practice app',
+        name: 'Freestyle Battle',
+        short_name: 'Battle',
+        description: 'Rap freestyle battle app',
         theme_color: '#0a0a0a',
         background_color: '#0a0a0a',
         display: 'standalone',

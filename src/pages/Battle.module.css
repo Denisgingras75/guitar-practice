@@ -1,0 +1,555 @@
+.battle {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.pageTitle {
+  font-family: var(--font-heading);
+  font-size: 1.6rem;
+  font-weight: 800;
+  background: var(--gradient-fire);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.pageDesc {
+  color: var(--fg-muted);
+  font-size: 0.9rem;
+  margin-top: -12px;
+}
+
+/* Card */
+.card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.label {
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--fg-dim);
+}
+
+/* Player inputs */
+.playerInputs {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.playerField {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.playerNum {
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: var(--accent);
+  min-width: 24px;
+}
+
+.vs {
+  font-family: var(--font-heading);
+  font-weight: 800;
+  color: var(--fg-dim);
+  font-size: 0.85rem;
+}
+
+.input {
+  width: 100%;
+  padding: 10px 14px;
+  background: var(--bg-surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  color: var(--fg);
+  font-family: var(--font);
+  font-size: 0.9rem;
+  outline: none;
+  transition: border-color 0.15s;
+}
+
+.input:focus {
+  border-color: var(--accent);
+}
+
+/* Format */
+.formatGrid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 10px;
+}
+
+.formatCard {
+  padding: 14px;
+  background: var(--bg-surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  transition: all 0.15s;
+}
+
+.formatCard:hover {
+  border-color: var(--fg-dim);
+}
+
+.formatActive {
+  border-color: var(--accent);
+  background: var(--accent-glow);
+}
+
+.formatName {
+  font-weight: 600;
+  font-size: 0.9rem;
+}
+
+.formatDesc {
+  font-size: 0.75rem;
+  color: var(--fg-dim);
+}
+
+/* Beat */
+.beatGrid {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.beatChip {
+  padding: 8px 14px;
+  background: var(--bg-surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  font-size: 0.8rem;
+  font-weight: 500;
+  transition: all 0.15s;
+  display: flex;
+  gap: 6px;
+  align-items: center;
+}
+
+.beatChip:hover {
+  border-color: var(--fg-dim);
+}
+
+.beatActive {
+  border-color: var(--accent);
+  background: var(--accent-glow);
+}
+
+.bpm {
+  font-size: 0.7rem;
+  color: var(--fg-dim);
+}
+
+/* Round header */
+.roundHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.roundBadge {
+  padding: 6px 14px;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  font-size: 0.8rem;
+  font-weight: 600;
+}
+
+.turnBadge {
+  font-family: var(--font-heading);
+  font-size: 1.1rem;
+  font-weight: 700;
+}
+
+/* Topic */
+.topicCard {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 20px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.topicLabel {
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  color: var(--accent);
+}
+
+.topicText {
+  font-family: var(--font-heading);
+  font-size: 1.4rem;
+  font-weight: 800;
+}
+
+/* Timer */
+.timerArea {
+  display: flex;
+  justify-content: center;
+}
+
+.timerRing {
+  position: relative;
+  width: 180px;
+  height: 180px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.timerSvg {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  transform: rotate(-90deg);
+}
+
+.timerBg {
+  fill: none;
+  stroke: var(--border);
+  stroke-width: 5;
+}
+
+.timerProgress {
+  fill: none;
+  stroke: var(--accent);
+  stroke-width: 5;
+  stroke-linecap: round;
+  transition: stroke-dashoffset 0.5s linear;
+}
+
+.timerWarning {
+  stroke: var(--gold);
+  animation: pulse 0.5s infinite alternate;
+}
+
+.timerText {
+  font-family: var(--font-heading);
+  font-size: 2.8rem;
+  font-weight: 800;
+}
+
+.timerTextWarn {
+  color: var(--gold);
+}
+
+@keyframes pulse {
+  from { opacity: 0.7; }
+  to { opacity: 1; }
+}
+
+/* Beat viz */
+.beatViz {
+  display: flex;
+  gap: 4px;
+  justify-content: center;
+}
+
+.beatStep {
+  width: 8px;
+  height: 18px;
+  border-radius: 2px;
+  background: var(--border);
+  transition: all 0.08s;
+}
+
+.beatStepActive {
+  background: var(--accent);
+  height: 28px;
+  box-shadow: 0 0 10px var(--accent-glow);
+}
+
+/* Battle controls */
+.battleControls {
+  display: flex;
+  justify-content: center;
+}
+
+/* Scoreboard */
+.scoreboard {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  padding: 16px;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+}
+
+.scorePlayer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+}
+
+.scoreName {
+  font-size: 0.8rem;
+  color: var(--fg-muted);
+  font-weight: 500;
+}
+
+.scoreTotal {
+  font-family: var(--font-heading);
+  font-size: 1.8rem;
+  font-weight: 800;
+}
+
+.scoreVs {
+  font-family: var(--font-heading);
+  font-weight: 800;
+  color: var(--fg-dim);
+  font-size: 0.9rem;
+}
+
+/* Scoring */
+.scoringHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.scoringTitle {
+  font-family: var(--font-heading);
+  font-size: 1.2rem;
+  font-weight: 700;
+}
+
+.scoringCards {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.scoringCard {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.scoringInfo {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.scoringIcon {
+  font-size: 1.3rem;
+}
+
+.scoringLabel {
+  font-weight: 600;
+  font-size: 0.9rem;
+  display: block;
+}
+
+.scoringDesc {
+  font-size: 0.72rem;
+  color: var(--fg-dim);
+  display: block;
+}
+
+.scoringSlider {
+  display: flex;
+  gap: 4px;
+}
+
+.scoreBtn {
+  width: 32px;
+  height: 32px;
+  border-radius: var(--radius-sm);
+  background: var(--bg-surface);
+  border: 1px solid var(--border);
+  font-size: 0.8rem;
+  font-weight: 600;
+  transition: all 0.15s;
+}
+
+.scoreBtn:hover {
+  border-color: var(--accent);
+}
+
+.scoreBtnActive {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: white;
+}
+
+.scoringTotal {
+  text-align: center;
+  font-family: var(--font-heading);
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--fg-muted);
+}
+
+/* Results */
+.resultsHeader {
+  text-align: center;
+  padding: 20px 0 0;
+}
+
+.crown {
+  font-size: 3rem;
+  display: block;
+  margin-bottom: 8px;
+}
+
+.resultsTitle {
+  font-family: var(--font-heading);
+  font-size: 2rem;
+  font-weight: 800;
+  background: var(--gradient-gold);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.finalScores {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 24px;
+}
+
+.finalPlayer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  padding: 20px 28px;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+}
+
+.finalWinner {
+  border-color: var(--gold);
+  box-shadow: 0 0 20px var(--gold-glow);
+}
+
+.finalName {
+  font-weight: 600;
+  font-size: 0.9rem;
+}
+
+.finalScore {
+  font-family: var(--font-heading);
+  font-size: 2.5rem;
+  font-weight: 800;
+  background: var(--gradient-gold);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.finalMax {
+  font-size: 0.75rem;
+  color: var(--fg-dim);
+}
+
+.finalVs {
+  font-family: var(--font-heading);
+  font-weight: 800;
+  color: var(--fg-dim);
+}
+
+/* Breakdown */
+.breakdown {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.breakdownRow {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+}
+
+.breakdownRound {
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--fg-dim);
+  min-width: 28px;
+}
+
+.breakdownScore {
+  font-family: var(--font-heading);
+  font-size: 1.1rem;
+  font-weight: 700;
+  min-width: 28px;
+  text-align: center;
+}
+
+.breakdownWin {
+  color: var(--gold);
+}
+
+.breakdownDash {
+  color: var(--fg-dim);
+}
+
+/* Result actions */
+.resultActions {
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+@media (max-width: 480px) {
+  .playerInputs {
+    flex-direction: column;
+  }
+
+  .formatGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .timerRing {
+    width: 150px;
+    height: 150px;
+  }
+
+  .timerText {
+    font-size: 2.2rem;
+  }
+
+  .finalScores {
+    flex-direction: column;
+    gap: 12px;
+  }
+}

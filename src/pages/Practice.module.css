@@ -1,0 +1,329 @@
+.practice {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.pageTitle {
+  font-family: var(--font-heading);
+  font-size: 1.6rem;
+  font-weight: 800;
+  background: var(--gradient-purple);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.pageDesc {
+  color: var(--fg-muted);
+  font-size: 0.9rem;
+  margin-top: -16px;
+}
+
+/* Mode Selection */
+.modeGrid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px;
+}
+
+.modeCard {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 8px;
+  padding: 24px 20px;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  text-align: left;
+  transition: all 0.2s;
+}
+
+.modeCard:hover {
+  border-color: var(--accent2);
+  background: var(--bg-hover);
+  transform: translateY(-2px);
+}
+
+.modeIcon {
+  font-size: 1.8rem;
+}
+
+.modeLabel {
+  font-weight: 700;
+  font-size: 1rem;
+}
+
+.modeDesc {
+  font-size: 0.78rem;
+  color: var(--fg-dim);
+}
+
+/* Top Bar */
+.topBar {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.backBtn {
+  font-size: 0.85rem;
+  color: var(--fg-muted);
+  padding: 6px 12px;
+  border-radius: var(--radius-sm);
+  transition: color 0.15s;
+}
+
+.backBtn:hover {
+  color: var(--fg);
+}
+
+.modeTitle {
+  font-family: var(--font-heading);
+  font-size: 1.2rem;
+  font-weight: 700;
+}
+
+/* Prompt Card */
+.promptCard {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 28px 24px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+}
+
+.promptLabel {
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+
+.promptText {
+  font-family: var(--font-heading);
+  font-size: 1.6rem;
+  font-weight: 800;
+  color: var(--fg);
+}
+
+.wordList {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.wordChip {
+  padding: 8px 18px;
+  background: var(--accent2-glow);
+  border: 1px solid rgba(124, 58, 237, 0.3);
+  border-radius: 20px;
+  font-weight: 600;
+  font-size: 1rem;
+  color: #a78bfa;
+}
+
+.refreshBtn {
+  font-size: 0.8rem;
+  color: var(--fg-dim);
+  padding: 6px 14px;
+  border-radius: 20px;
+  border: 1px solid var(--border);
+  transition: all 0.15s;
+}
+
+.refreshBtn:hover {
+  color: var(--fg);
+  border-color: var(--fg-dim);
+}
+
+/* Beat Selector */
+.beatSection {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.beatLabel {
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--fg-dim);
+}
+
+.beatGrid {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.beatChip {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  padding: 10px 16px;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  transition: all 0.15s;
+}
+
+.beatChip:hover {
+  border-color: var(--fg-dim);
+}
+
+.beatActive {
+  border-color: var(--accent);
+  background: var(--accent-glow);
+}
+
+.beatName {
+  font-weight: 600;
+  font-size: 0.8rem;
+}
+
+.beatBpm {
+  font-size: 0.7rem;
+  color: var(--fg-dim);
+}
+
+/* Timer */
+.timerArea {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+}
+
+.timerRing {
+  position: relative;
+  width: 160px;
+  height: 160px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.timerSvg {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  transform: rotate(-90deg);
+}
+
+.timerBg {
+  fill: none;
+  stroke: var(--border);
+  stroke-width: 4;
+}
+
+.timerProgress {
+  fill: none;
+  stroke: var(--accent);
+  stroke-width: 4;
+  stroke-linecap: round;
+  transition: stroke-dashoffset 0.5s linear;
+}
+
+.timerText {
+  font-family: var(--font-heading);
+  font-size: 2.4rem;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+}
+
+/* Beat visualizer */
+.beatViz {
+  display: flex;
+  gap: 4px;
+  align-items: center;
+}
+
+.beatStep {
+  width: 8px;
+  height: 16px;
+  border-radius: 2px;
+  background: var(--border);
+  transition: all 0.08s;
+}
+
+.beatStepActive {
+  background: var(--accent);
+  height: 24px;
+  box-shadow: 0 0 8px var(--accent-glow);
+}
+
+/* Controls */
+.controls {
+  display: flex;
+  justify-content: center;
+}
+
+/* Finish */
+.finishArea {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  width: 100%;
+}
+
+.finishTitle {
+  font-family: var(--font-heading);
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: var(--gold);
+}
+
+.selfScore {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+}
+
+.scoreLabel {
+  font-size: 0.8rem;
+  color: var(--fg-muted);
+}
+
+.scoreStars {
+  display: flex;
+  gap: 8px;
+}
+
+.star {
+  font-size: 1.5rem;
+  transition: transform 0.15s;
+}
+
+.star:hover {
+  transform: scale(1.2);
+}
+
+.starActive {
+  transform: scale(1.1);
+}
+
+.finishActions {
+  display: flex;
+  gap: 12px;
+}
+
+@media (max-width: 480px) {
+  .modeGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .promptText {
+    font-size: 1.3rem;
+  }
+}
